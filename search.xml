@@ -260,10 +260,10 @@
   </entry>
   <entry>
     <title><![CDATA[MAC上GO环境配置]]></title>
-    <url>%2F2019%2F08%2F16%2FCS-Tools%2FMAC%E4%B8%8AGO%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
+    <url>%2F2019%2F08%2F16%2FCS-Question%2FMAC%E4%B8%8AGO%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[1、安装命令 1brew install go 2、检查go安装信息 1go env 3、配置go路径环境主要是GOROOT、GOPATH和GOBIN GOROOT：就是go的安装环境 GOPATH：其实通俗点来说就是go项目工作目录（作为编译后二进制的存放目的地和import包时的搜索路径）。通常情况下包含三个目录：bin、pkg、src。 GOBIN：go可执行文件目录。 在~/.bash_profile文件中进行环境配置 1vim ~/.bash_profile 编辑完之后退出保存文件，然后使用 1source ~/.bash_profile 使之生效，然后再使用go env查看当前环境，可以发现已经是你配置文件中设置的路径环境了]]></content>
       <categories>
-        <category>CS-Tools</category>
+        <category>CS-Question</category>
       </categories>
       <tags>
         <tag>go</tag>
@@ -681,10 +681,10 @@
   </entry>
   <entry>
     <title><![CDATA[Mac-Command-Line技巧]]></title>
-    <url>%2F2018%2F11%2F08%2FCS-Tools%2FMac-Command-Line%E6%8A%80%E5%B7%A7%2F</url>
+    <url>%2F2018%2F11%2F08%2FCS-Question%2FMac-Command-Line%E6%8A%80%E5%B7%A7%2F</url>
     <content type="text"><![CDATA[Command + n 新建窗口 Command + t 新建tap Command + q 关闭窗口 Command + w 关闭tap Command + l 清屏 Command + d 水平分屏 Command + shift + d 取消水平分屏 Command + shift + 方向键 切换到指定tap 输入 open . 可以用finder打开当前的位置 可以用 history 命令查看历史记录]]></content>
       <categories>
-        <category>CS-Tools</category>
+        <category>CS-Question</category>
       </categories>
       <tags>
         <tag>mac</tag>
