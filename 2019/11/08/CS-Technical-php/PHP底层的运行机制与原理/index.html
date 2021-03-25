@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="haxianhe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="haxianhe">
+    
+    <meta name="keywords" content="haxianhe,哈显贺">
+    
+    <meta name="description" content="读书、健身、旅行">
+    <meta name="description" content="记得我刚开始学习PHP的时候，许多面试官会经常问我PHP是什么，那时的标准回答是PHP是一种弱类型动态脚本编程语言，开源，免费，是超文本预处理器的缩写。 这只是很浅的解释，PHP对我来说是一个工具，是我手里的一把锤子，虽然这把锤子时常被调侃为两边都是起钉器的锤子。 使用「现实世界」中的任何工具时，如果理解这个工具的运作原理，那么你会更加得心应手的使用这个工具。应用开发也是这样。当你明白你的开发工具">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP底层的运行机制与原理">
+<meta property="og:url" content="https://haxianhe.com/2019/11/08/CS-Technical-php/PHP底层的运行机制与原理/index.html">
+<meta property="og:site_name" content="haxianhe&#39;s blog">
+<meta property="og:description" content="记得我刚开始学习PHP的时候，许多面试官会经常问我PHP是什么，那时的标准回答是PHP是一种弱类型动态脚本编程语言，开源，免费，是超文本预处理器的缩写。 这只是很浅的解释，PHP对我来说是一个工具，是我手里的一把锤子，虽然这把锤子时常被调侃为两边都是起钉器的锤子。 使用「现实世界」中的任何工具时，如果理解这个工具的运作原理，那么你会更加得心应手的使用这个工具。应用开发也是这样。当你明白你的开发工具">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191107151742.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191107193632.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191107213413.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191107224545.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191108054721.png">
+<meta property="og:updated_time" content="2021-03-25T02:50:32.184Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP底层的运行机制与原理">
+<meta name="twitter:description" content="记得我刚开始学习PHP的时候，许多面试官会经常问我PHP是什么，那时的标准回答是PHP是一种弱类型动态脚本编程语言，开源，免费，是超文本预处理器的缩写。 这只是很浅的解释，PHP对我来说是一个工具，是我手里的一把锤子，虽然这把锤子时常被调侃为两边都是起钉器的锤子。 使用「现实世界」中的任何工具时，如果理解这个工具的运作原理，那么你会更加得心应手的使用这个工具。应用开发也是这样。当你明白你的开发工具">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191107151742.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <link rel="alternate" href="/atom.xml" title="haxianhe&#39;s blog" type="application/atom+xml">
+    
+    <title>PHP底层的运行机制与原理 · haxianhe</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/avatar/picture.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >haxianhe&#39;s blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">PHP底层的运行机制与原理</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>haxianhe's blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            PHP底层的运行机制与原理
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "php">php</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">4.6k</span>阅读时长: <span class="post-count reading-time">16 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/11/08</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>记得我刚开始学习PHP的时候，许多面试官会经常问我PHP是什么，那时的标准回答是PHP是一种弱类型动态脚本编程语言，开源，免费，是超文本预处理器的缩写。</p>
+<p>这只是很浅的解释，PHP对我来说是一个工具，是我手里的一把锤子，虽然这把锤子时常被调侃为两边都是起钉器的锤子。</p>
+<p>使用「现实世界」中的任何工具时，如果理解这个工具的运作原理，那么你会更加得心应手的使用这个工具。应用开发也是这样。当你明白你的开发工具如何运行的，你就会对它们的使用游刃有余。</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191107151742.png" alt></p>
+<h2 id="PHP-的特点"><a href="#PHP-的特点" class="headerlink" title="PHP 的特点"></a>PHP 的特点</h2><p><strong>多进程模型</strong></p>
+<p>PHP是以多进程模型设计的，这样的好处是请求之间互不干涉，一个请求失败也不会对其他进程造成影响，作为最开始仅仅用于个人网站的一个工具集这样的设计并没有什么不妥，随着PHP的应用变大，访问量增加这种方式显然是不合适的，因为启动一个进程的开销对于海量请求是不划算的，所以现在PHP基本都是运行在PHP-FPM的管理下的，这是一个PHP进程管理器，它常驻内存启动一些PHP进程待命，当请求进入时分配一个进程进行处理，PHP进程处理完毕后回收进程，但并不销毁进程，这让PHP也能应对高流量的访问请求。</p>
+<p>当然现在也有PHP多线程的解决方案和基于协程的解决方案让PHP更高效的处理WEB请求。</p>
+<p><strong>弱类型</strong></p>
+<p>与 JAVA、C/C++ 不同，PHP是一门若类型的语言，变量在声明的那一刻是不需要确定它的类型的，而在运行时类型也会发生显式或隐式的类型改变，这也是PHP开发应用迅速、方便的原因之一。</p>
+<p><strong>其他</strong></p>
+<p>Zend 引擎 + Ext 扩展 的模式降低了内部耦合，可以方便的为PHP本身增加功能和去除功能。<br>语法简单，没有太多强制规范，编程风格上既可以用过程式、也可以用面向对象的方式进行开发，当然函数式也可以。</p>
+<h2 id="PHP-的架构"><a href="#PHP-的架构" class="headerlink" title="PHP 的架构"></a>PHP 的架构</h2><p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191107193632.png" alt></p>
+<p>以目前的 PHP 主流版本 PHP7 和 PHP5 来说架构是如上图所示，主要有四层体系构成，从下到上依次是 Zend 引擎、Extensions 扩展、SAPI 接口、Application。</p>
+<h3 id="Zend-引擎"><a href="#Zend-引擎" class="headerlink" title="Zend 引擎"></a>Zend 引擎</h3><p>Zend 引擎是 PHP4 以后加入 PHP 的，是对原有PHP解释器的重写，整体使用 C 语言进行开发，也就是说可以把PHP理解成用C写的一个编程语言软件，引擎的作用是将PHP代码翻译为一种叫opcode的中间语言，它类似于JAVA的ByteCode（字节码）。<br>引擎对PHP代码会执行四个步骤：</p>
+<ul>
+<li>词法分析 Scanning（Lexing），将 PHP 代码转换为语言片段（Tokens）。</li>
+<li>解析 Parsing， 将 Tokens 转换成简单而有意义的表达式。</li>
+<li>编译 Compilation，将表达式编译成Opcode。</li>
+<li>执行 Execution，顺序执行Opcode，每次一条，以实现PHP代码所表达的功能。</li>
+</ul>
+<p>APC、Opchche 这些扩展可以将Opcode缓存以加速PHP应用的运行速度，使用它们就可以在请求再次来临时省略前三步。</p>
+<p>引擎也实现了基本的数据结构（如hashtable、oo）、内存分配及管理、提供了相应的api方法供外部调用，是一切的核心，所有的外围功能均围绕Zend实现。</p>
+<h3 id="Extensions-扩展"><a href="#Extensions-扩展" class="headerlink" title="Extensions 扩展"></a>Extensions 扩展</h3><p>围绕着 Zend 引擎，extensions 通过组件式的方式提供各种基础服务，我们常见的各种内置函数（如array系列）、标准库等都是通过 extension 来实现，用户也可以根据需要实现自己的 extension 以达到功能扩展、性能优化等目的（如贴吧正在使用的PHP中间层、富文本解析就是 extension 的典型应用）。</p>
+<h3 id="SAPI"><a href="#SAPI" class="headerlink" title="SAPI"></a>SAPI</h3><p>SAPI 是 Server Application Programming Interface 的缩写，中文为服务端应用编程接口，它通过一系列钩子函数使得PHP可以和外围交换数据，SAPI 就是 PHP 和外部环境的代理器，它把外部环境抽象后，为内部的PHP提供一套固定的，统一的接口，使得 PHP 自身实现能够不受错综复杂的外部环境影响，保持一定的独立性。</p>
+<p>通过 SAPI 的解耦，PHP 可以不再考虑如何针对不同应用进行兼容，而应用本身也可以针对自己的特点实现不同的处理方式。</p>
+<h3 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h3><p>程序员编写的PHP程序，无论是 Web 应用还是 Cli 方式运行的应用都是上层应用，PHP 程序员主要工作就是编写它们。</p>
+<blockquote>
+<p>如果PHP是一辆车，那么车的框架就是PHP本身，Zend是车的引擎（发动机），Ext下面的各种组件就是车的轮子，Sapi可以看做是公路，车可以跑在不同类型的公路上，而一次PHP程序的执行就是汽车跑在公路上。因此，我们需要：性能优异的引擎+合适的车轮+正确的跑道。</p>
+</blockquote>
+<h2 id="SAPI-1"><a href="#SAPI-1" class="headerlink" title="SAPI"></a>SAPI</h2><p>如前所述，sapi通过通过一系列的接口，使得外部应用可以和PHP交换数据，并可以根据不同应用特点实现特定的处理方法，我们常见的一些sapi有：</p>
+<ul>
+<li><strong>apache2handler</strong>：这是以apache作为webserver，采用mod_PHP模式运行时候的处理方式。</li>
+<li><strong>cgi</strong>：这是webserver和PHP之间的另一种交互方式，也就是大名鼎鼎的fastcgi协议，在最近今年fastcgi+PHP得到越来越多的应用，也是异步webserver所唯一支持的方式。</li>
+<li><strong>cli</strong>：命令行调用的应用模式</li>
+</ul>
+<h2 id="PHP-的执行流程"><a href="#PHP-的执行流程" class="headerlink" title="PHP 的执行流程"></a>PHP 的执行流程</h2><p>我们先来看看PHP代码的执行所经过的流程。</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191107213413.png" alt></p>
+<p>从图上可以看到，PHP实现了一个典型的动态语言执行过程：<strong>拿到一段代码后，经过词法解析、语法解析等阶段后，源程序会被翻译成一个个指令(opcodes)，然后ZEND虚拟机顺次执行这些指令完成操作</strong>。PHP本身是用C实现的，因此最终调用的也都是C的函数，实际上，我们可以把PHP看做是一个C开发的软件。</p>
+<p>PHP的执行的核心是翻译出来的一条一条指令，也即opcode。</p>
+<p>Opcode是PHP程序执行的最基本单位。一个opcode由两个参数(op1,op2)、返回值和处理函数组成。PHP程序最终被翻译为一组opcode处理函数的顺序执行。</p>
+<p>常见的几个处理函数：</p>
+<p>ZEND_ASSIGN_SPEC_CV_CV_HANDLER : 变量分配 （$a=$b）</p>
+<p>ZEND_DO_FCALL_BY_NAME_SPEC_HANDLER：函数调用</p>
+<p>ZEND_CONCAT_SPEC_CV_CV_HANDLER：字符串拼接 $a.$b</p>
+<p>ZEND_ADD_SPEC_CV_CONST_HANDLER: 加法运算 $a+2</p>
+<p>ZEND_IS_EQUAL_SPEC_CV_CONST：判断相等 $a==1</p>
+<p>ZEND_IS_IDENTICAL_SPEC_CV_CONST：判断相等 $a===1</p>
+<h2 id="核心数据结构——HashTable"><a href="#核心数据结构——HashTable" class="headerlink" title="核心数据结构——HashTable"></a>核心数据结构——HashTable</h2><p>HashTable是Zend的<strong>核心数据结构</strong>，在PHP里面几乎并用来实现所有常见功能，我们知道的PHP数组即是其典型应用，此外，在zend内部，如函数符号表、全局变量等也都是基于hash table来实现。</p>
+<p>PHP的hash table具有如下特点：</p>
+<ul>
+<li>支持典型的key-&gt;value查询</li>
+<li>可以当做数组使用</li>
+<li>添加、删除节点是 O(1) 复杂度</li>
+<li>key支持混合类型：同时存在关联数组合索引数组</li>
+<li>Value支持混合类型：array (“string”, 2332)</li>
+<li>支持线性遍历：如foreach</li>
+</ul>
+<p>Zend hash table实现了典型的hash表散列结构，同时通过附加一个双向链表，提供了正向、反向遍历数组的功能。其结构如下图：</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191107224545.png" alt></p>
+<p>可以看到，在hash table中既有key-&gt;value形式的散列结构，也有双向链表模式，使得它能够非常方便的支持快速查找和线性遍历。</p>
+<ul>
+<li><strong>散列结构</strong>：Zend的散列结构是典型的hash表模型，通过链表的方式来解决冲突。需要注意的是zend的hash table是一个自增长的数据结构，当hash表数目满了之后，其本身会动态以2倍的方式扩容并重新元素位置。初始大小均为8。另外，在进行key-&gt;value快速查找时候，zend本身还做了一些优化，通过空间换时间的方式加快速度。比如在每个元素中都会用一个变量nKeyLength标识key的长度以作快速判定。</li>
+<li><strong>双向链表</strong>：Zend hash table通过一个链表结构，实现了元素的线性遍历。理论上，做遍历使用单向链表就够了，之所以使用双向链表，主要目的是为了快速删除，避免遍历。Zend hash table是一种复合型的结构，作为数组使用时，即支持常见的关联数组也能够作为顺序索引数字来使用，甚至允许2者的混合。</li>
+<li><strong>PHP关联数组</strong>：关联数组是典型的hash_table应用。一次查询过程经过如下几步（从代码可以看出，这是一个常见的hash查询过程，并增加一些快速判定加速查找。）：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">getKeyHashValue h;</span><br><span class="line">index = n &amp; nTableMask;</span><br><span class="line">Bucket *p = arBucket[index];</span><br><span class="line"><span class="keyword">while</span> (p) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((p-&gt;h == h) &amp; (p-&gt;nKeyLength == nKeyLength)) &#123;</span><br><span class="line">        RETURN p-&gt;data;   </span><br><span class="line">    &#125;</span><br><span class="line">    p=p-&gt;next;</span><br><span class="line">&#125;</span><br><span class="line">RETURN FALTURE;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>PHP索引数组</strong>：索引数组就是我们常见的数组，通过下标访问。例如 $arr[0]，Zend HashTable内部进行了归一化处理，对于index类型key同样分配了hash值和nKeyLength(为0)。内部成员变量nNextFreeElement就是当前分配到的最大id，每次push后自动加一。正是这种归一化处理，PHP才能够实现关联和非关联的混合。由于push操作的特殊性，索引key在PHP数组中先后顺序并不是通过下标大小来决定，而是由push的先后决定。例如 $arr[1] = 2; $arr[2] = 3; 对于double类型的key，Zend HashTable会将他当做索引key处理</li>
+</ul>
+<h2 id="PHP-变量"><a href="#PHP-变量" class="headerlink" title="PHP 变量"></a>PHP 变量</h2><p>PHP是一门弱类型语言，本身不严格区分变量的类型。PHP在变量申明的时候不需要指定类型。PHP在程序运行期间可能进行变量类型的隐示转换。和其他强类型语言一样，程序中也可以进行显示的类型转换。PHP变量可以分为简单类型(int、string、bool)、集合类型(array resource object)和常量(const)。以上所有的变量在底层都是同一种结构 zval。</p>
+<p>Zval是zend中另一个非常重要的数据结构，用来标识并实现PHP变量，其数据结构如下</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191108054721.png" alt></p>
+<p>Zval主要由三部分组成：</p>
+<ul>
+<li><strong>type</strong>：指定了变量所述的类型（整数、字符串、数组等）</li>
+<li><strong>refcount&amp;is_ref</strong>：用来实现引用计数(后面具体介绍)</li>
+<li><strong>value</strong>：核心部分，存储了变量的实际数据</li>
+</ul>
+<p>Zvalue是用来保存一个变量的实际数据。因为要存储多种类型，所以zvalue是一个union，也由此实现了弱类型。</p>
+<p>PHP变量类型和其实际存储对应关系如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">IS_LONG   -&gt; lvalue</span><br><span class="line">IS_DOUBLE -&gt; dvalue</span><br><span class="line">IS_ARRAY  -&gt; ht</span><br><span class="line">IS_STRING -&gt; str</span><br><span class="line">IS_RESOURCE -&gt; lvalue</span><br></pre></td></tr></table></figure>
+<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>引用计数在内存回收、字符串操作等地方使用非常广泛。PHP中的变量就是引用计数的典型应用。Zval的引用计数通过成员变量is_ref和ref_count实现，通过引用计数，多个变量可以共享同一份数据。避免频繁拷贝带来的大量消耗。</p>
+<p>在进行赋值操作时，zend将变量指向相同的zval同时ref_count++，在unset操作时，对应的ref_count-1。只有ref_count减为0时才会真正执行销毁操作。如果是引用赋值，则zend会修改is_ref为1。</p>
+<p>PHP变量通过引用计数实现变量共享数据，那如果改变其中一个变量值呢？当试图写入一个变量时，Zend若发现该变量指向的zval被多个变量共享，则为其复制一份ref_count为1的zval，并递减原zval的refcount，这个过程称为“zval分离”。可见，只有在有写操作发生时zend才进行拷贝操作，因此也叫copy-on-write(写时拷贝)</p>
+<p>对于引用型变量，其要求和非引用型相反，引用赋值的变量间必须是捆绑的，修改一个变量就修改了所有捆绑变量。</p>
+<h3 id="整数和浮点数"><a href="#整数和浮点数" class="headerlink" title="整数和浮点数"></a>整数和浮点数</h3><p>整数、浮点数是PHP中的基础类型之一，也是一个简单型变量。对于整数和浮点数，在zvalue中直接存储对应的值。其类型分别是long和double。</p>
+<p>从zvalue结构中可以看出，对于整数类型，和c等强类型语言不同，PHP是不区分int、unsigned int、long、long long等类型的，对它来说，整数只有一种类型也就是long。由此，可以看出，在PHP里面，整数的取值范围是由编译器位数来决定而不是固定不变的。</p>
+<p>对于浮点数，类似整数，它也不区分float和double而是统一只有double一种类型。</p>
+<p>在PHP中，如果整数范围越界了怎么办？这种情况下会自动转换为double类型，这个一定要小心，很多trick都是由此产生。</p>
+<h3 id="字符和字符串"><a href="#字符和字符串" class="headerlink" title="字符和字符串"></a>字符和字符串</h3><p>和整数一样，字符变量也是PHP中的基础类型和简单型变量。通过zvalue结构可以看出，在PHP中，字符串是由由指向实际数据的指针和长度结构体组成，这点和c++中的string比较类似。由于通过一个实际变量表示长度，和c不同，它的字符串可以是2进制数据（包含\0），同时在PHP中，求字符串长度strlen是O(1)操作。</p>
+<p>在新增、修改、追加字符串操作时，PHP都会重新分配内存生成新的字符串。最后，出于安全考虑，PHP在生成一个字符串时末尾仍然会添加\0。</p>
+<p>常见的字符串拼接方式及速度比较：</p>
+<p>假设有如下4个变量：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$strA = '123';</span><br><span class="line">$strB = '456';</span><br><span class="line">$intA = <span class="number">123</span>;</span><br><span class="line">$intB = <span class="number">456</span>;</span><br></pre></td></tr></table></figure>
+<p>现在对如下的几种字符串拼接方式做一个比较和说明：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下面两张情况，zend会重新malloc一块内存并进行相应处理，其速度一般</span></span><br><span class="line">$res = $strA . $strB</span><br><span class="line">$res = <span class="string">"$strA$strB"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这种是速度最快的，zend会在当前strA基础上直接relloc，避免重复拷贝</span></span><br><span class="line">$strA = $strA . $strB</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这种速度较慢，因为需要做隐式的格式转换，实际编写程序中也应该注意尽量避免</span></span><br><span class="line">$res = $intA . $intB</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这会是最慢的一种方式，因为sprintf在PHP中并不是一个语言结构，</span></span><br><span class="line"><span class="comment">// 本身对于格式识别和处理就需要耗费比较多时间，另外本身机制也是malloc。</span></span><br><span class="line"><span class="comment">// 不过sprintf的方式最具可读性，实际中可以根据具体情况灵活选择。</span></span><br><span class="line">$strA = sprintf (<span class="string">"%s%s"</span>, $strA . $strB);</span><br></pre></td></tr></table></figure>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>PHP的数组通过Zend HashTable来天然实现。</p>
+<p>foreach操作如何实现？对一个数组的foreach就是通过遍历hashtable中的双向链表完成。对于索引数组，通过foreach遍历效率比for高很多，省去了key-&gt;value的查找。count操作直接调用HashTable-&gt;NumOfElements，O(1)操作。对于 ‘123’ 这样的字符串，zend会转换为其整数形式。$arr[‘123’]和$arr[123]是等价的。</p>
+<h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><p>资源类型变量是PHP中最复杂的一种变量，也是一种复合型结构。</p>
+<p>PHP的zval可以表示广泛的数据类型，但是对于自定义的数据类型却很难充分描述。由于没有有效的方式描绘这些复合结构，因此也没有办法对它们使用传统的操作符。要解决这个问题，只需要通过一个本质上任意的标识符（label）引用指针，这种方式被称为资源。</p>
+<p>在zval中，对于resource，lval作为指针来使用，直接指向资源所在的地址。Resource可以是任意的复合结构，我们熟悉的mysqli、fsock、memcached等都是资源。</p>
+<p>如何使用资源：</p>
+<ul>
+<li><strong>注册</strong>：对于一个自定义的数据类型，要想将它作为资源。首先需要进行注册，zend会为它分配全局唯一标示。</li>
+<li><strong>获取一个资源变量</strong>：对于资源，zend维护了一个id-&gt;实际数据的hash_tale。对于一个resource，在zval中只记录了它的id。fetch的时候通过id在hash_table中找到具体的值返回。</li>
+<li><strong>资源销毁</strong>：资源的数据类型是多种多样的。Zend本身没有办法销毁它。因此需要用户在注册资源的时候提供销毁函数。当unset资源时，zend调用相应的函数完成析构。同时从全局资源表中删除它。</li>
+</ul>
+<p>资源可以长期驻留，不只是在所有引用它的变量超出作用域之后，甚至是在一个请求结束了并且新的请求产生之后。这些资源称为持久资源，因为它们贯通SAPI的整个生命周期持续存在，除非特意销毁。很多情况下，持久化资源可以在一定程度上提高性能。比如我们常见的mysql_pconnect ,持久化资源通过pemalloc分配内存，这样在请求结束的时候不会释放。 对zend来说，对两者本身并不区分。</p>
+<h3 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h3><p>PHP中的局部变量和全局变量是如何实现的？对于一个请求，任意时刻PHP都可以看到两个符号表(symbol_table和active_symbol_table)，其中前者用来维护全局变量。后者是一个指针，指向当前活动的变量符号表，当程序进入到某个函数中时，zend就会为它分配一个符号表x同时将active_symbol_table指向a。通过这样的方式实现全局、局部变量的区分。</p>
+<ul>
+<li><p><strong>获取变量值</strong>：PHP的符号表是通过hash_table实现的，对于每个变量都分配唯一标识，获取的时候根据标识从表中找到相应zval返回。</p>
+</li>
+<li><p><strong>函数中使用全局变量</strong>：在函数中，我们可以通过显式申明global来使用全局变量。在active_symbol_table中创建symbol_table中同名变量的引用，如果symbol_table中没有同名变量则会先创建。</p>
+</li>
+</ul>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://haxianhe.com">haxianhe</a>
+            <p>原文链接：<a href="https://haxianhe.com/2019/11/08/CS-Technical-php/PHP底层的运行机制与原理/">https://haxianhe.com/2019/11/08/CS-Technical-php/PHP底层的运行机制与原理/</a>
+            <p>发表日期：<a href="https://haxianhe.com/2019/11/08/CS-Technical-php/PHP底层的运行机制与原理/">2019-11-8 21:26:41</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/11/09/CS-Technical-php/CGI、FastCGI和PHP-FPM关系解析/" title= "CGI、FastCGI和PHP-FPM关系解析">
+                    <div class="nextTitle">CGI、FastCGI和PHP-FPM关系解析</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/11/01/CS-Technical-nginx/Nginx核心模块之location匹配规则浅析/" title= "Nginx核心模块之location匹配规则浅析">
+                    <div class="prevTitle">Nginx核心模块之location匹配规则浅析</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "x3LQVV31BNxPxyM01FLOYWXA-gzGzoHsz",
+        appKey: "07mqv7WlaHA0GH8dzulqpazf",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:haxianhe@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="https://github.com/haxianhe" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/touxiang.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/haxianhe" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-的特点"><span class="toc-number">1.</span> <span class="toc-text">PHP 的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-的架构"><span class="toc-number">2.</span> <span class="toc-text">PHP 的架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Zend-引擎"><span class="toc-number">2.1.</span> <span class="toc-text">Zend 引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Extensions-扩展"><span class="toc-number">2.2.</span> <span class="toc-text">Extensions 扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SAPI"><span class="toc-number">2.3.</span> <span class="toc-text">SAPI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Application"><span class="toc-number">2.4.</span> <span class="toc-text">Application</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SAPI-1"><span class="toc-number">3.</span> <span class="toc-text">SAPI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-的执行流程"><span class="toc-number">4.</span> <span class="toc-text">PHP 的执行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#核心数据结构——HashTable"><span class="toc-number">5.</span> <span class="toc-text">核心数据结构——HashTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-变量"><span class="toc-number">6.</span> <span class="toc-text">PHP 变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#引用计数"><span class="toc-number">6.1.</span> <span class="toc-text">引用计数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整数和浮点数"><span class="toc-number">6.2.</span> <span class="toc-text">整数和浮点数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符和字符串"><span class="toc-number">6.3.</span> <span class="toc-text">字符和字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组"><span class="toc-number">6.4.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资源"><span class="toc-number">6.5.</span> <span class="toc-text">资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量作用域"><span class="toc-number">6.6.</span> <span class="toc-text">变量作用域</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 64
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2021/03/04/CS-Interview/how-to-ready-interview/" >从小厂逆袭快手，我是如何准备面试的</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href= "/2021/02/27/CS-Interview/social-interview/" >涨薪50%，从小厂逆袭快手 - 附面经</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span><a class="archive-post-title" href= "/2021/02/21/Summary/learn-new-knowledge/" >论如何学习新的技能</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2021/01/30/CS-Technical-mysql/break-mysql-index/" >《破壁MySQL》 - MySQL索引</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/2021/01/21/Summary/insurance/" >保险配置总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/09</span><a class="archive-post-title" href= "/2021/01/09/CS-Technical-mysql/break-mysql-overview/" >《破壁MySQL》 - MySQL概述</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href= "/2021/01/05/Summary/2020-summary/" >2020 年终总结</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/18</span><a class="archive-post-title" href= "/2020/06/18/Summary/职业生涯实用经验/" >职业生涯实用经验</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2020/05/16/CS-Technical-mysql/为什么MySQL字段要设置为NOT-NULL/" >为什么MySQL字段要设置为NOT NULL?</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/CS-Technical-mysql/为什么对于非常小的表，大部分情况下简单的全表扫描比建立索引更高效？/" >为什么对于非常小的表，大部分情况下简单的全表扫描比建立索引更高效？</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/06</span><a class="archive-post-title" href= "/2020/05/06/CS-Technical-redis/Redis-总结/" >Redis之数据类型</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Book-Notes-psycholog/如何自控 - 《自控力》/" >如何自控 - 读《自控力》</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/16</span><a class="archive-post-title" href= "/2019/12/16/Summary/2019-summary/" >2019 年终总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/07</span><a class="archive-post-title" href= "/2019/12/07/Book-Notes-sociology/不再思考 - 《娱乐至死》/" >不再思考 - 读《娱乐至死》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/CS-Technical-php/PHP常见概念/" >PHP常见概念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/CS-Technical-php/Session原理解析/" >Session原理解析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/CS-Technical-php/CGI、FastCGI和PHP-FPM关系解析/" >CGI、FastCGI和PHP-FPM关系解析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/08</span><a class="archive-post-title" href= "/2019/11/08/CS-Technical-php/PHP底层的运行机制与原理/" >PHP底层的运行机制与原理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/01</span><a class="archive-post-title" href= "/2019/11/01/CS-Technical-nginx/Nginx核心模块之location匹配规则浅析/" >Nginx核心模块之location匹配规则浅析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/12</span><a class="archive-post-title" href= "/2019/10/12/CS-Project/分布式系统唯一ID生成方案浅析/" >分布式系统唯一ID生成方案浅析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/23</span><a class="archive-post-title" href= "/2019/09/23/CS-Project/系统设计和架构之基础/" >系统设计和架构之基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span><a class="archive-post-title" href= "/2019/09/16/Book-Notes-psycholog/心智成熟之旅 - 《少有人走的路》/" >心智成熟之旅 - 读《少有人走的路》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span><a class="archive-post-title" href= "/2019/08/16/CS-Technical-go/如何使用Go编程/" >如何使用Go编程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span><a class="archive-post-title" href= "/2019/08/16/CS-Tools/MAC上GO环境配置/" >MAC上GO环境配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/27</span><a class="archive-post-title" href= "/2019/07/27/CS-Basics-algorithms/复杂度分析：如何分析、统计算法的执行效率和资源消耗？/" >复杂度分析：如何分析、统计算法的执行效率和资源消耗？</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2019/07/25/CS-Technical-php/Yaf-框架学习/" >Yaf 框架学习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/13</span><a class="archive-post-title" href= "/2019/07/13/Book-Notes-self/R90 - 《睡眠革命》/" >R90 - 读《睡眠革命》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2019/06/17/Summary/痛证明你在蜕变！/" >痛证明你在蜕变！</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/07</span><a class="archive-post-title" href= "/2019/05/07/Book-Notes-sociology/多因素 - 《异类》/" >多因素 - 读《异类》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span><a class="archive-post-title" href= "/2019/04/26/Book-Notes-self/升级心智 - 《财富自由之路》/" >升级心智 - 读《财富自由之路》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2019/04/17/CS-Resources/Dcoker-学习资料/" >Dcoker 学习资料</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2019/04/05/Book-Notes-self/产出-产能平衡原则 - 《高效能人士的七个习惯》/" >产出-产能平衡原则 - 读《高效能人士的七个习惯》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2019/03/25/CS-Technical-php/如何在phpstorm中查看yaf框架源码/" >如何在phpstorm中查看yaf框架源码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/Book-Notes-economic/普世智慧 - 《穷查理宝典》/" >普世智慧 - 读《穷查理宝典》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/CS-Basics-software/UML-类图/" >UML 类图</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span><a class="archive-post-title" href= "/2019/03/15/Summary/回首往事，初心何在/" >回首往事，初心何在</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span><a class="archive-post-title" href= "/2019/02/21/CS-Resources/Go-学习之路（资料）/" >Go 学习资料</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2019/02/15/CS-Project/Costa项目——经验总结/" >Costa项目：经验总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2019/01/30/CS-Technical-nginx/解决在nginx中不能执行php程序的问题/" >解决在nginx中不能执行php程序的问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span><a class="archive-post-title" href= "/2019/01/28/Book-Notes-history/历史的功用 - 《中国古代历史人物：秦始皇》/" >历史的功用 - 看《中国古代历史人物：秦始皇》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/2019/01/21/CS-Technical-rabbitmq/RabbitMQ（5）：work-queues/" >RabbitMQ（5）：work_queues</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/18</span><a class="archive-post-title" href= "/2019/01/18/CS-Technical-rabbitmq/RabbitMQ（4）：配置文件/" >RabbitMQ（4）：配置文件</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/07</span><a class="archive-post-title" href= "/2019/01/07/Book-Notes-economic/存钱大作战 - 《工作前5年，决定你一生的财富》/" >存钱大作战 - 读《工作前5年，决定你一生的财富》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span><a class="archive-post-title" href= "/2019/01/03/Book-Notes-economic/明确目标 - 《吃掉那只青蛙》/" >明确目标 - 读《吃掉那只青蛙》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/02</span><a class="archive-post-title" href= "/2019/01/02/CS-Project/编码习惯——数据量较大的情况下/" >编码习惯：在数据量较大的情况下</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/29</span><a class="archive-post-title" href= "/2018/12/29/CS-Basics-software/专业主义——读《代码整洁之道》/" >专业主义——读《代码整洁之道》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/28</span><a class="archive-post-title" href= "/2018/12/28/Summary/2018-summary/" >2018 年终总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/19</span><a class="archive-post-title" href= "/2018/12/19/Book-Notes-literature/刺猬外套 - 《围城》/" >刺猬外套 - 读《围城》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/2018/12/17/CS-Technical-rabbitmq/RabbitMQ（2）：AMQP-0-9-1-和-AMQP-模型高阶概述/" >RabbitMQ（2）：AMQP 0-9-1 和 AMQP 模型高阶概述</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/14</span><a class="archive-post-title" href= "/2018/12/14/CS-Technical-rabbitmq/RabbitMQ（1）：安装、使用教程/" >RabbitMQ（1）：安装、使用教程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/14</span><a class="archive-post-title" href= "/2018/12/14/CS-Technical-rabbitmq/RabbitMQ（3）：hello-world/" >RabbitMQ（3）：hello-world</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/13</span><a class="archive-post-title" href= "/2018/12/13/CS-Technical-linux/mac终端连接阿里云服务器报错/" >mac 终端连接阿里云服务器报错</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/12</span><a class="archive-post-title" href= "/2018/12/12/CS-Technical-php/array-merge的坑/" >PHP：array_merge 的坑</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/12</span><a class="archive-post-title" href= "/2018/12/12/CS-Technical-php/array-search的坑/" >PHP：array_search的坑</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/11</span><a class="archive-post-title" href= "/2018/12/11/CS-Technical-linux/gcc-命令/" >gcc 命令</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/11</span><a class="archive-post-title" href= "/2018/12/11/CS-Technical-linux/scp-跨机远程拷贝/" >scp 跨机远程拷贝</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/2018/12/04/CS-Technical-nginx/《实战Nginx：取代Apache的高性能Web服务器》/" >《实战Nginx：取代Apache的高性能Web服务器》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/23</span><a class="archive-post-title" href= "/2018/11/23/Book-Notes-self/积累 - 《把时间当朋友》/" >积累 - 读《把时间当朋友》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/14</span><a class="archive-post-title" href= "/2018/11/14/CS-Technical-mysql/Modify-column-Vs-change-column/" >Modify column Vs change column</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/14</span><a class="archive-post-title" href= "/2018/11/14/Fit-Notes/全身分化/" >全身分化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/08</span><a class="archive-post-title" href= "/2018/11/08/CS-Tools/Mac-Command-Line技巧/" >Mac-Command-Line技巧</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/06</span><a class="archive-post-title" href= "/2018/11/06/Book-Notes-history/故事的力量 - 《人类简史》/" >故事的力量 - 读《人类简史》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/06</span><a class="archive-post-title" href= "/2018/11/06/Book-Notes-self/读书的方法 - 《如何阅读一本书》/" >读书的方法 - 读《如何阅读一本书》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span><a class="archive-post-title" href= "/2018/10/23/CS-Project/首页接口优化/" >首页接口优化</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="读书笔记"><span class="iconfont-archer">&#xe606;</span>读书笔记</span>
+    
+        <span class="sidebar-tag-name" data-tags="经济学"><span class="iconfont-archer">&#xe606;</span>经济学</span>
+    
+        <span class="sidebar-tag-name" data-tags="历史学"><span class="iconfont-archer">&#xe606;</span>历史学</span>
+    
+        <span class="sidebar-tag-name" data-tags="文学"><span class="iconfont-archer">&#xe606;</span>文学</span>
+    
+        <span class="sidebar-tag-name" data-tags="心理学"><span class="iconfont-archer">&#xe606;</span>心理学</span>
+    
+        <span class="sidebar-tag-name" data-tags="自我管理"><span class="iconfont-archer">&#xe606;</span>自我管理</span>
+    
+        <span class="sidebar-tag-name" data-tags="社会学"><span class="iconfont-archer">&#xe606;</span>社会学</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构和算法"><span class="iconfont-archer">&#xe606;</span>数据结构和算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="软件工程"><span class="iconfont-archer">&#xe606;</span>软件工程</span>
+    
+        <span class="sidebar-tag-name" data-tags="社招面经"><span class="iconfont-archer">&#xe606;</span>社招面经</span>
+    
+        <span class="sidebar-tag-name" data-tags="系统设计"><span class="iconfont-archer">&#xe606;</span>系统设计</span>
+    
+        <span class="sidebar-tag-name" data-tags="项目经验"><span class="iconfont-archer">&#xe606;</span>项目经验</span>
+    
+        <span class="sidebar-tag-name" data-tags="优化"><span class="iconfont-archer">&#xe606;</span>优化</span>
+    
+        <span class="sidebar-tag-name" data-tags="docker"><span class="iconfont-archer">&#xe606;</span>docker</span>
+    
+        <span class="sidebar-tag-name" data-tags="go"><span class="iconfont-archer">&#xe606;</span>go</span>
+    
+        <span class="sidebar-tag-name" data-tags="linux"><span class="iconfont-archer">&#xe606;</span>linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="mysql"><span class="iconfont-archer">&#xe606;</span>mysql</span>
+    
+        <span class="sidebar-tag-name" data-tags="mac"><span class="iconfont-archer">&#xe606;</span>mac</span>
+    
+        <span class="sidebar-tag-name" data-tags="ssh"><span class="iconfont-archer">&#xe606;</span>ssh</span>
+    
+        <span class="sidebar-tag-name" data-tags="《破壁MySQL》"><span class="iconfont-archer">&#xe606;</span>《破壁MySQL》</span>
+    
+        <span class="sidebar-tag-name" data-tags="《破壁》"><span class="iconfont-archer">&#xe606;</span>《破壁》</span>
+    
+        <span class="sidebar-tag-name" data-tags="nginx"><span class="iconfont-archer">&#xe606;</span>nginx</span>
+    
+        <span class="sidebar-tag-name" data-tags="php"><span class="iconfont-archer">&#xe606;</span>php</span>
+    
+        <span class="sidebar-tag-name" data-tags="yaf"><span class="iconfont-archer">&#xe606;</span>yaf</span>
+    
+        <span class="sidebar-tag-name" data-tags="PhpStrom"><span class="iconfont-archer">&#xe606;</span>PhpStrom</span>
+    
+        <span class="sidebar-tag-name" data-tags="rabbitmq"><span class="iconfont-archer">&#xe606;</span>rabbitmq</span>
+    
+        <span class="sidebar-tag-name" data-tags="redis"><span class="iconfont-archer">&#xe606;</span>redis</span>
+    
+        <span class="sidebar-tag-name" data-tags="年终总结"><span class="iconfont-archer">&#xe606;</span>年终总结</span>
+    
+        <span class="sidebar-tag-name" data-tags="健身笔记"><span class="iconfont-archer">&#xe606;</span>健身笔记</span>
+    
+        <span class="sidebar-tag-name" data-tags="人生感悟"><span class="iconfont-archer">&#xe606;</span>人生感悟</span>
+    
+        <span class="sidebar-tag-name" data-tags="保险配置"><span class="iconfont-archer">&#xe606;</span>保险配置</span>
+    
+        <span class="sidebar-tag-name" data-tags="职业经验"><span class="iconfont-archer">&#xe606;</span>职业经验</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Book-Notes"><span class="iconfont-archer">&#xe60a;</span>Book-Notes</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Basics"><span class="iconfont-archer">&#xe60a;</span>CS-Basics</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Interview"><span class="iconfont-archer">&#xe60a;</span>CS-Interview</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Project"><span class="iconfont-archer">&#xe60a;</span>CS-Project</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Resources"><span class="iconfont-archer">&#xe60a;</span>CS-Resources</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Technical"><span class="iconfont-archer">&#xe60a;</span>CS-Technical</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Tools"><span class="iconfont-archer">&#xe60a;</span>CS-Tools</span>
+    
+        <span class="sidebar-category-name" data-categories="Summary"><span class="iconfont-archer">&#xe60a;</span>Summary</span>
+    
+        <span class="sidebar-category-name" data-categories="Fit-Notes"><span class="iconfont-archer">&#xe60a;</span>Fit-Notes</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "haxianhe"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

@@ -1,0 +1,3956 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="haxianhe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="haxianhe">
+    
+    <meta name="keywords" content="haxianhe,哈显贺">
+    
+    <meta name="description" content="读书、健身、旅行">
+    <meta name="description" content="读书、健身、旅行">
+<meta name="keywords" content="haxianhe">
+<meta property="og:type" content="website">
+<meta property="og:title" content="haxianhe&#39;s blog">
+<meta property="og:url" content="https://haxianhe.com/archives/index.html">
+<meta property="og:site_name" content="haxianhe&#39;s blog">
+<meta property="og:description" content="读书、健身、旅行">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="haxianhe&#39;s blog">
+<meta name="twitter:description" content="读书、健身、旅行">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <link rel="alternate" href="/atom.xml" title="haxianhe&#39;s blog" type="application/atom+xml">
+    
+    <title>haxianhe</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/avatar/picture.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <a class="home-link" href=/>haxianhe's blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+">
+    
+    <!-- 主页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main index-page">
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/03/04/CS-Interview/how-to-ready-interview/" >
+            
+                <span>从小厂逆袭快手，我是如何准备面试的</span>
+        </a>
+        <div class="abstract-content">
+            我将文中提到的的 MySQL、Redis、Kafka 思维导图放到了我的公众号中，大家可以关注我的公众号【haxianhe】，回复 “思维导图” 领取高清pdf版思维导图...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "社招面经">社招面经</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/02/27/CS-Interview/social-interview/" >
+            
+                <span>涨薪50%，从小厂逆袭快手 - 附面经</span>
+        </a>
+        <div class="abstract-content">
+            我将我本次面试遇到的面试题整理成了一份面经，大家可以关注我的公众号【haxianhe】，回复 “面经” 领取。
+
+一会儿就要办离职手续了，趁着这会儿没啥事，简单写一篇文章...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/02/27</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "社招面经">社招面经</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/02/21/Summary/learn-new-knowledge/" >
+            
+                <span>论如何学习新的技能</span>
+        </a>
+        <div class="abstract-content">
+            今天晚上和泽康聊了一下春节期间的各自生活，有趣的是我们俩都列举了通过短时间快速学习做好一件事情的例子。
+两个例子例子1，先来看看我举的例子
+春节期间和家人在家打牌，
+第一...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/02/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "人生感悟">人生感悟</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/01/30/CS-Technical-mysql/break-mysql-index/" >
+            
+                <span>《破壁MySQL》 - MySQL索引</span>
+        </a>
+        <div class="abstract-content">
+            
+文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。
+
+在上一篇文章 「《破壁MySQL》 - MySQL概述」 中我们简单介绍了MySQL 架构和 MySQL...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/01/30</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "《破壁MySQL》">《破壁MySQL》</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "《破壁》">《破壁》</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/01/21/Summary/insurance/" >
+            
+                <span>保险配置总结</span>
+        </a>
+        <div class="abstract-content">
+            我的保险配置医保+(补充医疗险+好医保·长期医疗险)+(相互保+重疾险)
+
+情况1:日常门诊看病
+报销型：医保+团体补充医疗险 2万以内100%报销
+情况2:住院手术
+报...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/01/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "保险配置">保险配置</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/01/09/CS-Technical-mysql/break-mysql-overview/" >
+            
+                <span>《破壁MySQL》 - MySQL概述</span>
+        </a>
+        <div class="abstract-content">
+            
+文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。
+
+在正式开始总结MySQL之前，先给大家介绍一下“破壁”是什么意思，很久之前我老大曾说过一句 “互联网本来...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/01/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "《破壁MySQL》">《破壁MySQL》</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "《破壁》">《破壁》</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/01/05/Summary/2020-summary/" >
+            
+                <span>2020 年终总结</span>
+        </a>
+        <div class="abstract-content">
+            技术技术可以从两个方向进行总结，主要是围绕着工作展开，辅之以技术原理的学习。
+工作2020年的主要工作内容是智域系统中区域直管方向，主要分为吻合率、区域数据库、区域直管任...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/01/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "年终总结">年终总结</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/06/18/Summary/职业生涯实用经验/" >
+            
+                <span>职业生涯实用经验</span>
+        </a>
+        <div class="abstract-content">
+            学会深入思考，总结沉淀我想说的第一条就是要学会深入思考，总结沉淀，这是我觉得最重要也是最有意义的一件事。
+先来说深入思考。在程序员这个圈子里，常能听到一些言论：我这个工作...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/06/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "职业经验">职业经验</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/16/CS-Technical-mysql/为什么MySQL字段要设置为NOT-NULL/" >
+            
+                <span>为什么MySQL字段要设置为NOT NULL?</span>
+        </a>
+        <div class="abstract-content">
+            平时开发过程中，MySQL 字段的一般都会设置为NOT NULL，原因如下：
+1、空值(“”) 和 “NULL” 的区别：
+
+空值是不占用空间的
+MySQL中的NULL其...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "mysql">mysql</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/10/CS-Technical-mysql/为什么对于非常小的表，大部分情况下简单的全表扫描比建立索引更高效？/" >
+            
+                <span>为什么对于非常小的表，大部分情况下简单的全表扫描比建立索引更高效？</span>
+        </a>
+        <div class="abstract-content">
+            
+最近刚刚和泽康和素鑫聊过这个问题，这里简单整理一下。
+
+标题中的 ‘对于非常小的表，大部分情况下简单的全表扫描比建立索引更高效’ ，其实是问题 ‘索引的使用条件’ 的答...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/10</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "mysql">mysql</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/06/CS-Technical-redis/Redis-总结/" >
+            
+                <span>Redis之数据类型</span>
+        </a>
+        <div class="abstract-content">
+            数据类型Redis 的数据类型有5种，分别是：字符串、列表、哈希表、集合、有序集合。
+Redis 的编码（底层实现）有8种，分别是：long 类型的整数、embstr 编...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/06</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "redis">redis</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/01/14/Book-Notes-psycholog/如何自控 - 《自控力》/" >
+            
+                <span>如何自控 - 读《自控力》</span>
+        </a>
+        <div class="abstract-content">
+            《自控力》这是一本5星好书！
+其实早在大一我就买过一次这本书，不过当时比较浮躁，读了两章感觉像是快餐书就没有继续往下读。
+毕业后渐渐养成了用豆瓣管理读书的习惯，看到豆瓣上...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/14</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "心理学">心理学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/12/16/Summary/2019-summary/" >
+            
+                <span>2019 年终总结</span>
+        </a>
+        <div class="abstract-content">
+            2019年即将过去了，是时候开始写2019年终总结了。
+总的来说，这一年最大的收获不是来自于工作上的成长而是来自于情感上的成长。
+在工作方面随着工作时间的延长，工作经验更...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "年终总结">年终总结</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/12/07/Book-Notes-sociology/不再思考 - 《娱乐至死》/" >
+            
+                <span>不再思考 - 读《娱乐至死》</span>
+        </a>
+        <div class="abstract-content">
+            每年的双十一都会屯一波书，从去年开始就一直想读这本书，期间因为种种原因一直没有读上。今年双十一终于屯上了，这批书到了之后，第一本看的就是这本《娱乐至死》，而它也没让我失望...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/07</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "社会学">社会学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/09/CS-Technical-php/PHP常见概念/" >
+            
+                <span>PHP常见概念</span>
+        </a>
+        <div class="abstract-content">
+            MVCMVC是一个设计模式，它强制性的使应用程序的输入、处理和输出分开。使用MVC应用程序被分成三个核心部件：模型（M）、视图（V）、控制器（C），它们各自处理自己的任务...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "php">php</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/09/CS-Technical-php/Session原理解析/" >
+            
+                <span>Session原理解析</span>
+        </a>
+        <div class="abstract-content">
+            Session存在的意义，估计每个做web开发的人都是了解的，就为了解决HTTP是无状态协议所带来的问题，不多说了。这里主要想说的是服务端与客户端是如何利用session...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "php">php</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/09/CS-Technical-php/CGI、FastCGI和PHP-FPM关系解析/" >
+            
+                <span>CGI、FastCGI和PHP-FPM关系解析</span>
+        </a>
+        <div class="abstract-content">
+            在搭建 LAMP/LNMP 服务器时，会经常遇到 PHP-FPM、FastCGI和CGI 这几个概念。如果对它们一知半解，很难搭建出高性能的服务器。接下来我们就以图形方式...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "php">php</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/08/CS-Technical-php/PHP底层的运行机制与原理/" >
+            
+                <span>PHP底层的运行机制与原理</span>
+        </a>
+        <div class="abstract-content">
+            记得我刚开始学习PHP的时候，许多面试官会经常问我PHP是什么，那时的标准回答是PHP是一种弱类型动态脚本编程语言，开源，免费，是超文本预处理器的缩写。
+这只是很浅的解释...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/08</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "php">php</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/01/CS-Technical-nginx/Nginx核心模块之location匹配规则浅析/" >
+            
+                <span>Nginx核心模块之location匹配规则浅析</span>
+        </a>
+        <div class="abstract-content">
+            location 规则匹配规则
+
+先匹配前缀字符串，然后记住最长匹配。
+再匹配正则，如果正则的location中有匹配上的则返回第一个匹配上的正则，否则返回上一步中记住的...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/01</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "nginx">nginx</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/12/CS-Project/分布式系统唯一ID生成方案浅析/" >
+            
+                <span>分布式系统唯一ID生成方案浅析</span>
+        </a>
+        <div class="abstract-content">
+            分布式系统唯一ID生成方案浅析在复杂分布式系统中，往往需要对大量的数据和消息进行唯一标识。业务ID需要满足的要求如下
+
+全局唯一性：不能出现重复的ID号，既然是唯一标识，...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "系统设计">系统设计</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/09/23/CS-Project/系统设计和架构之基础/" >
+            
+                <span>系统设计和架构之基础</span>
+        </a>
+        <div class="abstract-content">
+            性能性能指标响应时间
+指某个请求从发出到收到响应消耗的时间。
+在对响应时间进行测试时，通常采用重复请求的方式，然后计算平均响应时间。
+吞吐量
+指单位时间内系统处理的请求数...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "系统设计">系统设计</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/09/16/Book-Notes-psycholog/心智成熟之旅 - 《少有人走的路》/" >
+            
+                <span>心智成熟之旅 - 读《少有人走的路》</span>
+        </a>
+        <div class="abstract-content">
+            思维导图：
+
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "心理学">心理学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/08/16/CS-Technical-go/如何使用Go编程/" >
+            
+                <span>如何使用Go编程</span>
+        </a>
+        <div class="abstract-content">
+            
+注：该文章摘自go官方文档。
+
+引言本文档展示了一个简单Go包的开发，并介绍了用go工具来获取、 构建并安装Go包及命令的标准方式。
+go 工具需要你按照指定的方式来组...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/08/16/CS-Tools/MAC上GO环境配置/" >
+            
+                <span>MAC上GO环境配置</span>
+        </a>
+        <div class="abstract-content">
+            1、安装命令
+1brew install go
+2、检查go安装信息
+1go env
+3、配置go路径环境主要是GOROOT、GOPATH和GOBIN
+
+GOROOT：就...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/27/CS-Basics-algorithms/复杂度分析：如何分析、统计算法的执行效率和资源消耗？/" >
+            
+                <span>复杂度分析：如何分析、统计算法的执行效率和资源消耗？</span>
+        </a>
+        <div class="abstract-content">
+            
+我们都知道，数据结构和算法本身解决的是“快”和“省”的问题，即如何让代码运行得更快，如何让代码更省存储空间。所以，执行效率是算法一个非常重要的考量指标。那如何来衡量你编...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/27</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构和算法">数据结构和算法</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/25/CS-Technical-php/Yaf-框架学习/" >
+            
+                <span>Yaf 框架学习</span>
+        </a>
+        <div class="abstract-content">
+            Yaf 是什么Yaf，全称 Yet Another Framework，是一个C语言编写的、基于PHP扩展开发的PHP框架。
+相比于一般的PHP框架，它更快，快到被誉为最...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/25</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "php">php</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "yaf">yaf</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/13/Book-Notes-self/R90 - 《睡眠革命》/" >
+            
+                <span>R90 - 读《睡眠革命》</span>
+        </a>
+        <div class="abstract-content">
+            引言
+刚才看了一眼博客，从5月份开始，就没怎么更新过了，过去的这两个月很痛苦，但是痛苦的同时也让我成长了很多，回首过去唯有“感恩”二字可以概括过去的这一年半里的点点滴滴。...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/13</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "自我管理">自我管理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/06/17/Summary/痛证明你在蜕变！/" >
+            
+                <span>痛证明你在蜕变！</span>
+        </a>
+        <div class="abstract-content">
+            序言最近半年以来状态一直不是很好，没有了往日的那份阳光，因为总是在牵挂一个人，如今这份牵挂随风而去，我也可以重新做回自己。
+分手之后曾一度崩溃，抽过烟喝过酒。但是一切终究...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/17</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "人生感悟">人生感悟</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/05/07/Book-Notes-sociology/多因素 - 《异类》/" >
+            
+                <span>多因素 - 读《异类》</span>
+        </a>
+        <div class="abstract-content">
+            所谓的成功是一个众多因素综合决定的结果。
+
+基本要求：中上水平的智商（逻辑能力）
+成长环境决定了你的实践智力（社交常识）
+文化传承决定了你看待这个世界的方法和行为模式
+足...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/07</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "社会学">社会学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/04/26/Book-Notes-self/升级心智 - 《财富自由之路》/" >
+            
+                <span>升级心智 - 读《财富自由之路》</span>
+        </a>
+        <div class="abstract-content">
+            一、序言一直以来读李笑来写的书，都有一种“认同感”，但同时读完也有一种没起到什么作用的感觉，有点类似“鸡汤”，但是我心中又知道，我对他说的内容是认同的，直到读完这本《财富...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/26</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "自我管理">自我管理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/04/17/CS-Resources/Dcoker-学习资料/" >
+            
+                <span>Dcoker 学习资料</span>
+        </a>
+        <div class="abstract-content">
+            Docker 入门实例
+
+30 分钟快速入门 Docker 教程
+使用 Docker 镜像构建 GO 语言环境
+
+Docker 文档
+
+官方文档
+
+Docker 电子书
+...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/17</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "docker">docker</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/04/05/Book-Notes-self/产出-产能平衡原则 - 《高效能人士的七个习惯》/" >
+            
+                <span>产出-产能平衡原则 - 读《高效能人士的七个习惯》</span>
+        </a>
+        <div class="abstract-content">
+            一、序言这本《高效能人士的七个习惯》也是一本被我“收藏”了好久的书，一直以为总感觉这是一本“速成书”，所以缺乏阅读它的兴趣，直到这次我读过它之后，我知道我透过我的思维定式...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "自我管理">自我管理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/03/25/CS-Technical-php/如何在phpstorm中查看yaf框架源码/" >
+            
+                <span>如何在phpstorm中查看yaf框架源码</span>
+        </a>
+        <div class="abstract-content">
+            1.到github下载yaf框架的doc
+下载链接
+1https://github.com/haxianhe/php-yaf-doc.git
+2.解压zip包3.phps...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/25</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "php">php</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PhpStrom">PhpStrom</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/03/19/Book-Notes-economic/普世智慧 - 《穷查理宝典》/" >
+            
+                <span>普世智慧 - 读《穷查理宝典》</span>
+        </a>
+        <div class="abstract-content">
+            一、序言最近读了《穷查理宝典》，这本书以过去20年间查理·芒格 (Charles Thomas Munger) 主要做过的公开演讲为主要内容。
+
+Charles Thom...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/19</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "经济学">经济学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/03/18/CS-Basics-software/UML-类图/" >
+            
+                <span>UML 类图</span>
+        </a>
+        <div class="abstract-content">
+            引言这里不会将UML的各种元素都提到，我只想讲讲类图中各个类之间的关系； 能看懂类图中各个类之间的线条、箭头代表什么意思后，也就足够应对 日常的工作和交流； 同时，我们应...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "软件工程">软件工程</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/03/15/Summary/回首往事，初心何在/" >
+            
+                <span>回首往事，初心何在</span>
+        </a>
+        <div class="abstract-content">
+            引子今天在极客时间上看到了一篇文章，文章中作者讲述了他与程序员这个职业的缘起何方，读完文章之后我顺着作者的思路走了一遍我与程序员这个职业之间的缘分。
+在这里简单记录一下。...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/15</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "人生感悟">人生感悟</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/21/CS-Resources/Go-学习之路（资料）/" >
+            
+                <span>Go 学习资料</span>
+        </a>
+        <div class="abstract-content">
+            本人最近刚刚经历了痛苦的入门过程，现想将自己的学习过程&amp;学习资料整理、分享给有需要的人。
+最后更新时间：2019年8月14日
+Go 学习路径基础知识
+
+官方教程
+...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/15/CS-Project/Costa项目——经验总结/" >
+            
+                <span>Costa项目：经验总结</span>
+        </a>
+        <div class="abstract-content">
+            Costa项目从18年7月份入职开始做，一直到19年1月份，为期7个月。
+这期间我主要负责的工作为：外送管理、分类管理、促销管理、券管理、券包管理、数据报表。
+最大的心得...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/15</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "项目经验">项目经验</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/30/CS-Technical-nginx/解决在nginx中不能执行php程序的问题/" >
+            
+                <span>解决在nginx中不能执行php程序的问题</span>
+        </a>
+        <div class="abstract-content">
+            先来简单介绍一下我遇到问题的症状，毕竟对症下药嘛。访问：
+1localhost:8080/index.html
+没有问题。
+但是，访问.php结尾的文件
+1localho...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/30</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "nginx">nginx</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/28/Book-Notes-history/历史的功用 - 《中国古代历史人物：秦始皇》/" >
+            
+                <span>历史的功用 - 看《中国古代历史人物：秦始皇》</span>
+        </a>
+        <div class="abstract-content">
+            
+学习历史的三个功用
+
+启发智慧
+审时度势
+感动人心
+舜何？人也！    
+予何？人也！    
+有为者亦若是。
+
+
+
+秦始皇为什么能统一天下？ 理智战胜了感性 
+
+秦始...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/28</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "历史学">历史学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/21/CS-Technical-rabbitmq/RabbitMQ（5）：work-queues/" >
+            
+                <span>RabbitMQ（5）：work_queues</span>
+        </a>
+        <div class="abstract-content">
+            （using php-amqplib）
+
+在上一个实例中（hello_word）我们写了两个程序，一个用于发送消息，一个用于接受消息。
+在这个实例中，我们将完成一个在给多...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "rabbitmq">rabbitmq</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/18/CS-Technical-rabbitmq/RabbitMQ（4）：配置文件/" >
+            
+                <span>RabbitMQ（4）：配置文件</span>
+        </a>
+        <div class="abstract-content">
+            想要通过php-amqplib连接rabbitmq-server那显然要知道主机、端口、用户名、密码这些信息。
+所以如何查看这些信息？如何配置这写信息？默认的信息又是什么...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "rabbitmq">rabbitmq</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/07/Book-Notes-economic/存钱大作战 - 《工作前5年，决定你一生的财富》/" >
+            
+                <span>存钱大作战 - 读《工作前5年，决定你一生的财富》</span>
+        </a>
+        <div class="abstract-content">
+            引言这本书的作者是很平凡，也很不平凡的一个女生。
+说她平凡是她拿着平凡的工资，甚至毕业前做着和大多数人一样的事情（用家里给的钱来享受大学的生活）。
+说她不平凡，一方面是因...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/07</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "经济学">经济学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/03/Book-Notes-economic/明确目标 - 《吃掉那只青蛙》/" >
+            
+                <span>明确目标 - 读《吃掉那只青蛙》</span>
+        </a>
+        <div class="abstract-content">
+            最近在‘微信读书’上读了佳昌给我推荐的《吃掉那只青蛙》这本书。
+这是一本提高个人效率方面的入门书籍，整体内容简洁明了（虽然我觉得书中的后半部分我早就掌握了），推荐！
+吃掉...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "经济学">经济学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/02/CS-Project/编码习惯——数据量较大的情况下/" >
+            
+                <span>编码习惯：在数据量较大的情况下</span>
+        </a>
+        <div class="abstract-content">
+            最近在负责项目的数据报表部分的工作。上一个月数据量增长的很快，也发现了自己报表代码中的几个由数据量过大引起的问题。现简单总结一下。
+去重在实际业务当中经常会遇到一个模块通...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "项目经验">项目经验</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/29/CS-Basics-software/专业主义——读《代码整洁之道》/" >
+            
+                <span>专业主义——读《代码整洁之道》</span>
+        </a>
+        <div class="abstract-content">
+            这是一本写给专业人士看的书。
+
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/29</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "软件工程">软件工程</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/28/Summary/2018-summary/" >
+            
+                <span>2018 年终总结</span>
+        </a>
+        <div class="abstract-content">
+            2018年发生了三件对我个人影响比较大的事情：一是考研失败，二是找工作，三是参加工作。
+考研失败考研失败这件事情现在回想起来偶然中带着必然因素，所以也没什么好遗憾的了，失...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/28</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "年终总结">年终总结</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/19/Book-Notes-literature/刺猬外套 - 《围城》/" >
+            
+                <span>刺猬外套 - 读《围城》</span>
+        </a>
+        <div class="abstract-content">
+            
+我们每一个人都是穿着刺猬外套的刺猬，区别仅在于能否在正确的时间、正确的地点、正确的人面前脱掉它而已。
+
+越往后代入感越强，放佛看到了千千万万个家庭的缩影。
+“父母亲戚不...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/19</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "文学">文学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/17/CS-Technical-rabbitmq/RabbitMQ（2）：AMQP-0-9-1-和-AMQP-模型高阶概述/" >
+            
+                <span>RabbitMQ（2）：AMQP 0-9-1 和 AMQP 模型高阶概述</span>
+        </a>
+        <div class="abstract-content">
+            AMQP是什么AMQP（高级消息队列协议）是一个网络协议。它支持符合要求的客户端应用（application）和消息中间件代理（messaging middleware ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/17</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "rabbitmq">rabbitmq</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/14/CS-Technical-rabbitmq/RabbitMQ（3）：hello-world/" >
+            
+                <span>RabbitMQ（3）：hello-world</span>
+        </a>
+        <div class="abstract-content">
+            介绍RabbitMQ是一个消息代理器: 它接受和转发消息。你可以把它当作一个邮局: 当你把你的邮件放到邮箱里的时候, 你可以肯定邮差最终会把你的邮件交给你邮件上的收件人。...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/14</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "rabbitmq">rabbitmq</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/14/CS-Technical-rabbitmq/RabbitMQ（1）：安装、使用教程/" >
+            
+                <span>RabbitMQ（1）：安装、使用教程</span>
+        </a>
+        <div class="abstract-content">
+            rabbitmq官网支持各种操作系统的下载安装。
+rabbitmq 官网下载
+因为我用的是MAC OS所以我简单记录一下在mac上的安装、使用。
+使用Homebrew安装...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/14</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "rabbitmq">rabbitmq</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/13/CS-Technical-linux/mac终端连接阿里云服务器报错/" >
+            
+                <span>mac 终端连接阿里云服务器报错</span>
+        </a>
+        <div class="abstract-content">
+            
+今天将阿里云的服务器重新安装的系统盘，然后再用ssh远程登陆就会报错。
+
+12345678910111213141516171819202122232425@@@@@@...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/13</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "linux">linux</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "mac">mac</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "ssh">ssh</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/12/CS-Technical-php/array-merge的坑/" >
+            
+                <span>PHP：array_merge 的坑</span>
+        </a>
+        <div class="abstract-content">
+            
+如果传入的值中有null，无论其他数组是否有值都将返回null。
+
+实例
+12345678910&lt;?php$array1=[    123,    456,   ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "php">php</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/12/CS-Technical-php/array-search的坑/" >
+            
+                <span>PHP：array_search的坑</span>
+        </a>
+        <div class="abstract-content">
+            
+123456789101112&lt;?php$array=[    123,    465,    789];if(array_search(123,$array))...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "php">php</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/11/CS-Technical-linux/gcc-命令/" >
+            
+                <span>gcc 命令</span>
+        </a>
+        <div class="abstract-content">
+            gcc命令使用GNU推出的基于C/C++ 的编译器，是开放源代码领域应用最广泛的编译器，具有功能强大，编译代码支持性能优化等特点。现在很多程序员都应用GCC，怎样才能更好...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/11</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "linux">linux</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/11/CS-Technical-linux/scp-跨机远程拷贝/" >
+            
+                <span>scp 跨机远程拷贝</span>
+        </a>
+        <div class="abstract-content">
+            scp是secure copy的简写，用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp，不过cp只是在本机进行拷贝不能跨服务器，而且scp传输是加密的。当你...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/11</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "linux">linux</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/04/CS-Technical-nginx/《实战Nginx：取代Apache的高性能Web服务器》/" >
+            
+                <span>《实战Nginx：取代Apache的高性能Web服务器》</span>
+        </a>
+        <div class="abstract-content">
+            Web服务器也称为WWW服务器、HTTP服务器，其主要功能是提供网上信息浏览服务。
+Unix和Linux平台下常用的Web服务器有Apache、Nginx、Lighttp...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "nginx">nginx</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/23/Book-Notes-self/积累 - 《把时间当朋友》/" >
+            
+                <span>积累 - 读《把时间当朋友》</span>
+        </a>
+        <div class="abstract-content">
+            引言最近两周读了李笑来老师的《把时间当作朋友》这本书，我最开始听说李笑来老师是源自于他在得到app上的《财富自由之路》专栏，惭愧的是一直受困于资金，还没有买。
+这本书中，...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "自我管理">自我管理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/14/CS-Technical-mysql/Modify-column-Vs-change-column/" >
+            
+                <span>Modify column Vs change column</span>
+        </a>
+        <div class="abstract-content">
+            引言I know, we can not rename a column using modify column syntax,but can change column...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/14</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "mysql">mysql</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/14/Fit-Notes/全身分化/" >
+            
+                <span>全身分化</span>
+        </a>
+        <div class="abstract-content">
+            热身跑步、俯卧撑、拉胸、拉背
+腿哑铃/杠铃深蹲、哑铃/杠铃硬拉、坐姿器械腿举、坐姿器械举腿、俯卧器械腿屈
+胸杠铃/哑铃卧推、杠铃/上斜卧推、哑铃飞鸟、哑铃上斜飞鸟
+背引体...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/14</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "健身笔记">健身笔记</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/08/CS-Tools/Mac-Command-Line技巧/" >
+            
+                <span>Mac-Command-Line技巧</span>
+        </a>
+        <div class="abstract-content">
+            
+Command + n   新建窗口
+Command + t   新建tap
+Command + q   关闭窗口
+Command + w   关闭tap
+Comman...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/08</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "mac">mac</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/06/Book-Notes-self/读书的方法 - 《如何阅读一本书》/" >
+            
+                <span>读书的方法 - 读《如何阅读一本书》</span>
+        </a>
+        <div class="abstract-content">
+            序言不知道第多少次重写这篇文章了，有些东西就是这样，as time goes by，你对一些东西总是有新的理解，人的一生不就是自我完善的一生吗。
+距上次重写这篇文章已经有...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/06</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "自我管理">自我管理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/06/Book-Notes-history/故事的力量 - 《人类简史》/" >
+            
+                <span>故事的力量 - 读《人类简史》</span>
+        </a>
+        <div class="abstract-content">
+            引言《人类简史》这本书，我刚上大学就开始读，陆陆续续读了好久，不得不说这本书开阔了我的眼界。全书主要分为四个部分，分别是：
+
+认知革命
+农业革命
+融合统一
+科学的革命
+
+...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/06</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "历史学">历史学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/10/23/CS-Project/首页接口优化/" >
+            
+                <span>首页接口优化</span>
+        </a>
+        <div class="abstract-content">
+            问题概述在项目中写的一个下单程序的首页接口，涉及到查询商品分组、查询各个分组下的商品、查询商品的促销信息等多个环节的操作，最后在项目压测环节发现性能与预期相差巨大…单机T...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "项目经验">项目经验</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "优化">优化</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    <!-- paginator  -->
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:haxianhe@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="https://github.com/haxianhe" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/touxiang.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/haxianhe" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 64
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2021/03/04/CS-Interview/how-to-ready-interview/" >从小厂逆袭快手，我是如何准备面试的</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href= "/2021/02/27/CS-Interview/social-interview/" >涨薪50%，从小厂逆袭快手 - 附面经</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span><a class="archive-post-title" href= "/2021/02/21/Summary/learn-new-knowledge/" >论如何学习新的技能</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2021/01/30/CS-Technical-mysql/break-mysql-index/" >《破壁MySQL》 - MySQL索引</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/2021/01/21/Summary/insurance/" >保险配置总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/09</span><a class="archive-post-title" href= "/2021/01/09/CS-Technical-mysql/break-mysql-overview/" >《破壁MySQL》 - MySQL概述</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href= "/2021/01/05/Summary/2020-summary/" >2020 年终总结</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/18</span><a class="archive-post-title" href= "/2020/06/18/Summary/职业生涯实用经验/" >职业生涯实用经验</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2020/05/16/CS-Technical-mysql/为什么MySQL字段要设置为NOT-NULL/" >为什么MySQL字段要设置为NOT NULL?</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/CS-Technical-mysql/为什么对于非常小的表，大部分情况下简单的全表扫描比建立索引更高效？/" >为什么对于非常小的表，大部分情况下简单的全表扫描比建立索引更高效？</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/06</span><a class="archive-post-title" href= "/2020/05/06/CS-Technical-redis/Redis-总结/" >Redis之数据类型</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Book-Notes-psycholog/如何自控 - 《自控力》/" >如何自控 - 读《自控力》</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/16</span><a class="archive-post-title" href= "/2019/12/16/Summary/2019-summary/" >2019 年终总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/07</span><a class="archive-post-title" href= "/2019/12/07/Book-Notes-sociology/不再思考 - 《娱乐至死》/" >不再思考 - 读《娱乐至死》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/CS-Technical-php/PHP常见概念/" >PHP常见概念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/CS-Technical-php/Session原理解析/" >Session原理解析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/CS-Technical-php/CGI、FastCGI和PHP-FPM关系解析/" >CGI、FastCGI和PHP-FPM关系解析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/08</span><a class="archive-post-title" href= "/2019/11/08/CS-Technical-php/PHP底层的运行机制与原理/" >PHP底层的运行机制与原理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/01</span><a class="archive-post-title" href= "/2019/11/01/CS-Technical-nginx/Nginx核心模块之location匹配规则浅析/" >Nginx核心模块之location匹配规则浅析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/12</span><a class="archive-post-title" href= "/2019/10/12/CS-Project/分布式系统唯一ID生成方案浅析/" >分布式系统唯一ID生成方案浅析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/23</span><a class="archive-post-title" href= "/2019/09/23/CS-Project/系统设计和架构之基础/" >系统设计和架构之基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span><a class="archive-post-title" href= "/2019/09/16/Book-Notes-psycholog/心智成熟之旅 - 《少有人走的路》/" >心智成熟之旅 - 读《少有人走的路》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span><a class="archive-post-title" href= "/2019/08/16/CS-Technical-go/如何使用Go编程/" >如何使用Go编程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span><a class="archive-post-title" href= "/2019/08/16/CS-Tools/MAC上GO环境配置/" >MAC上GO环境配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/27</span><a class="archive-post-title" href= "/2019/07/27/CS-Basics-algorithms/复杂度分析：如何分析、统计算法的执行效率和资源消耗？/" >复杂度分析：如何分析、统计算法的执行效率和资源消耗？</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2019/07/25/CS-Technical-php/Yaf-框架学习/" >Yaf 框架学习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/13</span><a class="archive-post-title" href= "/2019/07/13/Book-Notes-self/R90 - 《睡眠革命》/" >R90 - 读《睡眠革命》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2019/06/17/Summary/痛证明你在蜕变！/" >痛证明你在蜕变！</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/07</span><a class="archive-post-title" href= "/2019/05/07/Book-Notes-sociology/多因素 - 《异类》/" >多因素 - 读《异类》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span><a class="archive-post-title" href= "/2019/04/26/Book-Notes-self/升级心智 - 《财富自由之路》/" >升级心智 - 读《财富自由之路》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2019/04/17/CS-Resources/Dcoker-学习资料/" >Dcoker 学习资料</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2019/04/05/Book-Notes-self/产出-产能平衡原则 - 《高效能人士的七个习惯》/" >产出-产能平衡原则 - 读《高效能人士的七个习惯》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2019/03/25/CS-Technical-php/如何在phpstorm中查看yaf框架源码/" >如何在phpstorm中查看yaf框架源码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/Book-Notes-economic/普世智慧 - 《穷查理宝典》/" >普世智慧 - 读《穷查理宝典》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/CS-Basics-software/UML-类图/" >UML 类图</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span><a class="archive-post-title" href= "/2019/03/15/Summary/回首往事，初心何在/" >回首往事，初心何在</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span><a class="archive-post-title" href= "/2019/02/21/CS-Resources/Go-学习之路（资料）/" >Go 学习资料</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2019/02/15/CS-Project/Costa项目——经验总结/" >Costa项目：经验总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2019/01/30/CS-Technical-nginx/解决在nginx中不能执行php程序的问题/" >解决在nginx中不能执行php程序的问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span><a class="archive-post-title" href= "/2019/01/28/Book-Notes-history/历史的功用 - 《中国古代历史人物：秦始皇》/" >历史的功用 - 看《中国古代历史人物：秦始皇》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/2019/01/21/CS-Technical-rabbitmq/RabbitMQ（5）：work-queues/" >RabbitMQ（5）：work_queues</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/18</span><a class="archive-post-title" href= "/2019/01/18/CS-Technical-rabbitmq/RabbitMQ（4）：配置文件/" >RabbitMQ（4）：配置文件</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/07</span><a class="archive-post-title" href= "/2019/01/07/Book-Notes-economic/存钱大作战 - 《工作前5年，决定你一生的财富》/" >存钱大作战 - 读《工作前5年，决定你一生的财富》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span><a class="archive-post-title" href= "/2019/01/03/Book-Notes-economic/明确目标 - 《吃掉那只青蛙》/" >明确目标 - 读《吃掉那只青蛙》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/02</span><a class="archive-post-title" href= "/2019/01/02/CS-Project/编码习惯——数据量较大的情况下/" >编码习惯：在数据量较大的情况下</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/29</span><a class="archive-post-title" href= "/2018/12/29/CS-Basics-software/专业主义——读《代码整洁之道》/" >专业主义——读《代码整洁之道》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/28</span><a class="archive-post-title" href= "/2018/12/28/Summary/2018-summary/" >2018 年终总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/19</span><a class="archive-post-title" href= "/2018/12/19/Book-Notes-literature/刺猬外套 - 《围城》/" >刺猬外套 - 读《围城》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/2018/12/17/CS-Technical-rabbitmq/RabbitMQ（2）：AMQP-0-9-1-和-AMQP-模型高阶概述/" >RabbitMQ（2）：AMQP 0-9-1 和 AMQP 模型高阶概述</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/14</span><a class="archive-post-title" href= "/2018/12/14/CS-Technical-rabbitmq/RabbitMQ（1）：安装、使用教程/" >RabbitMQ（1）：安装、使用教程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/14</span><a class="archive-post-title" href= "/2018/12/14/CS-Technical-rabbitmq/RabbitMQ（3）：hello-world/" >RabbitMQ（3）：hello-world</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/13</span><a class="archive-post-title" href= "/2018/12/13/CS-Technical-linux/mac终端连接阿里云服务器报错/" >mac 终端连接阿里云服务器报错</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/12</span><a class="archive-post-title" href= "/2018/12/12/CS-Technical-php/array-merge的坑/" >PHP：array_merge 的坑</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/12</span><a class="archive-post-title" href= "/2018/12/12/CS-Technical-php/array-search的坑/" >PHP：array_search的坑</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/11</span><a class="archive-post-title" href= "/2018/12/11/CS-Technical-linux/gcc-命令/" >gcc 命令</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/11</span><a class="archive-post-title" href= "/2018/12/11/CS-Technical-linux/scp-跨机远程拷贝/" >scp 跨机远程拷贝</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/2018/12/04/CS-Technical-nginx/《实战Nginx：取代Apache的高性能Web服务器》/" >《实战Nginx：取代Apache的高性能Web服务器》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/23</span><a class="archive-post-title" href= "/2018/11/23/Book-Notes-self/积累 - 《把时间当朋友》/" >积累 - 读《把时间当朋友》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/14</span><a class="archive-post-title" href= "/2018/11/14/CS-Technical-mysql/Modify-column-Vs-change-column/" >Modify column Vs change column</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/14</span><a class="archive-post-title" href= "/2018/11/14/Fit-Notes/全身分化/" >全身分化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/08</span><a class="archive-post-title" href= "/2018/11/08/CS-Tools/Mac-Command-Line技巧/" >Mac-Command-Line技巧</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/06</span><a class="archive-post-title" href= "/2018/11/06/Book-Notes-history/故事的力量 - 《人类简史》/" >故事的力量 - 读《人类简史》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/06</span><a class="archive-post-title" href= "/2018/11/06/Book-Notes-self/读书的方法 - 《如何阅读一本书》/" >读书的方法 - 读《如何阅读一本书》</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span><a class="archive-post-title" href= "/2018/10/23/CS-Project/首页接口优化/" >首页接口优化</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="读书笔记"><span class="iconfont-archer">&#xe606;</span>读书笔记</span>
+    
+        <span class="sidebar-tag-name" data-tags="经济学"><span class="iconfont-archer">&#xe606;</span>经济学</span>
+    
+        <span class="sidebar-tag-name" data-tags="历史学"><span class="iconfont-archer">&#xe606;</span>历史学</span>
+    
+        <span class="sidebar-tag-name" data-tags="文学"><span class="iconfont-archer">&#xe606;</span>文学</span>
+    
+        <span class="sidebar-tag-name" data-tags="心理学"><span class="iconfont-archer">&#xe606;</span>心理学</span>
+    
+        <span class="sidebar-tag-name" data-tags="自我管理"><span class="iconfont-archer">&#xe606;</span>自我管理</span>
+    
+        <span class="sidebar-tag-name" data-tags="社会学"><span class="iconfont-archer">&#xe606;</span>社会学</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构和算法"><span class="iconfont-archer">&#xe606;</span>数据结构和算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="软件工程"><span class="iconfont-archer">&#xe606;</span>软件工程</span>
+    
+        <span class="sidebar-tag-name" data-tags="社招面经"><span class="iconfont-archer">&#xe606;</span>社招面经</span>
+    
+        <span class="sidebar-tag-name" data-tags="系统设计"><span class="iconfont-archer">&#xe606;</span>系统设计</span>
+    
+        <span class="sidebar-tag-name" data-tags="项目经验"><span class="iconfont-archer">&#xe606;</span>项目经验</span>
+    
+        <span class="sidebar-tag-name" data-tags="优化"><span class="iconfont-archer">&#xe606;</span>优化</span>
+    
+        <span class="sidebar-tag-name" data-tags="docker"><span class="iconfont-archer">&#xe606;</span>docker</span>
+    
+        <span class="sidebar-tag-name" data-tags="go"><span class="iconfont-archer">&#xe606;</span>go</span>
+    
+        <span class="sidebar-tag-name" data-tags="linux"><span class="iconfont-archer">&#xe606;</span>linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="mysql"><span class="iconfont-archer">&#xe606;</span>mysql</span>
+    
+        <span class="sidebar-tag-name" data-tags="mac"><span class="iconfont-archer">&#xe606;</span>mac</span>
+    
+        <span class="sidebar-tag-name" data-tags="ssh"><span class="iconfont-archer">&#xe606;</span>ssh</span>
+    
+        <span class="sidebar-tag-name" data-tags="《破壁MySQL》"><span class="iconfont-archer">&#xe606;</span>《破壁MySQL》</span>
+    
+        <span class="sidebar-tag-name" data-tags="《破壁》"><span class="iconfont-archer">&#xe606;</span>《破壁》</span>
+    
+        <span class="sidebar-tag-name" data-tags="nginx"><span class="iconfont-archer">&#xe606;</span>nginx</span>
+    
+        <span class="sidebar-tag-name" data-tags="php"><span class="iconfont-archer">&#xe606;</span>php</span>
+    
+        <span class="sidebar-tag-name" data-tags="yaf"><span class="iconfont-archer">&#xe606;</span>yaf</span>
+    
+        <span class="sidebar-tag-name" data-tags="PhpStrom"><span class="iconfont-archer">&#xe606;</span>PhpStrom</span>
+    
+        <span class="sidebar-tag-name" data-tags="rabbitmq"><span class="iconfont-archer">&#xe606;</span>rabbitmq</span>
+    
+        <span class="sidebar-tag-name" data-tags="redis"><span class="iconfont-archer">&#xe606;</span>redis</span>
+    
+        <span class="sidebar-tag-name" data-tags="年终总结"><span class="iconfont-archer">&#xe606;</span>年终总结</span>
+    
+        <span class="sidebar-tag-name" data-tags="健身笔记"><span class="iconfont-archer">&#xe606;</span>健身笔记</span>
+    
+        <span class="sidebar-tag-name" data-tags="人生感悟"><span class="iconfont-archer">&#xe606;</span>人生感悟</span>
+    
+        <span class="sidebar-tag-name" data-tags="保险配置"><span class="iconfont-archer">&#xe606;</span>保险配置</span>
+    
+        <span class="sidebar-tag-name" data-tags="职业经验"><span class="iconfont-archer">&#xe606;</span>职业经验</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Book-Notes"><span class="iconfont-archer">&#xe60a;</span>Book-Notes</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Basics"><span class="iconfont-archer">&#xe60a;</span>CS-Basics</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Interview"><span class="iconfont-archer">&#xe60a;</span>CS-Interview</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Project"><span class="iconfont-archer">&#xe60a;</span>CS-Project</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Resources"><span class="iconfont-archer">&#xe60a;</span>CS-Resources</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Technical"><span class="iconfont-archer">&#xe60a;</span>CS-Technical</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Tools"><span class="iconfont-archer">&#xe60a;</span>CS-Tools</span>
+    
+        <span class="sidebar-category-name" data-categories="Summary"><span class="iconfont-archer">&#xe60a;</span>Summary</span>
+    
+        <span class="sidebar-category-name" data-categories="Fit-Notes"><span class="iconfont-archer">&#xe60a;</span>Fit-Notes</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "haxianhe"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+     
+    </body>
+</html>
+
+
