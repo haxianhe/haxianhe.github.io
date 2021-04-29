@@ -20,13 +20,13 @@
     <meta name="keywords" content="haxianhe,哈显贺">
     
     <meta name="description" content="读书、健身、旅行">
-    <meta name="description" content="文章每周六持续更新，可以微信搜一搜「 haxianha 」抢先阅读。  本文将介绍微服务架构和相关的组件，介绍他们是什么以及为什么要使用微服务架构和这些组件。本文侧重于简明地表达微服务架构的全局图景，因此不会涉及具体如何使用组件等细节。 要理解微服务，首先要先理解不是微服务的那些。通常跟微服务相对的是单体应用，即将所有功能都打包成在一个独立单元的应用程序。从单体应用到微服务并不是一蹴而就的，这是">
+    <meta name="description" content="文章每周六持续更新，可以微信搜一搜「 haxianha 」抢先阅读。  微服务框架（RPC）：Spring Boot、Spring Cloud、Dubbo、gRPC、Thrift、go-micro、Motan 服务支撑（运行时）：  服务注册与发现 - 动态扩/缩容：Zookeeper、Eureka、Consul、Etcd、Nacos 服务配置 - 动态配置：Apollo、Spring Clou">
 <meta name="keywords" content="微服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微服务架构详解">
 <meta property="og:url" content="https://haxianhe.com/2021/04/29/CS-Technical-microservices/microservices/index.html">
 <meta property="og:site_name" content="haxianhe&#39;s blog">
-<meta property="og:description" content="文章每周六持续更新，可以微信搜一搜「 haxianha 」抢先阅读。  本文将介绍微服务架构和相关的组件，介绍他们是什么以及为什么要使用微服务架构和这些组件。本文侧重于简明地表达微服务架构的全局图景，因此不会涉及具体如何使用组件等细节。 要理解微服务，首先要先理解不是微服务的那些。通常跟微服务相对的是单体应用，即将所有功能都打包成在一个独立单元的应用程序。从单体应用到微服务并不是一蹴而就的，这是">
+<meta property="og:description" content="文章每周六持续更新，可以微信搜一搜「 haxianha 」抢先阅读。  微服务框架（RPC）：Spring Boot、Spring Cloud、Dubbo、gRPC、Thrift、go-micro、Motan 服务支撑（运行时）：  服务注册与发现 - 动态扩/缩容：Zookeeper、Eureka、Consul、Etcd、Nacos 服务配置 - 动态配置：Apollo、Spring Clou">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://gitee.com/haxianhe/image/raw/master/ks-computer-image/20210429013233.png">
 <meta property="og:image" content="https://gitee.com/haxianhe/image/raw/master/ks-computer-image/20210429013341.png">
@@ -46,10 +46,11 @@
 <meta property="og:image" content="https://gitee.com/haxianhe/image/raw/master/ks-computer-image/20210429014812.png">
 <meta property="og:image" content="https://gitee.com/haxianhe/image/raw/master/ks-computer-image/20210429014859.png">
 <meta property="og:image" content="https://gitee.com/haxianhe/image/raw/master/ks-computer-image/20210429014920.png">
-<meta property="og:updated_time" content="2021-04-28T18:02:26.703Z">
+<meta property="og:image" content="https://gitee.com/haxianhe/image/raw/master/image/20210429084612.png">
+<meta property="og:updated_time" content="2021-04-29T04:02:28.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微服务架构详解">
-<meta name="twitter:description" content="文章每周六持续更新，可以微信搜一搜「 haxianha 」抢先阅读。  本文将介绍微服务架构和相关的组件，介绍他们是什么以及为什么要使用微服务架构和这些组件。本文侧重于简明地表达微服务架构的全局图景，因此不会涉及具体如何使用组件等细节。 要理解微服务，首先要先理解不是微服务的那些。通常跟微服务相对的是单体应用，即将所有功能都打包成在一个独立单元的应用程序。从单体应用到微服务并不是一蹴而就的，这是">
+<meta name="twitter:description" content="文章每周六持续更新，可以微信搜一搜「 haxianha 」抢先阅读。  微服务框架（RPC）：Spring Boot、Spring Cloud、Dubbo、gRPC、Thrift、go-micro、Motan 服务支撑（运行时）：  服务注册与发现 - 动态扩/缩容：Zookeeper、Eureka、Consul、Etcd、Nacos 服务配置 - 动态配置：Apollo、Spring Clou">
 <meta name="twitter:image" content="https://gitee.com/haxianhe/image/raw/master/ks-computer-image/20210429013233.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -306,7 +307,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">7.3k</span>阅读时长: <span class="post-count reading-time">24 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">7.5k</span>阅读时长: <span class="post-count reading-time">25 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -438,6 +439,21 @@ height:50vh;
         <blockquote>
 <p>文章每周六持续更新，可以微信搜一搜「 haxianha 」抢先阅读。</p>
 </blockquote>
+<p>微服务框架（RPC）：Spring Boot、Spring Cloud、Dubbo、gRPC、Thrift、go-micro、Motan</p>
+<p>服务支撑（运行时）：</p>
+<ul>
+<li>服务注册与发现 - 动态扩/缩容：Zookeeper、Eureka、Consul、Etcd、Nacos</li>
+<li>服务配置 - 动态配置：Apollo、Spring Cloud Config</li>
+<li>服务网关 - 权限控制：Kong、APISIX、Zuul、Spring Cloud Gateway</li>
+<li>服务治理 - 熔断、服务降级、限流：Sentinel</li>
+</ul>
+<p>服务监控：</p>
+<ul>
+<li>服务监控 - 发现故障的征兆：Prometheus、Grafana</li>
+<li>定位问题 - 链路跟踪：Zipkin、SkyWalking</li>
+<li>分析问题 - 日志采集：Elasticsearch、Logstash、Kibana</li>
+</ul>
+<hr>
 <p>本文将介绍微服务架构和相关的组件，介绍他们是什么以及为什么要使用微服务架构和这些组件。本文侧重于简明地表达微服务架构的全局图景，因此不会涉及具体如何使用组件等细节。</p>
 <p>要理解微服务，首先要先理解不是微服务的那些。通常跟微服务相对的是单体应用，即将所有功能都打包成在一个独立单元的应用程序。从单体应用到微服务并不是一蹴而就的，这是一个逐渐演变的过程。本文将以一个网上超市应用为例来说明这一过程。</p>
 <h2 id="最初的需求"><a href="#最初的需求" class="headerlink" title="最初的需求"></a>最初的需求</h2><p>几年前，小明和小皮一起创业做网上超市。小明负责程序开发，小皮负责其他事宜。当时互联网还不发达，网上超市还是蓝海。只要功能实现了就能随便赚钱。所以他们的需求很简单，只需要一个网站挂在公网，用户能够在这个网站上浏览商品、购买商品；另外还需一个管理后台，可以管理商品、用户、以及订单数据。</p>
@@ -625,7 +641,9 @@ height:50vh;
 <blockquote>
 <p>文章每周六持续更新，可以微信搜一搜「 haxianha 」抢先阅读。</p>
 </blockquote>
-<p>转载自：<a href="https://www.cnblogs.com/skabyy/p/11396571.html" target="_blank" rel="noopener">https://www.cnblogs.com/skabyy/p/11396571.html</a></p>
+<p>最近在知识星球开通了「haxianhe的技术圈」，会在这里和朋友们聊聊技术，一起成长，感兴趣的朋友可以扫码进入。</p>
+<p>此外，我会邀请一线大厂的朋友们进来当嘉宾，如果你有想换工作内推的需求或者想了解一下各个大厂业务发展情况等都可以加入进来。（星球暂时已经被我调整为最低价格，后续人数多了之后可能会调整上去）</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210429084612.png" alt></p>
 
     </article>
     <!-- license  -->
@@ -807,6 +825,14 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2149,33 +2175,33 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="社会学"><span class="iconfont-archer">&#xe606;</span>社会学</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构和算法"><span class="iconfont-archer">&#xe606;</span>数据结构和算法</span>
+        <span class="sidebar-tag-name" data-tags="软件工程"><span class="iconfont-archer">&#xe606;</span>软件工程</span>
     
         <span class="sidebar-tag-name" data-tags="社招面经"><span class="iconfont-archer">&#xe606;</span>社招面经</span>
     
-        <span class="sidebar-tag-name" data-tags="软件工程"><span class="iconfont-archer">&#xe606;</span>软件工程</span>
-    
-        <span class="sidebar-tag-name" data-tags="docker"><span class="iconfont-archer">&#xe606;</span>docker</span>
-    
-        <span class="sidebar-tag-name" data-tags="linux"><span class="iconfont-archer">&#xe606;</span>linux</span>
-    
         <span class="sidebar-tag-name" data-tags="go"><span class="iconfont-archer">&#xe606;</span>go</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构和算法"><span class="iconfont-archer">&#xe606;</span>数据结构和算法</span>
     
         <span class="sidebar-tag-name" data-tags="mac"><span class="iconfont-archer">&#xe606;</span>mac</span>
     
-        <span class="sidebar-tag-name" data-tags="线上问题"><span class="iconfont-archer">&#xe606;</span>线上问题</span>
+        <span class="sidebar-tag-name" data-tags="linux"><span class="iconfont-archer">&#xe606;</span>linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="docker"><span class="iconfont-archer">&#xe606;</span>docker</span>
     
         <span class="sidebar-tag-name" data-tags="业务学习"><span class="iconfont-archer">&#xe606;</span>业务学习</span>
     
         <span class="sidebar-tag-name" data-tags="技术方案"><span class="iconfont-archer">&#xe606;</span>技术方案</span>
     
-        <span class="sidebar-tag-name" data-tags="nginx"><span class="iconfont-archer">&#xe606;</span>nginx</span>
+        <span class="sidebar-tag-name" data-tags="线上问题"><span class="iconfont-archer">&#xe606;</span>线上问题</span>
     
         <span class="sidebar-tag-name" data-tags="微服务"><span class="iconfont-archer">&#xe606;</span>微服务</span>
     
         <span class="sidebar-tag-name" data-tags="mysql"><span class="iconfont-archer">&#xe606;</span>mysql</span>
     
         <span class="sidebar-tag-name" data-tags="《破壁MySQL》"><span class="iconfont-archer">&#xe606;</span>《破壁MySQL》</span>
+    
+        <span class="sidebar-tag-name" data-tags="nginx"><span class="iconfont-archer">&#xe606;</span>nginx</span>
     
         <span class="sidebar-tag-name" data-tags="php"><span class="iconfont-archer">&#xe606;</span>php</span>
     
@@ -2185,17 +2211,17 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="rabbitmq"><span class="iconfont-archer">&#xe606;</span>rabbitmq</span>
     
-        <span class="sidebar-tag-name" data-tags="系统设计"><span class="iconfont-archer">&#xe606;</span>系统设计</span>
-    
-        <span class="sidebar-tag-name" data-tags="健身笔记"><span class="iconfont-archer">&#xe606;</span>健身笔记</span>
-    
         <span class="sidebar-tag-name" data-tags="redis"><span class="iconfont-archer">&#xe606;</span>redis</span>
+    
+        <span class="sidebar-tag-name" data-tags="系统设计"><span class="iconfont-archer">&#xe606;</span>系统设计</span>
     
         <span class="sidebar-tag-name" data-tags="年终总结"><span class="iconfont-archer">&#xe606;</span>年终总结</span>
     
-        <span class="sidebar-tag-name" data-tags="保险配置"><span class="iconfont-archer">&#xe606;</span>保险配置</span>
+        <span class="sidebar-tag-name" data-tags="健身笔记"><span class="iconfont-archer">&#xe606;</span>健身笔记</span>
     
         <span class="sidebar-tag-name" data-tags="人生感悟"><span class="iconfont-archer">&#xe606;</span>人生感悟</span>
+    
+        <span class="sidebar-tag-name" data-tags="保险配置"><span class="iconfont-archer">&#xe606;</span>保险配置</span>
     
         <span class="sidebar-tag-name" data-tags="职业经验"><span class="iconfont-archer">&#xe606;</span>职业经验</span>
     
@@ -2238,17 +2264,17 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="CS-Interview"><span class="iconfont-archer">&#xe60a;</span>CS-Interview</span>
     
-        <span class="sidebar-category-name" data-categories="CS-Resources"><span class="iconfont-archer">&#xe60a;</span>CS-Resources</span>
-    
         <span class="sidebar-category-name" data-categories="CS-Question"><span class="iconfont-archer">&#xe60a;</span>CS-Question</span>
+    
+        <span class="sidebar-category-name" data-categories="CS-Resources"><span class="iconfont-archer">&#xe60a;</span>CS-Resources</span>
     
         <span class="sidebar-category-name" data-categories="CS-SFTC"><span class="iconfont-archer">&#xe60a;</span>CS-SFTC</span>
     
         <span class="sidebar-category-name" data-categories="CS-Technical"><span class="iconfont-archer">&#xe60a;</span>CS-Technical</span>
     
-        <span class="sidebar-category-name" data-categories="Fit-Notes"><span class="iconfont-archer">&#xe60a;</span>Fit-Notes</span>
-    
         <span class="sidebar-category-name" data-categories="Summary"><span class="iconfont-archer">&#xe60a;</span>Summary</span>
+    
+        <span class="sidebar-category-name" data-categories="Fit-Notes"><span class="iconfont-archer">&#xe60a;</span>Fit-Notes</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
