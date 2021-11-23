@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="读书、健身、旅行">
+  <meta name="keyword" content="haxianhe">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      从小厂逆袭快手，我是如何准备面试的 | haxianhe&#39;s blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    <script src="/js/local-search.js"></script>
+
+<link rel="alternate" href="/atom.xml" title="haxianhe's blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>haxianhe's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">分类</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">分类</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>从小厂逆袭快手，我是如何准备面试的</h2>
+  <p class="post-date">2021-03-04</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>我将文中提到的的 MySQL、Redis、Kafka 思维导图放到了我的公众号中，大家可以<strong>关注我的公众号【haxianhe】，回复 “思维导图” 领取高清pdf版思维导图</strong>。</p>
+<hr>
+<p>在上一篇文章 <a href="https://haxianhe.com/2021/02/27/CS-Interview/social-interview/">涨薪50%，从小厂逆袭快手 - 附面经</a> 中，我概述性的给出了社招跳槽有哪些环节要去准备，那么今天我会给出面试复习比较推荐的复习资料、如何复习以及有哪些常见的注意事项。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210304111340.png" alt></p>
+<h2 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h2><p>自我介绍是面试的一场面试第一个环节，而一个好的自我介绍是可以引导整场面试的节奏的，下面就简单介绍一下如何准备一份“合适”的自我介绍。</p>
+<p>首先，我们要知道面试官想通过自我介绍了解什么信息。</p>
+<p>在技术面试中，面试官除了想在你自我介绍的时间看应聘者的简历之外，一般会想了解以下几点信息：年龄，毕业院校，工作年限，工作经历，行业背景，项目经验，技术面等这些基础信息，然后根据自我介绍和简历信息就可以深入的聊一下具体的项目经验，技术问题等。</p>
+<p>一般在进行自我介绍的时候概述性的介绍一下自己的学历背景、工作经历、项目经验，以及自己擅长的技术面即可。如果面试官对你介绍的哪部分内容感兴趣，他会具体问你的。</p>
+<h2 id="项目经验"><a href="#项目经验" class="headerlink" title="项目经验"></a>项目经验</h2><p>这部分是社招面试的重头戏，总的原则是 <strong>以“项目经验”容纳“线上问题”，支撑“技术亮点”。</strong></p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210303181238.png" alt></p>
+<p>面试提到的技术亮点是需要项目经验来支撑的。</p>
+<p>大多数人在日常的工作中，用到的技术是非常有限的，可能就是 CRUD 外带一些调优，这也是普遍现象。反之，如果一个初级开发，在面试中说，之前开发的模块既有jvm调优、又有分布式组件，再外带数据库性能优化，似乎可信度也不高。</p>
+<p>对此，你需要用“解决过的线上问题”去支撑想要展开的技术亮点，需要你平时工作中积极主动的去参与线上问题的解决，比如有 oom 问题、redis缓存被击穿，或者其他分布式组件的case，你参与排查并解决，那么将来面试的时候，你自然可以以此为基础去展开你事先准备好的技术亮点。</p>
+<p>这样的话，就像上面的那张图一样，你就有足够的支撑物去支撑你的分布式组件以及其他值钱的技能了。</p>
+<p>总之，<strong>技术本身不值钱，面试官只关心你如何使用技术去解决线上问题的。</strong></p>
+<h3 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h3><p>在面试时，经过寒暄后，一般面试官会让介绍项目经验，常见的问法是：“说下你最近的（或最拿得出手的）一个项目”。</p>
+<p><strong>在面试前准备项目描述，别害怕，因为面试官什么都不知道</strong></p>
+<p>面试官是人，不是神，拿到你的简历的时候，是没法核实你的项目细节的（一般公司会到录用后，用背景调查的方式来核实）。</p>
+<p>更何况，你做的项目是以月为单位算的，而面试官最多用3分钟来从你的简历上了解你的项目经验，所以你对项目的熟悉程度要远远超过面试官，所以你一点也不用紧张。</p>
+<p>如果你的工作经验比面试官还丰富的话，甚至还可以控制整个面试流程。</p>
+<p>下面给出了你和面试官的情况对比：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>你</th>
+<th>面试官</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对你以前的项目和技能</td>
+<td>很了解</td>
+<td>只能听你说，只能根据你说的内容做出判断</td>
+</tr>
+<tr>
+<td>在面试过程中的职责</td>
+<td>在很短的时间内防守成功即可</td>
+<td>如果找不出漏洞，就只能算你以前做过</td>
+</tr>
+<tr>
+<td>准备时间</td>
+<td>面试前你有充足的时间准备</td>
+<td>一般在面试前用3分钟阅读你的简历</td>
+</tr>
+<tr>
+<td>沟通过程</td>
+<td>你可以出错，但别出关键性的错误</td>
+<td>不会太为难你，除非你太差</td>
+</tr>
+<tr>
+<td>技巧</td>
+<td>你有足够的技巧，也可以从网上找到足够多的面试题</td>
+<td>其实就问些通用的有规律的问题</td>
+</tr>
+</tbody>
+</table>
+<p> 既然面试官无法了解你的底细，那么他们怎么来验证你的项目经验和技术？</p>
+<p> 下面总结了一些常用的提问方式：</p>
+<table>
+<thead>
+<tr>
+<th>提问方式</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>让你描述工作经验和项目（极有可能是最近的），看看你说的是否和简历上一致</td>
+<td>看你是否真的做过这些项目</td>
+</tr>
+<tr>
+<td>看你简历上项目里用到的技术，比如框架、数据库，然后针对这些技术提些基本问题</td>
+<td>还是验证你是否做过项目，同时看你是否了解这些技术，为进一步提问做准备</td>
+</tr>
+<tr>
+<td>针对某个项目，不断深入地问一些技术上的问题，或者从不同侧面问一些技术实现，看你前后回答里面是否有矛盾</td>
+<td>深入核实你的项目细节</td>
+</tr>
+<tr>
+<td>针对某技术，问些项目里一定会遇到的问题，比如候选人说做过数据库，那么就会问索引方面的问题</td>
+<td>通过这类问题，核实候选人是否真的有过项目经验（或者还仅仅是学习经验）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>准备项目的各种细节，一旦被问倒了，就说明你没做过</strong></p>
+<p> 一般来说，在面试前，大家应当准备项目描述的说辞，自信些，因为这部分你说了算，流利些，因为你经过充分准备后，可以知道你要说些什么。</p>
+<p> 而且这些是你实际的项目经验（不是学习经验，也不是培训经验），那么一旦让面试官感觉你都说不上来，那么可信度就很低了。</p>
+<p>不少人是拘泥于“项目里做了什么业务，以及代码实现的细节”，这就相当于把后继提问权直接交给面试官。</p>
+<p>下表列出了一些不好的回答方式：</p>
+<table>
+<thead>
+<tr>
+<th>回答方式</th>
+<th>后果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>我在XX软件公司做了XX门户网站项目，这个项目做到了XX功能，具体是XX和XX模块，各模块做了XX功能，客户是XX，最后这个项目挣了XX钱</td>
+<td>直接打断，因为业务需求我不需要了解，我会直接问他项目里的技术</td>
+</tr>
+<tr>
+<td>（需要招聘一个Java后端开发，会Spring MVC）最近一个项目我是用C#（或其他非Java技术）实现的，实现了……或者我最近做的不是开发，而是测试……或者我最近的项目没有用到Spring MVC</td>
+<td>提问，你最近用到SSH技术的项目是什么时候，然后在评语上写：最近XX时间没接触过SSH</td>
+</tr>
+<tr>
+<td>在毕业设计的时候（或者在读书的时候，在学习的时候，在XX培训学校，在XX实训课程中），……</td>
+<td>直接打断，提问你这个是否是商业项目，如果不是，你有没有其他的商业经验。如果没商业项目经验，除非是校招，否则就直接结束面试</td>
+</tr>
+<tr>
+<td>描述项目时，一些关键要素（比如公司、时间、所用技术等）和简历上的不匹配</td>
+<td>我们会深究这个不一致的情况，如果是简历造假，那么可能直接中断面试，如果真的是笔误，那么就需要提供合理的解释</td>
+</tr>
+</tbody>
+</table>
+<p>在避免上述不好的回答的同时，大家可以按下表所给出的要素准备项目介绍。</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>样式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>控制在1分钟里面，讲出项目基本情况，比如项目名称，背景，给哪个客户做，完成了基本的事情，做了多久，项目规模多大，用到哪些技术，数据库用什么，然后酌情简单说一下模块。重点突出背景，技术，数据库和其他和技术有关的信息。</td>
+<td>我在XX公司做了XX外汇保证金交易平台，客户是XX银行，主要完成了挂盘，实盘成交，保证金杠杆成交等功能，数据库是Oracle，前台用到JS等技术，后台用到Java的SSH，几个人做了X个月。不需要详细描述各功能模块，不需要说太多和业务有关但和技术无关的。如果面试官感兴趣，等他问。</td>
+</tr>
+<tr>
+<td>要主动说出你做了哪些事情，这部分的描述一定需要和你的技术背景一致。</td>
+<td>我做了外汇实盘交易系统，挂单成交系统，XXX模块，做了X个月</td>
+</tr>
+<tr>
+<td>描述你在项目里的角色</td>
+<td>我主要是做了开发，但在开发前，我在项目经理的带领下参与了业务调研，数据库设计等工作，后期我参与了测试和部署工作。</td>
+</tr>
+<tr>
+<td>可以描述用到的技术细节，特别是你用到的技术细节，这部分尤其要注意，你说出口的，一定要知道，因为面试官后面就根据这个问的。你如果做了5个模块，宁可只说你能熟练说上口的2个。</td>
+<td>用到了Java里面的集合，JDBC，…等技术，用到了Spring MVC等框架，用技术连接数据库。</td>
+</tr>
+<tr>
+<td>这部分你风险自己承担，如果可以，不露声色说出一些热门的要素，比如Linux，大数据，大访问压力等。但一旦你说了，面试官就会直接问细节。</td>
+<td>这个系统里，部署在Linux上，每天要处理的数据量是XX，要求是在4小时，1G内存是的情况下处理完5千万条数据。平均访客是每分钟XXX。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="线上问题"><a href="#线上问题" class="headerlink" title="线上问题"></a>线上问题</h3><p>大家平时工作中一定要 <strong>把握住出现“线上问题”的机会。</strong> </p>
+<p>因为，功能做了只是具备了项目经验，但是面试的时候真正“值钱”的其实是技术的难点与解决方案，而一般技术难点普遍伴随着“线上问题”。所以，平时工作中积极主动点，出现了线上问题不管是不是自己的都去查、去解决，事后围绕着“问题现象、问题分析、问题影响、解决方案、问题扩展”等去总结、记录到自己的笔记总，后续都是自己最宝贵的财富。</p>
+<h3 id="技术亮点"><a href="#技术亮点" class="headerlink" title="技术亮点"></a>技术亮点</h3><p>结合自己遇到过的线上问题，优先准备分布式组件方面的技术亮点，常用的分布式组件主要有 MySQL、Redis、Kafka等。</p>
+<p>这部分内容可以参考JD上对技术要求，有针对性的去准备，也可以参考我下面介绍的关于中间件部分的内容。</p>
+<h2 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h2><p>关于这部分内容，转语言的同学可能更需要关注一下。</p>
+<p>首先，需要明确的是你想转到什么语言，那你就需要事先准备好那个语言面试可能要问的内容，因为企业招你进去是干活的而不是再像校招那样，先把你招进去再去培养你。投简历前你是能看到JD的，JD上一般都有关于需要掌握的技术的明确的要求。</p>
+<p>关于Java的复习材料，推荐开源项目 </p>
+<ul>
+<li><a href="https://github.com/Snailclimb/JavaGuide" target="_blank" rel="noopener">JavaGuide</a></li>
+</ul>
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><p>常见的中间件主要有：MySQL、Redis、Kafka，接下来我简单介绍一下我的复习经验。</p>
+<h3 id="复习材料"><a href="#复习材料" class="headerlink" title="复习材料"></a>复习材料</h3><p>关于中间件的复习材料，推荐开源项目 </p>
+<ul>
+<li><a href="https://github.com/doocs/advanced-java" target="_blank" rel="noopener">advanced-java</a></li>
+</ul>
+<p>MySQL复习的话，还有两本书给大家推荐一下：</p>
+<ul>
+<li>《MySQL 技术内幕：InnoDB 存储引擎》</li>
+<li>《高性能 MySQL》</li>
+</ul>
+<p>Redis 复习的话，也给大家推荐一本书：</p>
+<ul>
+<li>《Redis 设计与实现》</li>
+</ul>
+<h3 id="复习方法"><a href="#复习方法" class="headerlink" title="复习方法"></a>复习方法</h3><p>一般我会结合上面推荐的书和开源项目去整理一份自己的思维导图（思维导图我在下面放了截图）和笔记。</p>
+<p><strong>MySQL</strong></p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210303221921.png" alt><br><img src="https://gitee.com/haxianhe/image/raw/master/image/20210303222907.png" alt></p>
+<p><strong>Redis</strong></p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210303222024.png" alt><br><img src="https://gitee.com/haxianhe/image/raw/master/image/20210303223004.png" alt></p>
+<p><strong>Kafka</strong></p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210303223409.png" alt><br><img src="https://gitee.com/haxianhe/image/raw/master/image/20210303223156.png" alt></p>
+<p>完整的思维导图太长了不好截图，有需要的同学可以 <strong>关注我的公众号【haxianhe】，回复 “思维导图” 领取高清pdf版思维导图</strong>。</p>
+<h2 id="场景题"><a href="#场景题" class="headerlink" title="场景题"></a>场景题</h2><p>推荐一个秒杀的开源学习项目</p>
+<ul>
+<li><a href="https://github.com/qiurunze123/miaosha" target="_blank" rel="noopener">miaosha</a></li>
+</ul>
+<p>一篇比较好的关于秒杀的场景设计的文章</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/z2S1EjWQDwKm5Ud36IenNw" target="_blank" rel="noopener">秒杀系统设计</a></li>
+</ul>
+<h2 id="算法题"><a href="#算法题" class="headerlink" title="算法题"></a>算法题</h2><p>算法的话推荐大家最起码刷一下牛客网上的 <a href="https://www.nowcoder.com/ta/coding-interviews" target="_blank" rel="noopener">《剑指offer》67题</a></p>
+<p>答案的话大家可以在网上搜一下“牛客网《剑指Offer》66题题解”，我本人参考的leetcode上的《画解剑指 Offer》不过这个要开会员，大家可以根据自己的需求进行选择。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210303235814.png" alt></p>
+<p>之后要是还有时间和精力的话推荐大家再刷一下 <a href="https://www.nowcoder.com/ta/job-code-high-rd" target="_blank" rel="noopener">牛客霸题</a>，上面可以筛选企业和考察次数等</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210303235643.png" alt></p>
+<h2 id="提问环节"><a href="#提问环节" class="headerlink" title="提问环节"></a>提问环节</h2><p>最后，就是提问环节了，这个环节和第一个环节一样是唯二应聘者可以掌握主动权的环节，一般透过这个环节你可以表现自己的面试团队的兴趣，也可以表现出自己的虚心好学都可以。</p>
+<p>下面我给出我给自己准备的几个经典问题，给大家用作参考：</p>
+<p>1.能和我介绍一下你们的业务嘛？<br>2.能和我介绍一下你们的技术栈嘛？<br>3.如果有我有幸能拿到offer，你认为我入职之后最需要注意的点是什么？<br>4.这个职位在公司的发展前景是怎样的？有什么晋升机制？在什么条件下，可以获得晋升机会？<br>5.团队成员有多少人？大家怎么分工？目前团队的核心工作是哪些？</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/16c493710c2d" target="_blank" rel="noopener">当面试官说，“你有什么要问我？”怎样回答最加分？</a></li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>到这这篇文章大体上把我想要分享的东西都讲清楚了，但是其实这里面还是有很多细节没有展开去讲，比如我总结的 MySQL、Redis、Kafka的学习笔记等等，这部分内容后续我会简单整理一下陆陆续续到我的公众号和个人博客上，可能就不会放到牛客网这种讨论区了，所以有需要的同学可以关注我的公众号【haxianhe】第一时间阅读。</p>
+<hr>
+<p>我将文中提到的的 MySQL、Redis、Kafka 思维导图放到了我的公众号中，大家可以<strong>关注我的公众号【haxianhe】，回复 “思维导图” 领取高清pdf版思维导图</strong>。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#社招面经" >
+    <span class="tag-code">社招面经</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/02/27/CS-Interview/social-interview/">
+        <span class="nav-arrow">← </span>
+        
+          涨薪50%，从小厂逆袭快手 - 附面经
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/04/21/CS-Interview/from_php2java/">
+        
+          从小厂逆袭快手，我是如何从PHP转Java的
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo="haxianhe/comment"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#自我介绍"><span class="toc-nav-text">自我介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#项目经验"><span class="toc-nav-text">项目经验</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#项目介绍"><span class="toc-nav-text">项目介绍</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#线上问题"><span class="toc-nav-text">线上问题</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#技术亮点"><span class="toc-nav-text">技术亮点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#编程语言"><span class="toc-nav-text">编程语言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#中间件"><span class="toc-nav-text">中间件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#复习材料"><span class="toc-nav-text">复习材料</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#复习方法"><span class="toc-nav-text">复习方法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#场景题"><span class="toc-nav-text">场景题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#算法题"><span class="toc-nav-text">算法题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#提问环节"><span class="toc-nav-text">提问环节</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#小结"><span class="toc-nav-text">小结</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://haxianhe.com/2021/03/04/CS-Interview/how-to-ready-interview/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Copyright &copy; 2018-2021 <a href="https://github.com/haxianhe" target="_blank">haxianhe</a>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

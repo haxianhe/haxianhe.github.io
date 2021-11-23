@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="读书、健身、旅行">
+  <meta name="keyword" content="haxianhe">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      破壁MySQL - 其他问题 | haxianhe&#39;s blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    <script src="/js/local-search.js"></script>
+
+<link rel="alternate" href="/atom.xml" title="haxianhe's blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>haxianhe's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">分类</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">分类</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>破壁MySQL - 其他问题</h2>
+  <p class="post-date">2021-09-25</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><blockquote>
+<p>在实际业务中经常会使用到 JSON 数据类型，在查询过程中主要有两种使用需求：</p>
+<ol>
+<li>在 where 条件中有通过 json 中的某个字段去过滤返回结果的需求</li>
+<li>查询 json 字段中的部分字段作为返回结果（减少内存占用）</li>
+</ol>
+</blockquote>
+<h2 id="JSON-CONTAINS"><a href="#JSON-CONTAINS" class="headerlink" title="JSON_CONTAINS"></a>JSON_CONTAINS</h2><p><strong>JSON_CONTAINS(target, candidate[, path])</strong></p>
+<p><strong>如果在 json 字段 target 指定的位置 path，找到了目标值 condidate，返回 1，否则返回 0</strong></p>
+<p><strong>如果只是检查在指定的路径是否存在数据，使用JSON_CONTAINS_PATH()</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SET @j = '&#123;"a": 1, "b": 2, "c": &#123;"d": 4&#125;&#125;';</span><br><span class="line">mysql&gt; SET @j2 = '1';</span><br><span class="line">mysql&gt; SELECT JSON_CONTAINS(@j, @j2, '$.a');</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br><span class="line">| JSON_CONTAINS(@j, @j2, '$.a') |</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br><span class="line">|                             1 |</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br><span class="line">mysql&gt; SELECT JSON_CONTAINS(@j, @j2, '$.b');</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br><span class="line">| JSON_CONTAINS(@j, @j2, '$.b') |</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br><span class="line">|                             0 |</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br><span class="line"></span><br><span class="line">mysql&gt; SET @j2 = '&#123;"d": 4&#125;';</span><br><span class="line">mysql&gt; SELECT JSON_CONTAINS(@j, @j2, '$.a');</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br><span class="line">| JSON_CONTAINS(@j, @j2, '$.a') |</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br><span class="line">|                             0 |</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br><span class="line">mysql&gt; SELECT JSON_CONTAINS(@j, @j2, '$.c');</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br><span class="line">| JSON_CONTAINS(@j, @j2, '$.c') |</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br><span class="line">|                             1 |</span><br><span class="line">+<span class="comment">-------------------------------+</span></span><br></pre></td></tr></table></figure>
+<h2 id="JSON-CONTAINS-PATH"><a href="#JSON-CONTAINS-PATH" class="headerlink" title="JSON_CONTAINS_PATH"></a>JSON_CONTAINS_PATH</h2><p><strong>JSON_CONTAINS_PATH(json_doc, one_or_all, path[, path] …)</strong></p>
+<p><strong>如果在指定的路径存在数据返回 1，否则返回 0</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SET @j = '&#123;"a": 1, "b": 2, "c": &#123;"d": 4&#125;&#125;';</span><br><span class="line">mysql&gt; SELECT JSON_CONTAINS_PATH(@j, 'one', '$.a', '$.e');</span><br><span class="line">+<span class="comment">---------------------------------------------+</span></span><br><span class="line">| JSON_CONTAINS_PATH(@j, 'one', '$.a', '$.e') |</span><br><span class="line">+<span class="comment">---------------------------------------------+</span></span><br><span class="line">|                                           1 |</span><br><span class="line">+<span class="comment">---------------------------------------------+</span></span><br><span class="line">mysql&gt; SELECT JSON_CONTAINS_PATH(@j, 'all', '$.a', '$.e');</span><br><span class="line">+<span class="comment">---------------------------------------------+</span></span><br><span class="line">| JSON_CONTAINS_PATH(@j, 'all', '$.a', '$.e') |</span><br><span class="line">+<span class="comment">---------------------------------------------+</span></span><br><span class="line">|                                           0 |</span><br><span class="line">+<span class="comment">---------------------------------------------+</span></span><br><span class="line">mysql&gt; SELECT JSON_CONTAINS_PATH(@j, 'one', '$.c.d');</span><br><span class="line">+<span class="comment">----------------------------------------+</span></span><br><span class="line">| JSON_CONTAINS_PATH(@j, 'one', '$.c.d') |</span><br><span class="line">+<span class="comment">----------------------------------------+</span></span><br><span class="line">|                                      1 |</span><br><span class="line">+<span class="comment">----------------------------------------+</span></span><br><span class="line">mysql&gt; SELECT JSON_CONTAINS_PATH(@j, 'one', '$.a.d');</span><br><span class="line">+<span class="comment">----------------------------------------+</span></span><br><span class="line">| JSON_CONTAINS_PATH(@j, 'one', '$.a.d') |</span><br><span class="line">+<span class="comment">----------------------------------------+</span></span><br><span class="line">|                                      0 |</span><br><span class="line">+<span class="comment">----------------------------------------+</span></span><br></pre></td></tr></table></figure>
+<p>实际使用：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$conds = <span class="keyword">new</span> Criteria();</span><br><span class="line">$conds-&gt;andWhere(<span class="string">'dept_code'</span>, <span class="string">'in'</span>, $deptCodes);</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>($aoiAreaId)) &#123;</span><br><span class="line">    $aoiAreaIdCond = <span class="keyword">new</span> Criteria();</span><br><span class="line">    $aoiAreaIdCond-&gt;orWhere(<span class="string">"JSON_CONTAINS_PATH(new_aoi_area_ids,'one', '$.\"$aoiAreaId\"')"</span>, <span class="string">'='</span>, <span class="number">1</span>);</span><br><span class="line">    $aoiAreaIdCond-&gt;orWhere(<span class="string">"JSON_CONTAINS_PATH(old_aoi_area_ids,'one', '$.\"$aoiAreaId\"')"</span>, <span class="string">'='</span>, <span class="number">1</span>);</span><br><span class="line">    $conds-&gt;andWhere($aoiAreaIdCond);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="column-gt-path、column-gt-gt-path"><a href="#column-gt-path、column-gt-gt-path" class="headerlink" title="column-&gt;path、column-&gt;&gt;path"></a>column-&gt;path、column-&gt;&gt;path</h2><p><strong>获取指定路径的值</strong></p>
+<p><strong>-&gt; vs -&gt;&gt;</strong></p>
+<p>Whereas the -&gt; operator simply extracts a value, the -&gt;&gt; operator in addition unquotes the extracted result.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM jemp WHERE g &gt; 2;</span><br><span class="line">+<span class="comment">-------------------------------+------+</span></span><br><span class="line">| c                             | g    |</span><br><span class="line">+<span class="comment">-------------------------------+------+</span></span><br><span class="line">| &#123;"id": "3", "name": "Barney"&#125; |    3 |</span><br><span class="line">| &#123;"id": "4", "name": "Betty"&#125;  |    4 |</span><br><span class="line">+<span class="comment">-------------------------------+------+</span></span><br><span class="line">2 rows in <span class="keyword">set</span> (<span class="number">0.01</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">SELECT</span> c-&gt;<span class="string">'$.name'</span> <span class="keyword">AS</span> <span class="keyword">name</span></span><br><span class="line">    -&gt;     <span class="keyword">FROM</span> jemp <span class="keyword">WHERE</span> g &gt; <span class="number">2</span>;</span><br><span class="line">+<span class="comment">----------+</span></span><br><span class="line">| name     |</span><br><span class="line">+<span class="comment">----------+</span></span><br><span class="line">| "Barney" |</span><br><span class="line">| "Betty"  |</span><br><span class="line">+<span class="comment">----------+</span></span><br><span class="line">2 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">SELECT</span> JSON_UNQUOTE(c-&gt;<span class="string">'$.name'</span>) <span class="keyword">AS</span> <span class="keyword">name</span></span><br><span class="line">    -&gt;     <span class="keyword">FROM</span> jemp <span class="keyword">WHERE</span> g &gt; <span class="number">2</span>;</span><br><span class="line">+<span class="comment">--------+</span></span><br><span class="line">| name   |</span><br><span class="line">+<span class="comment">--------+</span></span><br><span class="line">| Barney |</span><br><span class="line">| Betty  |</span><br><span class="line">+<span class="comment">--------+</span></span><br><span class="line">2 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">SELECT</span> c-&gt;&gt;<span class="string">'$.name'</span> <span class="keyword">AS</span> <span class="keyword">name</span></span><br><span class="line">    -&gt;     <span class="keyword">FROM</span> jemp <span class="keyword">WHERE</span> g &gt; <span class="number">2</span>;</span><br><span class="line">+<span class="comment">--------+</span></span><br><span class="line">| name   |</span><br><span class="line">+<span class="comment">--------+</span></span><br><span class="line">| Barney |</span><br><span class="line">| Betty  |</span><br><span class="line">+<span class="comment">--------+</span></span><br><span class="line">2 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+<p>实际使用：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$retTask = AoiAreaTaskOrm::findRows([<span class="string">'status'</span>, <span class="string">'extra_info-&gt;&gt;"$.new_aoi_area_infos" as new_aoi_area_infos'</span>, <span class="string">'extra_info-&gt;&gt;"$.old_aoi_area_infos" as old_aoi_area_infos'</span>], $cond);</span><br></pre></td></tr></table></figure>
+<h1 id="关系数据库设计理论"><a href="#关系数据库设计理论" class="headerlink" title="关系数据库设计理论"></a>关系数据库设计理论</h1><h2 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h2><p>记 A-&gt;B 表示 A 函数决定 B，也可以说 B 函数依赖于 A。</p>
+<p>如果 {A1，A2，… ，An} 是关系的一个或多个属性的集合，该集合函数决定了关系的其它所有属性并且是最小的，那么该集合就称为键码。</p>
+<p>对于 A-&gt;B，如果能找到 A 的真子集 A’，使得 A’-&gt; B，那么 A-&gt;B 就是部分函数依赖，否则就是完全函数依赖。</p>
+<p>对于 A-&gt;B，B-&gt;C，则 A-&gt;C 是一个传递函数依赖</p>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>以下的学生课程关系的函数依赖为 {Sno, Cname} -&gt; {Sname, Sdept, Mname, Grade}，键码为 {Sno, Cname}。也就是说，确定学生和课程之后，就能确定其它信息。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Sno</th>
+<th style="text-align:center">Sname</th>
+<th style="text-align:center">Sdept</th>
+<th style="text-align:center">Mname</th>
+<th style="text-align:center">Cname</th>
+<th style="text-align:center">Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">学生-1</td>
+<td style="text-align:center">学院-1</td>
+<td style="text-align:center">院长-1</td>
+<td style="text-align:center">课程-1</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">学生-2</td>
+<td style="text-align:center">学院-2</td>
+<td style="text-align:center">院长-2</td>
+<td style="text-align:center">课程-2</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">学生-2</td>
+<td style="text-align:center">学院-2</td>
+<td style="text-align:center">院长-2</td>
+<td style="text-align:center">课程-1</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">学生-3</td>
+<td style="text-align:center">学院-2</td>
+<td style="text-align:center">院长-2</td>
+<td style="text-align:center">课程-2</td>
+<td style="text-align:center">95</td>
+</tr>
+</tbody>
+</table>
+<p>不符合范式的关系，会产生很多异常，主要有以下四种异常：</p>
+<ul>
+<li>冗余数据：例如 <code>学生-2</code> 出现了两次。</li>
+<li>修改异常：修改了一个记录中的信息，但是另一个记录中相同的信息却没有被修改。</li>
+<li>删除异常：删除一个信息，那么也会丢失其它信息。例如删除了 <code>课程-1</code> 需要删除第一行和第三行，那么 <code>学生-1</code> 的信息就会丢失。</li>
+<li>插入异常：例如想要插入一个学生的信息，如果这个学生还没选课，那么就无法插入。</li>
+</ul>
+<h2 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h2><p>范式理论是为了解决以上提到四种异常。</p>
+<p>高级别范式的依赖于低级别的范式，1NF 是最低级别的范式。</p>
+<p><strong>第一范式 (1NF)</strong></p>
+<p>属性不可分。</p>
+<p><strong>第二范式 (2NF)</strong></p>
+<p>每个非主属性完全函数依赖于键码。</p>
+<p>可以通过分解来满足。</p>
+<p><strong>分解前</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Sno</th>
+<th style="text-align:center">Sname</th>
+<th style="text-align:center">Sdept</th>
+<th style="text-align:center">Mname</th>
+<th style="text-align:center">Cname</th>
+<th style="text-align:center">Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">学生-1</td>
+<td style="text-align:center">学院-1</td>
+<td style="text-align:center">院长-1</td>
+<td style="text-align:center">课程-1</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">学生-2</td>
+<td style="text-align:center">学院-2</td>
+<td style="text-align:center">院长-2</td>
+<td style="text-align:center">课程-2</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">学生-2</td>
+<td style="text-align:center">学院-2</td>
+<td style="text-align:center">院长-2</td>
+<td style="text-align:center">课程-1</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">学生-3</td>
+<td style="text-align:center">学院-2</td>
+<td style="text-align:center">院长-2</td>
+<td style="text-align:center">课程-2</td>
+<td style="text-align:center">95</td>
+</tr>
+</tbody>
+</table>
+<p>以上学生课程关系中，{Sno, Cname} 为键码，有如下函数依赖：</p>
+<ul>
+<li>Sno -&gt; Sname, Sdept</li>
+<li>Sdept -&gt; Mname</li>
+<li>Sno, Cname-&gt; Grade</li>
+</ul>
+<p>Grade 完全函数依赖于键码，它没有任何冗余数据，每个学生的每门课都有特定的成绩。</p>
+<p>Sname, Sdept 和 Mname 都部分依赖于键码，当一个学生选修了多门课时，这些数据就会出现多次，造成大量冗余数据。</p>
+<p><strong>分解后</strong></p>
+<p>关系-1</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Sno</th>
+<th style="text-align:center">Sname</th>
+<th style="text-align:center">Sdept</th>
+<th style="text-align:center">Mname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">学生-1</td>
+<td style="text-align:center">学院-1</td>
+<td style="text-align:center">院长-1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">学生-2</td>
+<td style="text-align:center">学院-2</td>
+<td style="text-align:center">院长-2</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">学生-3</td>
+<td style="text-align:center">学院-2</td>
+<td style="text-align:center">院长-2</td>
+</tr>
+</tbody>
+</table>
+<p>有以下函数依赖：</p>
+<ul>
+<li>Sno -&gt; Sname, Sdept</li>
+<li>Sdept -&gt; Mname</li>
+</ul>
+<p>关系-2</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Sno</th>
+<th style="text-align:center">Cname</th>
+<th style="text-align:center">Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">课程-1</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">课程-2</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">课程-1</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">课程-2</td>
+<td style="text-align:center">95</td>
+</tr>
+</tbody>
+</table>
+<p>有以下函数依赖：</p>
+<ul>
+<li>Sno, Cname -&gt;  Grade</li>
+</ul>
+<p><strong>第三范式 (3NF)</strong></p>
+<p>非主属性不传递函数依赖于键码。</p>
+<p>上面的 关系-1 中存在以下传递函数依赖：</p>
+<ul>
+<li>Sno -&gt; Sdept -&gt; Mname</li>
+</ul>
+<p>可以进行以下分解：</p>
+<p>关系-11</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Sno</th>
+<th style="text-align:center">Sname</th>
+<th style="text-align:center">Sdept</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">学生-1</td>
+<td style="text-align:center">学院-1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">学生-2</td>
+<td style="text-align:center">学院-2</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">学生-3</td>
+<td style="text-align:center">学院-2</td>
+</tr>
+</tbody>
+</table>
+<p>关系-12</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Sdept</th>
+<th style="text-align:center">Mname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">学院-1</td>
+<td style="text-align:center">院长-1</td>
+</tr>
+<tr>
+<td style="text-align:center">学院-2</td>
+<td style="text-align:center">院长-2</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ER-图"><a href="#ER-图" class="headerlink" title="ER 图"></a>ER 图</h1><p>Entity-Relationship，有三个组成部分：实体、属性、联系。</p>
+<p>用来进行关系型数据库系统的概念设计。</p>
+<h2 id="实体的三种联系"><a href="#实体的三种联系" class="headerlink" title="实体的三种联系"></a>实体的三种联系</h2><p>包含一对一，一对多，多对多三种。</p>
+<ul>
+<li>如果 A 到 B 是一对多关系，那么画个带箭头的线段指向 B；</li>
+<li>如果是一对一，画两个带箭头的线段；</li>
+<li>如果是多对多，画两个不带箭头的线段。</li>
+</ul>
+<p>下图的 Course 和 Student 是一对多的关系。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122154629.png" alt></p>
+<h2 id="表示出现多次的关系"><a href="#表示出现多次的关系" class="headerlink" title="表示出现多次的关系"></a>表示出现多次的关系</h2><p>一个实体在联系出现几次，就要用几条线连接。</p>
+<p>下图表示一个课程的先修关系，先修关系出现两个 Course 实体，第一个是先修课程，后一个是后修课程，因此需要用两条线来表示这种关系。</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/20200520092446.png" alt></p>
+<h2 id="联系的多向性"><a href="#联系的多向性" class="headerlink" title="联系的多向性"></a>联系的多向性</h2><p>虽然老师可以开设多门课，并且可以教授多名学生，但是对于特定的学生和课程，只有一个老师教授，这就构成了一个三元联系。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122154642.png" alt></p>
+<h2 id="表示子类"><a href="#表示子类" class="headerlink" title="表示子类"></a>表示子类</h2><p>用一个三角形和两条线来连接类和子类，与子类有关的属性和联系都连到子类上，而与父类和子类都有关的连到父类上。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122154659.png" alt></p>
+<p><br><br><br></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#mysql" >
+    <span class="tag-code">mysql</span>
+  </a>
+
+  <a href="/tags#《破壁MySQL》" >
+    <span class="tag-code">《破壁MySQL》</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/09/25/CS-Middleware-Mysql/break-mysql-06/">
+        <span class="nav-arrow">← </span>
+        
+          破壁MySQL - 主从复制
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/10/26/Book-Notes-Psycholog/被讨厌的勇气/">
+        
+          人是可以改变的-读《被讨厌的勇气》
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo="haxianhe/comment"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#JSON"><span class="toc-nav-text">JSON</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#JSON-CONTAINS"><span class="toc-nav-text">JSON_CONTAINS</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#JSON-CONTAINS-PATH"><span class="toc-nav-text">JSON_CONTAINS_PATH</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#column-gt-path、column-gt-gt-path"><span class="toc-nav-text">column-&gt;path、column-&gt;&gt;path</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#关系数据库设计理论"><span class="toc-nav-text">关系数据库设计理论</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数依赖"><span class="toc-nav-text">函数依赖</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#异常"><span class="toc-nav-text">异常</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#范式"><span class="toc-nav-text">范式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#ER-图"><span class="toc-nav-text">ER 图</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#实体的三种联系"><span class="toc-nav-text">实体的三种联系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#表示出现多次的关系"><span class="toc-nav-text">表示出现多次的关系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#联系的多向性"><span class="toc-nav-text">联系的多向性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#表示子类"><span class="toc-nav-text">表示子类</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-07/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Copyright &copy; 2018-2021 <a href="https://github.com/haxianhe" target="_blank">haxianhe</a>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

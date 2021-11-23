@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="读书、健身、旅行">
+  <meta name="keyword" content="haxianhe">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      破壁MySQL - 索引 | haxianhe&#39;s blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    <script src="/js/local-search.js"></script>
+
+<link rel="alternate" href="/atom.xml" title="haxianhe's blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>haxianhe's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">分类</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">分类</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>破壁MySQL - 索引</h2>
+  <p class="post-date">2021-09-25</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p>
+</blockquote>
+<p>在上一篇文章 <a href="https://haxianhe.com/2021/01/09/CS-Technical-mysql/break-mysql-overview/">「《破壁MySQL》 - MySQL概述」</a> 中我们简单介绍了MySQL 架构和 MySQL 存储引擎的相关知识，那么在这一篇文章中我们主要介绍的是 <strong>InnoDB存储引擎的索引实现原理</strong>，文章中在每介绍一部分知识点后都会给出<strong>知识点相对应的常见面试题以及答案</strong>，达到理论和实践相结合的效果。</p>
+<blockquote>
+<p><strong>面试题1：说说你对 MySQL 索引的理解？/InnoDB引擎中的索引策略，了解过吗？</strong></p>
+</blockquote>
+<h2 id="索引是什么"><a href="#索引是什么" class="headerlink" title="索引是什么"></a>索引是什么</h2><p>索引（Index）是帮助MySQL高效获取数据的数据结构，所以说<strong>索引的本质是：数据结构</strong>。</p>
+<p><strong>索引的目的在于提高查询效率</strong>，可以类比字典、 火车站的车次表、图书的目录等</p>
+<h2 id="B-Tree-原理"><a href="#B-Tree-原理" class="headerlink" title="B+ Tree 原理"></a>B+ Tree 原理</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>B Tree 指的是 Balance Tree，也就是平衡树，平衡树是一颗查找树，并且所有叶子节点位于同一层。</p>
+<p><strong>B+ Tree 是 B 树的一种变形，它是基于 B Tree 和叶子节点顺序访问指针进行实现，通常用于数据库和操作系统的文件系统中。</strong> </p>
+<p>B+ 树有两种类型的节点：<strong>内部节点</strong>（也称索引节点）和<strong>叶子节点。</strong></p>
+<p>内部节点就是非叶子节点，内部节点不存储数据，只存储索引，数据都存在叶子节点。</p>
+<p>内部节点中的 key 都按照从小到大的顺序排列，对于内部节点中的一个 key，左子树中的所有 key 都小于它，右子树中的 key 都大于等于它，叶子节点的记录也是按照从小到大排列的。</p>
+<p>每个叶子节点都存有相邻叶子节点的指针。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122135258.png" alt></p>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p><strong>查找</strong></p>
+<p>查找以典型的方式进行，类似于二叉查找树。起始于根节点，自顶向下遍历树，选择其分离值在要查找值的任意一边的子指针。在节点内部典型的使用是二分查找来确定这个位置。</p>
+<p><strong>插入</strong></p>
+<ul>
+<li>Perform a search to determine what bucket the new record should go into.</li>
+<li>If the bucket is not full(a most b - 1 entries after the insertion，b 是节点中的元素个数，一般是页的整数倍),add tht record.</li>
+<li><p>Otherwise,before inserting the new record</p>
+<ul>
+<li>split the bucket.<ul>
+<li>original node has 「(L+1)/2」items</li>
+<li>new node has 「(L+1)/2」items</li>
+</ul>
+</li>
+<li>Move  「(L+1)/2」-th key to the parent,and insert the new node to the parent.</li>
+<li>Repeat until a parent is found that need not split.</li>
+</ul>
+</li>
+<li><p>If the root splits,treat it as if it has an empty parent ans split as outline above.</p>
+</li>
+</ul>
+<p>B-trees grow as the root and not at the leaves.</p>
+<p><strong>删除</strong></p>
+<p>和插入类似，只不过是自下而上的合并操作。</p>
+<h3 id="常见树介绍"><a href="#常见树介绍" class="headerlink" title="常见树介绍"></a>常见树介绍</h3><p><strong>AVL 树</strong></p>
+<p>平衡二叉树，一般是用平衡因子差值决定并通过旋转来实现，左右子树树高差不超过1，那么和红黑树比较它是严格的平衡二叉树，平衡条件非常严格（树高差只有1），只要插入或删除不满足上面的条件就要通过旋转来保持平衡。由于旋转是非常耗费时间的。所以 AVL 树适用于插入/删除次数比较少，但查找多的场景。</p>
+<p><strong>红黑树</strong></p>
+<p>通过对从根节点到叶子节点路径上各个节点的颜色进行约束，确保没有一条路径会比其他路径长2倍，因而是近似平衡的。所以相对于严格要求平衡的AVL树来说，它的旋转保持平衡次数较少。适合，查找少，插入/删除次数多的场景。（现在部分场景使用跳表来替换红黑树，可搜索“为啥 redis 使用跳表(skiplist)而不是使用 red-black？”）</p>
+<p><strong>B/B+ 树</strong></p>
+<p>多路查找树，出度高，磁盘IO低，一般用于数据库系统中。</p>
+<blockquote>
+<p><strong>面试题2：B+ 树和 B 树的区别是什么？</strong></p>
+</blockquote>
+<h3 id="B-树与-B-树的比较"><a href="#B-树与-B-树的比较" class="headerlink" title="B + 树与 B 树的比较"></a>B + 树与 B 树的比较</h3><ul>
+<li>B+ 树的内部节点并没有指向关键字具体信息的指针</li>
+<li>B+ 树的叶子节点具有指向左右叶子节点的指针</li>
+</ul>
+<p>B+ 树的磁盘 IO 更低</p>
+<p>B+ 树的内部节点并没有指向关键字具体信息的指针。因此其内部节点相对 B 树更小。</p>
+<p>如果把所有同一内部结点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多。一次性读入内存中的需要查找的关键字也就越多。相对来说IO读写次数也就降低了。</p>
+<p>B+ 树的范围查询、遍历效率高</p>
+<p>B+ 树的叶子节点具有指向左右叶子节点的指针。因此其范围查询效率更高、遍历效率更高。</p>
+<p>B+ 树的查询效率更加稳定</p>
+<p>由于非叶子结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。所以任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当。</p>
+<h3 id="B-树与红黑树的比较"><a href="#B-树与红黑树的比较" class="headerlink" title="B + 树与红黑树的比较"></a>B + 树与红黑树的比较</h3><p>红黑树等平衡树也可以用来实现索引，但是文件系统及数据库系统普遍采用 B+ Tree 作为索引结构，主要有以下两个原因：</p>
+<p>（一）磁盘 IO 次数</p>
+<p>B+ 树一个节点可以存储多个元素，相对于红黑树的树高更低，磁盘 IO 次数更少。</p>
+<p>（二）磁盘预读特性</p>
+<p>为了减少磁盘 I/O 操作，磁盘往往不是严格按需读取，而是每次都会预读。预读过程中，磁盘进行顺序读取，顺序读取不需要进行磁盘寻道。每次会读取页的整数倍。</p>
+<p>操作系统一般将内存和磁盘分割成固定大小的块，每一块称为一页，内存与磁盘以页为单位交换数据。数据库系统将索引的一个节点的大小设置为页的大小，使得一次 I/O 就能完全载入一个节点。</p>
+<h2 id="MySQL-索引"><a href="#MySQL-索引" class="headerlink" title="MySQL 索引"></a>MySQL 索引</h2><p>索引是在存储引擎层实现的，而不是在服务器层实现的，所以不同存储引擎具有不同的索引类型和实现。</p>
+<h3 id="B-Tree-索引"><a href="#B-Tree-索引" class="headerlink" title="B+ Tree 索引"></a>B+ Tree 索引</h3><p>是大多数 MySQL 存储引擎的默认索引类型。</p>
+<ul>
+<li><p>因为不再需要进行全表扫描，只需要对树进行搜索即可，所以查找速度快很多。</p>
+</li>
+<li><p>因为 B+ Tree 的有序性，所以除了用于查找，还可以用于排序和分组。</p>
+</li>
+<li><p>可以指定多个列作为索引列，多个索引列共同组成键。</p>
+</li>
+<li><p>适用于全键值、键值范围和键前缀查找，其中键前缀查找只适用于最左前缀查找。如果不是按照索引列的顺序进行查找，则无法使用索引。</p>
+</li>
+</ul>
+<p>InnoDB 的 B+Tree 索引分为主索引和辅助索引。主索引的叶子节点 data 域记录着完整的数据记录，这种索引方式被称为聚簇索引。因为无法把数据行存放在两个不同的地方，所以一个表只能有一个聚簇索引。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122135400.png" alt></p>
+<p>辅助索引的叶子节点的 data 域记录着主键的值，因此在使用辅助索引进行查找时，需要先查找到主键值，然后再到主索引中进行查找，这个过程也被称作回表。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122135426.png" alt></p>
+<blockquote>
+<p><strong>面试题3：分页SQL后期查询比较慢是什么原因？怎么处理？</strong></p>
+</blockquote>
+<p>比如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">type</span> = <span class="number">1</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>这个没有问题，但是当进入分页后期就有问题了，比如下面这条sql：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">type</span> = <span class="number">1</span> <span class="keyword">limit</span> <span class="number">100000</span>,<span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>首先你需要了解B+树的实现原理，当做数据量比较大的分页的时候：</p>
+<ol>
+<li>（根据索引）找到起始位置（叶子结点）</li>
+<li><strong>沿着叶子结点向后遍历，过滤掉前面不在本次返回范围内的数据</strong></li>
+<li>找到目标数据后返回</li>
+</ol>
+<p>从上述过程中可以看到，后期的主要耗时都在沿着叶子结点遍历上边，那么有没有什么方案可以省去这部分耗时呢？</p>
+<p>有的，可以每次遍历结束后记录一下本页id最大值，然后在下一轮查询的时候，在where条件中加上这个id限制，这样可以保证每次查询速度都和第一页保持一致了。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">type</span> = <span class="number">1</span> <span class="keyword">and</span> <span class="keyword">id</span> &gt; max_id <span class="keyword">limit</span> <span class="number">100000</span>,<span class="number">10</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>面试题4：什么是覆盖索引？</strong></p>
+</blockquote>
+<p>覆盖索引是要查询的数据列只从索引中就能够取得，不必回表查询主索引树。</p>
+<p>要回答好这个问题，需要你了解上面介绍的B+树的实现原理，理解了原理回答起来就简单了。</p>
+<h3 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h3><p>哈希索引能以 O(1) 时间进行查找，但是失去了有序性：</p>
+<ul>
+<li>无法用于排序与分组；</li>
+<li>只支持精确查找，无法用于部分查找和范围查找。</li>
+</ul>
+<p>InnoDB 存储引擎有一个特殊的功能叫“自适应哈希索引”，当某个索引值被使用的非常频繁时，会在 B+Tree 索引之上再创建一个哈希索引，这样就让 B+Tree 索引具有哈希索引的一些优点，比如快速的哈希查找。</p>
+<h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><p>MyISAM 存储引擎支持全文索引，用于查找文本中的关键词，而不是直接比较是否相等。</p>
+<p>查找条件使用 MATCH AGAINST，而不是普通的 WHERE。</p>
+<p>全文索引使用倒排索引实现，它记录着关键词到其所在文档的映射。</p>
+<p>InnoDB 存储引擎在 MySQL 5.6.4 版本中也开始支持全文索引。</p>
+<h3 id="空间数据索引"><a href="#空间数据索引" class="headerlink" title="空间数据索引"></a>空间数据索引</h3><p>MyISAM 存储引擎支持空间数据索引（R-Tree），可以用于地理数据存储。空间数据索引会从所有维度来索引数据，可以有效地使用任意维度来进行组合查询。</p>
+<p>必须使用 GIS 相关的函数来维护数据。</p>
+<h3 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h3><ul>
+<li><p>大大减少了服务器需要扫描的数据行数。</p>
+</li>
+<li><p>帮助服务器避免进行排序和分组，以及避免创建临时表（B+Tree 索引是有序的，可以用于 ORDER BY 和 GROUP BY 操作。临时表主要是在排序和分组过程中创建，不需要排序和分组，也就不需要创建临时表）。</p>
+</li>
+<li><p>将随机 I/O 变为顺序 I/O（B+Tree 索引是有序的，会将相邻的数据都存储在一起）。</p>
+</li>
+</ul>
+<h3 id="索引的使用条件"><a href="#索引的使用条件" class="headerlink" title="索引的使用条件"></a>索引的使用条件</h3><ul>
+<li><p>对于非常小的表、大部分情况下简单的全表扫描比建立索引更高效；</p>
+</li>
+<li><p>对于中到大型的表，索引就非常有效；</p>
+</li>
+<li><p>但是对于特大型的表，建立和维护索引的代价将会随之增长。这种情况下，需要用到一种技术可以直接区分出需要查询的一组数据，而不是一条记录一条记录地匹配，例如可以使用分区技术。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>为什么对于非常小的表，大部分情况下简单的全表扫描比建立索引更高效？</strong></p>
+</blockquote>
+<p>如果一个表比较小，那么显然直接遍历表比走索引要快（因为需要回表）。</p>
+<p>注：首先，要注意这个答案隐含的条件是查询的数据不是索引的构成部分，否也不需要回表操作。其次，查询条件也不是主键，否则可以直接从聚簇索引中拿到数据。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这篇文章是《破壁》系列的第二篇文章，主要介绍了一下索引相关内容。</p>
+<ul>
+<li><a href="https://haxianhe.com/2021/01/09/CS-Technical-mysql/break-mysql-overview/">《破壁MySQL》 - MySQL概述</a></li>
+<li><a href="https://haxianhe.com/2021/01/30/CS-Technical-mysql/break-mysql-index/">《破壁MySQL》 - MySQL索引</a></li>
+</ul>
+<p>文中首先从<strong>数据结构</strong>、<strong>操作</strong>、<strong>常见树的比较等</strong>角度介绍了 <strong>B+ 树相关的原理知识</strong>。</p>
+<p>其次着重介绍了一下 <strong>InnoDB 的 B+ 索引的实现原理**</strong>。</p>
+<hr>
+<p>老规矩，文中出现的面试题如下：</p>
+<ul>
+<li>面试题1：说说你对 MySQL 索引的理解？/InnoDB引擎中的索引策略，了解过吗？</li>
+<li>面试题2：B+ 树和 B 树的区别是什么？</li>
+<li>面试题3：分页SQL后期查询比较慢是什么原因？怎么处理？</li>
+<li>面试题4：什么是覆盖索引？</li>
+</ul>
+<p>上面所有面试题都是在文中出现过的，如果如果答不上来可以回到文中再看一下答案以及相应的知识点。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">官方文档</a></li>
+<li><a href="https://juejin.cn/post/6850037271233331208" target="_blank" rel="noopener">MySQL 三万字精华总结</a></li>
+<li><a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/MySQL.md#b-tree-%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">CS-Notes-MySQL</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p>
+</blockquote>
+<p><br><br><br></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#mysql" >
+    <span class="tag-code">mysql</span>
+  </a>
+
+  <a href="/tags#《破壁MySQL》" >
+    <span class="tag-code">《破壁MySQL》</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/09/25/CS-Middleware-Mysql/break-mysql-01/">
+        <span class="nav-arrow">← </span>
+        
+          破壁MySQL - 概述
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/09/25/CS-Middleware-Mysql/break-mysql-03/">
+        
+          破壁MySQL - 事务
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo="haxianhe/comment"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#索引是什么"><span class="toc-nav-text">索引是什么</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#B-Tree-原理"><span class="toc-nav-text">B+ Tree 原理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据结构"><span class="toc-nav-text">数据结构</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#操作"><span class="toc-nav-text">操作</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#常见树介绍"><span class="toc-nav-text">常见树介绍</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#B-树与-B-树的比较"><span class="toc-nav-text">B + 树与 B 树的比较</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#B-树与红黑树的比较"><span class="toc-nav-text">B + 树与红黑树的比较</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MySQL-索引"><span class="toc-nav-text">MySQL 索引</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#B-Tree-索引"><span class="toc-nav-text">B+ Tree 索引</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#哈希索引"><span class="toc-nav-text">哈希索引</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#全文索引"><span class="toc-nav-text">全文索引</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#空间数据索引"><span class="toc-nav-text">空间数据索引</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#索引的优点"><span class="toc-nav-text">索引的优点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#索引的使用条件"><span class="toc-nav-text">索引的使用条件</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#小结"><span class="toc-nav-text">小结</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#参考资料"><span class="toc-nav-text">参考资料</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-02/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Copyright &copy; 2018-2021 <a href="https://github.com/haxianhe" target="_blank">haxianhe</a>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

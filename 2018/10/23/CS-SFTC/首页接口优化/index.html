@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="读书、健身、旅行">
+  <meta name="keyword" content="haxianhe">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      首页接口优化 | haxianhe&#39;s blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    <script src="/js/local-search.js"></script>
+
+<link rel="alternate" href="/atom.xml" title="haxianhe's blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>haxianhe's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">分类</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">分类</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>首页接口优化</h2>
+  <p class="post-date">2018-10-23</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="问题概述"><a href="#问题概述" class="headerlink" title="问题概述"></a>问题概述</h1><p>在项目中写的一个下单程序的首页接口，涉及到查询商品分组、查询各个分组下的商品、查询商品的促销信息等多个环节的操作，最后在项目压测环节发现性能与预期相差巨大…单机TPS只有10，而目标至少100以上…</p>
+<p>需要对首页接口进行优化。</p>
+<h1 id="问题梳理"><a href="#问题梳理" class="headerlink" title="问题梳理"></a>问题梳理</h1><p>通过分析，该接口性能瓶颈主要在访问数据库的次数太多上面，所以本次优化的重点也在于如何降低数据库访问次数。</p>
+<p>简单反思了一下为什么当初会写出一个性能这么差的接口(￣∇￣)：</p>
+<ul>
+<li>先组织数据结构后去数据库查询数据</li>
+<li>先组织数据结构后去其他方法/RPC查询数据</li>
+<li>一句话概括，<strong>“将拼装数据的过程放到了查询数据之前进行”导致了这个问题</strong></li>
+</ul>
+<p>举个例子：</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/006tNbRwgy1fu9nxxrcuhj317e0faadl.jpg" alt></p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/006tNbRwgy1fu9nzivkpaj311m0giq6a.jpg" alt></p>
+<p>第一遍写的接口中，到处都充斥着这种例子。</p>
+<p>其实就是党哥说的那句：“<strong>不要在foreach中进行findRow、insert操作</strong>”，事实上，最好也不要在foreach中进行rpc调用、调用进行数据库操作的方法，这些都会让数据库访问次数增加。</p>
+<p><strong>道理都懂，但是没遇到问题之前总是不能感同身受。</strong></p>
+<h1 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h1><p>减少访问数据库次数，组装的操作尽量在内存中进行操作（ SQL 能用 in 操作尽量用 in 操作），查询的时候尽量批量操作（包括RPC）</p>
+<p>坚决不在 foreach 中进行 insert、findRow 操作。</p>
+<p>举个例子：</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/006tNbRwgy1fu9o2gb9afj31a60d6tbz.jpg" alt></p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/006tNbRwgy1fu9o3aygarj31c40sqafd.jpg" alt></p>
+<p>优化前，单次接口请求访问数据库250次以上（随着分类、商品、促销信息的增加访问数据库还会增加）。</p>
+<p>优化后，单次接口请求访问数据库11次（不变）。</p>
+<p>在开发环境中的性能对比：</p>
+<p>这是优化前的单次访问响应时间：</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/006tNbRwly1fu9ojqf2qij30vk03mq4b.jpg" alt></p>
+<p>36ms</p>
+<p>这是优化后的单次访问响应时间：</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/006tNbRwgy1fu9olsh462j30vc08un07.jpg" alt></p>
+<p>5ms</p>
+<p>上线之后，从log日志看，<strong>代码时间从1000ms降低到了30ms左右</strong>，问题来了，可是<strong>QA反馈的结果是响应时间依旧很长，优化有限</strong>。</p>
+<p>那么问题来了，问题出在哪里了？问题出在nginx上了。</p>
+<h1 id="nginx-参数调优"><a href="#nginx-参数调优" class="headerlink" title="nginx 参数调优"></a>nginx 参数调优</h1><p>在开始讲具体内容之前，先给出一组数据</p>
+<table>
+<thead>
+<tr>
+<th>代码优化前：</th>
+<th>代码优化后：</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>线下：代码时间 36ms</td>
+<td>线下：代码时间 5ms</td>
+<td>性能提高了7倍</td>
+</tr>
+<tr>
+<td>线上：代码时间 1000ms</td>
+<td>线上：代码时间 30ms</td>
+<td>性能提高了30倍</td>
+</tr>
+<tr>
+<td>线上：响应时间 1500ms</td>
+<td>线上：响应时间 450ms</td>
+<td>性能提高了2～3倍</td>
+</tr>
+</tbody>
+</table>
+<p>看到了吗，代码优化后，影响时间只不过从1000多ms降低到了500左右ms，所以QA测的TPS从10个左右上升到了20个左右，所以就是优化效果有限，那么问题出在哪里呢？出在了nginx上，nginx处理时间过长，下面讲讲平哥修改的了哪些nginx参数，以及每个参数的作用。</p>
+<p>平哥改了nginx.conf的参数，如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/006tNbRwly1fucq4f4flbj30qe03bdgo.jpg" alt></p>
+<h2 id="fastcgi-buffer-size"><a href="#fastcgi-buffer-size" class="headerlink" title="fastcgi_buffer_size"></a>fastcgi_buffer_size</h2><table>
+<thead>
+<tr>
+<th>Syntax:</th>
+<th>fastcgi_buffer_size size;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default:</td>
+<td>fastcgi_buffer_size 4k</td>
+<td>8k;</td>
+</tr>
+<tr>
+<td>Context:</td>
+<td>http, server, location</td>
+</tr>
+</tbody>
+</table>
+<p>Sets the size of the buffer used for reading the first part of the response received from the FastCGI server.</p>
+<p>This part usually contains a small response header. By default, the buffer size is equal to one memory page.</p>
+<p>This is either 4K or 8K, depending on a platform. It can be made smaller, however.</p>
+<p>后端服务器的响应头会放到fastcgi_buffer_size当中，这个大小默认等于fastcgi_buffers当中的设置单个缓冲区的大小。</p>
+<p>fastcgi_buffer_size只是响应头的缓冲区，没有必要也跟着设置太大。 fastcgi_buffer_size最好单独设置，一般设置个4k就够了。</p>
+<h2 id="fastcgi-buffers"><a href="#fastcgi-buffers" class="headerlink" title="fastcgi_buffers"></a>fastcgi_buffers</h2><table>
+<thead>
+<tr>
+<th>Syntax:</th>
+<th>fastcgi_buffers number size;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default:</td>
+<td>fastcgi_buffers 8 4k</td>
+<td>8k;</td>
+</tr>
+<tr>
+<td>Context:</td>
+<td>http, server, location</td>
+</tr>
+</tbody>
+</table>
+<p>Sets the number and size of the buffers used for reading a response from the FastCGI server,</p>
+<p>for a single connection. By default, the buffer size is equal to one memory page.</p>
+<p>This is either 4K or 8K, depending on a platform.</p>
+<p>fastcgi_buffers的缓冲区大小一般会设置的比较大，以应付大网页。 fastcgi_buffers当中单个缓冲区的大小是由系统的内存页面大小决定的，Linux系统中一般为4k。 fastcgi_buffers由缓冲区数量和缓冲区大小组成的。总的大小为number*size。</p>
+<p>若某些请求的响应过大,则超过fastcgi_buffers的部分将被缓冲到硬盘(缓冲目录由_temp_path指令指定), 当然这将会使读取响应的速度减慢, 影响用户体验. 可以使用fastcgi_max_temp_file_size指令关闭磁盘缓冲.</p>
+<h2 id="fastcgi-busy-buffers-size"><a href="#fastcgi-busy-buffers-size" class="headerlink" title="fastcgi_busy_buffers_size"></a>fastcgi_busy_buffers_size</h2><table>
+<thead>
+<tr>
+<th>Syntax:</th>
+<th>fastcgi_busy_buffers_size size;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default:</td>
+<td>fastcgi_busy_buffers_size 8k</td>
+<td>16k;</td>
+</tr>
+<tr>
+<td>Context:</td>
+<td>http, server, location</td>
+</tr>
+</tbody>
+</table>
+<p>When buffering of responses from the FastCGI server is enabled, limits the total size of buffers that can be busy sending a response to the client while the response is not yet fully read.</p>
+<p>In the meantime, the rest of the buffers can be used for reading the response and, if needed, buffering part of the response to a temporary file.</p>
+<p>By default, size is limited by the size of two buffers set by the fastcgi_buffer_sizeand fastcgi_buffers directives.</p>
+<p>fastcgi_busy_buffers_size不是独立的空间，它是fastcgi_buffers和fastcgi_buffer_size的一部分。nginx会在没有完全读完后端响应的时候就开始向客户端传送数据，</p>
+<p>所以它会划出一部分缓冲区来专门向客户端传送数据(这部分的大小是由fastcgi_busy_buffers_size来控制的，建议为fastcgi_buffers中单个缓冲区大小的2倍)，</p>
+<p>然后它继续从后端取数据，缓冲区满了之后就写到磁盘的临时文件中。</p>
+<h2 id="fastcgi-max-temp-file-size和fastcgi-temp-file-write-size"><a href="#fastcgi-max-temp-file-size和fastcgi-temp-file-write-size" class="headerlink" title="fastcgi_max_temp_file_size和fastcgi_temp_file_write_size"></a>fastcgi_max_temp_file_size和fastcgi_temp_file_write_size</h2><table>
+<thead>
+<tr>
+<th>Syntax:</th>
+<th>fastcgi_max_temp_file_size size;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default:</td>
+<td>fastcgi_max_temp_file_size 1024m;</td>
+</tr>
+<tr>
+<td>Context:</td>
+<td>http, server, location</td>
+</tr>
+</tbody>
+</table>
+<p>When buffering of responses from the FastCGI server is enabled, and the whole response does not fit into the buffers set by the fastcgi_buffer_size and fastcgi_buffers directives,</p>
+<p>a part of the response can be saved to a temporary file. This directive sets the maximum size of the temporary file.</p>
+<p>The size of data written to the temporary file at a time is set by the fastcgi_temp_file_write_size directive.</p>
+<p>The zero value disables buffering of responses to temporary files.</p>
+<p>This restriction does not apply to responses that will be cached or stored on disk.</p>
+<p>临时文件由fastcgi_max_temp_file_size和fastcgi_temp_file_write_size这两个指令决定。 fastcgi_temp_file_write_size是一次访问能写入的临时文件的大小，默认是fastcgi_buffer_size和proxy_buffers中设置的缓冲区大小的2倍，Linux下一般是8k。</p>
+<p>fastcgi_max_temp_file_size指定当响应内容大于proxy_buffers指定的缓冲区时, 写入硬盘的临时文件的大小. 如果超过了这个值, Nginx将与Proxy服务器同步的传递内容, 而不再缓冲到硬盘. 设置为0时, 则直接关闭硬盘缓冲.</p>
+<h2 id="fastcgi-buffering"><a href="#fastcgi-buffering" class="headerlink" title="fastcgi_buffering"></a>fastcgi_buffering</h2><table>
+<thead>
+<tr>
+<th>Syntax:</th>
+<th>fastcgi_buffering on / off;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default:</td>
+<td>fastcgi_buffering on;</td>
+</tr>
+<tr>
+<td>Context:</td>
+<td>http, server, location</td>
+</tr>
+</tbody>
+</table>
+<p>Enables or disables buffering of responses from the FastCGI server.</p>
+<p>fastcgi_buffering这个参数用来控制是否打开后端响应内容的缓冲区，如果这个设置为off，那么fastcgi_buffers和fastcgi_busy_buffers_size这两个指令将会失效。但是无论fastcgi_buffering是否开启，对fastcgi_buffer_size都是生效的。</p>
+<p>fastcgi_buffering开启的情况下，nignx会把后端返回的内容先放到缓冲区当中，然后再返回给客户端(边收边传，不是全部接收完再传给客户端)。 临时文件由fastcgi_max_temp_file_size和fastcgi_temp_file_write_size这两个指令决定的。</p>
+<p>如果fastcgi_buffering关闭，那么nginx会立即把从后端收到的响应内容传送给客户端，每次取的大小为fastcgi_buffer_size的大小，这样效率肯定会比较低。</p>
+<p>注： fastcgi_buffering启用时，要提防使用的代理缓冲区太大。这可能会吃掉你的内存，限制代理能够支持的最大并发连接数。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="性能对比"><a href="#性能对比" class="headerlink" title="性能对比"></a>性能对比</h2><p>优化前的接口响应时间：1500ms=1000+500</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/006tNbRwgy1fucqa4s7xzj30l20a1dgk.jpg" alt></p>
+<p>优化后的接口响应时间：107.20ms=30+70</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/006tNbRwgy1fucqagu7q1j31io0bmdhp.jpg" alt></p>
+<p>优化前的接口TPS：10</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/006tNbRwgy1fucqatp2spj30ln035js7.jpg" alt></p>
+<p>优化后的接口TPS：124</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/006tNbRwgy1fucqb2e9q6j30qm05075w.jpg" alt></p>
+<p>优化前后在线下数据量比较少的时候后端代码处理时间相差7倍，在线上数据量多的时候后端代码处理时间相差30倍，可见随着数据的增加，代码质量的影响会更大。</p>
+<h2 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h2><p>这是工作以来，第一次遇到性能上的问题，从业务逻辑的角度来说，我一开始那么写一点问题都没有，存在问题的是性能方面，这也不正是在公司里面和在学校写代码的区别吗。</p>
+<p>在学校只要把代码写出来就行，不重视细节，不重视性能。但是在公司里面就不一样了，你不光要完成任务，还要完成的漂亮，因为你是直接面向用户的，如果你有bug，体验不好，那用户可不买单，最终吃亏的还是自己。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#线上问题" >
+    <span class="tag-code">线上问题</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+    
+      <a class="nav-right" href="/2018/11/06/Book-Notes-History/人类简史/">
+        
+          故事的力量 - 读《人类简史》
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo="haxianhe/comment"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#问题概述"><span class="toc-nav-text">问题概述</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#问题梳理"><span class="toc-nav-text">问题梳理</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#代码优化"><span class="toc-nav-text">代码优化</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#nginx-参数调优"><span class="toc-nav-text">nginx 参数调优</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#fastcgi-buffer-size"><span class="toc-nav-text">fastcgi_buffer_size</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#fastcgi-buffers"><span class="toc-nav-text">fastcgi_buffers</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#fastcgi-busy-buffers-size"><span class="toc-nav-text">fastcgi_busy_buffers_size</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#fastcgi-max-temp-file-size和fastcgi-temp-file-write-size"><span class="toc-nav-text">fastcgi_max_temp_file_size和fastcgi_temp_file_write_size</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#fastcgi-buffering"><span class="toc-nav-text">fastcgi_buffering</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#总结"><span class="toc-nav-text">总结</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性能对比"><span class="toc-nav-text">性能对比</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#心得体会"><span class="toc-nav-text">心得体会</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://haxianhe.com/2018/10/23/CS-SFTC/首页接口优化/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Copyright &copy; 2018-2021 <a href="https://github.com/haxianhe" target="_blank">haxianhe</a>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

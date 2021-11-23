@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="读书、健身、旅行">
+  <meta name="keyword" content="haxianhe">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      《实战Nginx：取代Apache的高性能Web服务器》 | haxianhe&#39;s blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    <script src="/js/local-search.js"></script>
+
+<link rel="alternate" href="/atom.xml" title="haxianhe's blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>haxianhe's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">分类</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">分类</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>《实战Nginx：取代Apache的高性能Web服务器》</h2>
+  <p class="post-date">2018-12-04</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>Web服务器也称为WWW服务器、HTTP服务器，其主要功能是提供网上信息浏览服务。</p>
+<p>Unix和Linux平台下常用的Web服务器有Apache、Nginx、Lighttpd、Tomcat、IBM WebSphere等，其中应用最广泛的是Apache。而Windows NT/2000/2003平台下最常用的服务器测试微软公司的IIS(INternet Information Server)。</p>
+<h1 id="mac下nginx安装及其目录配置"><a href="#mac下nginx安装及其目录配置" class="headerlink" title="mac下nginx安装及其目录配置"></a>mac下nginx安装及其目录配置</h1><p>背景：mac开发机，本地搭建nginx服务，对服务端存储的文档做展示。</p>
+<h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><p>直接通过brew安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></p>
+<h2 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brew services start nginx</span><br></pre></td></tr></table></figure>
+<h2 id="停止nginx"><a href="#停止nginx" class="headerlink" title="停止nginx"></a>停止nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brew services stop nginx</span><br></pre></td></tr></table></figure>
+<h2 id="重新加载nginx"><a href="#重新加载nginx" class="headerlink" title="重新加载nginx"></a>重新加载nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brew service restart nginx</span><br></pre></td></tr></table></figure>
+<h2 id="配置文件遍历"><a href="#配置文件遍历" class="headerlink" title="配置文件遍历"></a>配置文件遍历</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/etc/nginx/nginx.conf</span><br><span class="line"># server 节点</span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">              root           html;</span><br><span class="line">              fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">              fastcgi_index  index.php;</span><br><span class="line">              fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span><br><span class="line">              include        fastcgi_params;</span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
+<p>几个关键点：</p>
+<ul>
+<li>~ 和root 配置的目录必须是可达到的路径 <font color="#FF0000"><strong>即/Users/yourusername/dir_needed 此路径可达，否则访问时会报404</strong></font></li>
+</ul>
+<h2 id="一些文件路径"><a href="#一些文件路径" class="headerlink" title="一些文件路径"></a>一些文件路径</h2><p>用brew安装的nginx 一些文件路径不一样需要注意</p>
+<ul>
+<li><p>安装目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/Cellar/nginx/1.10.3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>日志文件路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/var/log/nginx $ ls -lrt</span><br><span class="line">total 80</span><br><span class="line">-rw-r--r--  1 staff  admin  29646  3 19 14:45 access.log</span><br><span class="line">-rw-r--r--  1 staff  admin   6430  3 19 19:11 error.log</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Nginx与PHP-FastCGI-的安装、配置与优化"><a href="#Nginx与PHP-FastCGI-的安装、配置与优化" class="headerlink" title="Nginx与PHP(FastCGI)的安装、配置与优化"></a>Nginx与PHP(FastCGI)的安装、配置与优化</h1><p><strong>LNMP</strong></p>
+<p>在互联网服务器架构中，我们经常可以听到LAMP(Linux+Apache+Mysql+Perl/PHP/Python)架构。</p>
+<p>现在，由于Nginx拥有超越Apache的卓越性能，LAMP架构正在逐渐被LNMP()Linux+Nginx+Mysql+PHP)架构所取代。</p>
+<p><strong>FastCGI</strong></p>
+<p>FastCGI是语言无关的、可伸缩的CGI开放扩展，其主要行为是将CGI解释器进程保持在内存中并因此获得较高的性能。众所周知，CGI解释器的反复加载是CGI性能低下的主要原因，如果CGI解释器保持在内存中并接受FastCGI进程管理器调度，则可以提供良好的性能、伸缩性、Fail-Over特性等。</p>
+<p><strong>FastCGI工作原理</strong></p>
+<ol>
+<li>FastCGI进程管理器自身初始化，启动多个CGI解释器进程（多个php-cgi）并等待来自Web Server的连接。在本文中，采用PHP-FPM进程管理器启动多个php-cgi FastCGI进程。启动php-cgi FastCGI进程时，可以配置以TCP和UNIX套接字两种方式启动。</li>
+<li>当客户端请求到达Web服务器（Nginx）时，Web服务器将请求采用TCP协议或UNIX套接字方式转发到FastCGI主进程，FastCGI主进程选择并连接到一个CGI解释器（子进程）。Web服务器将CGI环境变量和标准输入发送到FastCGI子进程php-cgi。</li>
+<li>FastCGI子进程完成处理后将标准输出和错误信息从同一连接返回Web服务器（Nginx）。当FastCGI子进程关闭连接时，请求便告知处理完成。FastCGI子进程接着等待并处理来自FastCGI进程管理器的下一个连接。而在一般的普通CGI模式中，php-cgi在此便退出了。</li>
+</ol>
+<p>所以，你可以想象普通的CGI模式有多慢。每一个Web请求PHP都必须重新解析php.ini、重新载入全部扩展并重新初始化全部数据结构。使用FastCGI，所有的这些都只在进程启动时发生一次。</p>
+<p><strong>PHP FastCGI的优点</strong></p>
+<ol>
+<li>PHP脚本运行速度更快。PHP解释程序被载入内存而不用每次需要时从存储器中读取，此举极大提升了依靠脚本运行站点的性能。</li>
+<li>需要使用的系统资源更少。由于服务器不用再=在每次需要时都载入PHP解释程序，你可以将站点的传输速度提升很多而不必正价CPU负担。</li>
+<li>不需要对现有的代码作任何改变。运行在Apache+PHP上的陈旭，无需修改即可适用于PHP的FastCGI。</li>
+</ol>
+<h1 id="Nginx-HTTP-负载均衡和反向代理"><a href="#Nginx-HTTP-负载均衡和反向代理" class="headerlink" title="Nginx HTTP 负载均衡和反向代理"></a>Nginx HTTP 负载均衡和反向代理</h1><h2 id="什么是负载均衡和反向代理"><a href="#什么是负载均衡和反向代理" class="headerlink" title="什么是负载均衡和反向代理"></a>什么是负载均衡和反向代理</h2><p>随着网站访问量的快速增长，单台服务器已经无法承担大量用户的并发访问，必须采用多台服务器协同工作，以提高计算机系统的处理能力和计算强度，满足当前业务量的需求。而如何在完成同样功能的多个网络设备之间实现合理的业务量分配，使之不会出现一台设备过忙、而其他的设备却没有充分使用的情况。要解决这一问题，可以采用负载均衡的方法。</p>
+<p><strong>负载均衡</strong></p>
+<p>负载均衡是由多台服务器以对称的方式组成一个服务器集合，每台服务器都具有等价的地位，都可以单独对外提供服务而无需其他服务器的帮助。通过某种负载分担技术，将外部发送来的请求均匀分配到对称结构中的某一台服务器上，而接受到请求的服务器独立地回应客户的请求。均衡负载等狗平均分配客户请求到服务器阵列，籍此快速获取重要数据，解决大量兵法访问服务问题。</p>
+<p><strong>反向代理</strong></p>
+<p>反向代理是指以代理服务器来接受Internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返会费Internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器。</p>
+<p>通常的代理服务器，只用于代理内部网络对Internet的连接请求，客户机必须指定代理服务器，并将本来要直接发送到Web服务器上的http请求发送到代理服务器中。由于外部网络上的主机并不会配置并使用这个代理服务器，普通代理服务器也被设计为在Internet上搜寻多个不确定的服务器，而不是针对Internet上多个客户机的请求访问某个固定的服务器，因此普通的代理服务器不支持外部对内部网络的访问请求。当一个代理服务器等代理外部网络上的主机访问内部网络时，这种代理服务的方式称为反向代理服务。此时代理服务器对外就表现为一个Web服务器，外部网络就可以简单把它当作一个Web服务器而不需要特定的配置。不同之处在于，这个服务器没有保存任何网页的真实数据，所有的静态网页或CGI程序，都保存在内部的Web服务器上。因此对反向代理服务器的攻击并不会使网页信息遭到破坏，这样就增强了Web服务器的安全性。</p>
+<h2 id="常见的Web负载均衡的方法"><a href="#常见的Web负载均衡的方法" class="headerlink" title="常见的Web负载均衡的方法"></a>常见的Web负载均衡的方法</h2><p><strong>用户手动选择方式</strong></p>
+<p>这是一种较为古老的方式，通过在主站首页提供不同线路、不同服务器链接的方式，来实现负载均衡。这种方式在一些提供下载业务的网站中比较常见。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fxuhhyk8euj31620gk776.jpg" width="50%" heigh="50%"></p>
+<p><strong>DNS轮询</strong></p>
+<p>大多域名注册上都支持对同一主机名添加多条A记录，这就是DNS轮询，DNS服务器将解析按照A记录的顺序，随机分配到不同的IP上，这样就完成了简单的负载均衡。</p>
+<p>DNS轮询的成本非常低，在一些不重要的服务上，被经常使用。</p>
+<p>虽然DNS轮询成本低廉，但是，DNS负载均衡存在两个明显的缺点。</p>
+<ol>
+<li>可靠性低</li>
+<li>负载分配不均衡</li>
+</ol>
+<p><strong>四/七层负载均衡设备</strong></p>
+<p>OSI七层模型</p>
+<p>物理层、数据链路层、网络层、传输层、会话层、表示层、应用层</p>
+<p>现代负载均衡技术通常操作于OSI网络模型的第四层或第七层。</p>
+<p>第四层负载均衡将一个Internet上合法注册的IP地址映射为内部服务器的IP地址，对每次TCP连接请求动态使用其中一个内部IP地址，达到负载均衡的目的。在第四层交换机中，此种均衡技术得到广泛应用。<br>第七层负载均衡控制应用层服务的内容，提供了一种对访问流量的高层控制方式，适合对HTTP服务器群的应用。第七层负载均衡技术通过检查流经HTTP报头，根据报头内的信息来执行负载均衡任务。</p>
+<h1 id="Nginx的Rewrite规则"><a href="#Nginx的Rewrite规则" class="headerlink" title="Nginx的Rewrite规则"></a>Nginx的Rewrite规则</h1><p><strong>什么是Nginx的Rewrite规则</strong></p>
+<p>Rewrite的主要功能就是实现URL的重写。</p>
+<p>正则表达式在计算机科学中，是指一个用来描述或匹配一系列符合某个句法规则的字符串的单个字符串。</p>
+<p>通过Rewrite规则，可以实现规范的URL、根据变量来做URL转向及选择配置。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#nginx" >
+    <span class="tag-code">nginx</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/11/23/Book-Notes-Self/把时间当朋友/">
+        <span class="nav-arrow">← </span>
+        
+          积累 - 读《把时间当朋友》
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/12/11/CS-Technical-linux/scp-跨机远程拷贝/">
+        
+          scp 跨机远程拷贝
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo="haxianhe/comment"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#mac下nginx安装及其目录配置"><span class="toc-nav-text">mac下nginx安装及其目录配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#安装nginx"><span class="toc-nav-text">安装nginx</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#启动nginx"><span class="toc-nav-text">启动nginx</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#停止nginx"><span class="toc-nav-text">停止nginx</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#重新加载nginx"><span class="toc-nav-text">重新加载nginx</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#配置文件遍历"><span class="toc-nav-text">配置文件遍历</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#一些文件路径"><span class="toc-nav-text">一些文件路径</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Nginx与PHP-FastCGI-的安装、配置与优化"><span class="toc-nav-text">Nginx与PHP(FastCGI)的安装、配置与优化</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Nginx-HTTP-负载均衡和反向代理"><span class="toc-nav-text">Nginx HTTP 负载均衡和反向代理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#什么是负载均衡和反向代理"><span class="toc-nav-text">什么是负载均衡和反向代理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#常见的Web负载均衡的方法"><span class="toc-nav-text">常见的Web负载均衡的方法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Nginx的Rewrite规则"><span class="toc-nav-text">Nginx的Rewrite规则</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://haxianhe.com/2018/12/04/CS-Middleware-Nginx/《实战Nginx：取代Apache的高性能Web服务器》/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Copyright &copy; 2018-2021 <a href="https://github.com/haxianhe" target="_blank">haxianhe</a>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

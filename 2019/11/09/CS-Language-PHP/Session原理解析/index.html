@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="读书、健身、旅行">
+  <meta name="keyword" content="haxianhe">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Session原理解析 | haxianhe&#39;s blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    <script src="/js/local-search.js"></script>
+
+<link rel="alternate" href="/atom.xml" title="haxianhe's blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>haxianhe's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">分类</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">分类</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Session原理解析</h2>
+  <p class="post-date">2019-11-09</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>Session存在的意义，估计每个做web开发的人都是了解的，就为了解决HTTP是无状态协议所带来的问题，不多说了。这里主要想说的是服务端与客户端是如何利用session进行交互的。</p>
+<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><p>先看下面这幅流程图：</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191108194847.png" alt></p>
+<p>当用户第一次访问站点时，PHP会用session_start()函数为用户创建一个session ID，这就是针对这个用户的唯一标识，每一个访问的用户都会得到一个自己独有的session ID，这个session ID会存放在响应头里的cookie中，之后发送给客户端。这样客户端就会拥有一个该站点给他的session ID。</p>
+<p>当用户第二次访问该站点时，浏览器会带着本地存放的cookie（里面存有上次得到的session ID）随着请求一起发送到服务器，服务端接到请求后会检测是否有session ID，如果有就会找到响应的session文件，把其中的信息读取出来；如果没有就跟第一次一样再创建个新的。</p>
+<p>通常站点的退出功能，实际上就是调用一下session_destroy()函数(也有可能更复杂些)，把该用户的session文件删除，再把用户的cookie清除。这样客户端和服务端就算没有联系了。</p>
+<p>图中的红框部分就是一次完整的HTTP请求，因为HTTP是无状态的，所以一次请求完成后客户端和服务端就不再有任何关系了，谁也不认识谁。但由于一些需要（如保持登录状态等），必须让服务端和客户端保持联系，session ID就成了这种联系的媒介了。</p>
+<h2 id="客户端的工作"><a href="#客户端的工作" class="headerlink" title="客户端的工作"></a>客户端的工作</h2><p>通过上面的分析我们可以知道session实际上是依赖与cookie的，当用户访问某一站点时，浏览器会根据用户访问的站点自动搜索可用的cookie，如果有可用的就随着请求一起发送到了服务端。每次接收到服务端的响应时又会更新本地的cookie信息。</p>
+<p>当然也可以用GET方式来传递session ID，但不推荐用GET，这样不安全。</p>
+<p>实际工程中都是通过将多个字段（一般包含用户ID，sessionId等）编码生成Cookie，每次访问接口的时候通过解码Cookie拿到sessionId的方式工作的。</p>
+<h2 id="服务端的工作"><a href="#服务端的工作" class="headerlink" title="服务端的工作"></a>服务端的工作</h2><p>由上面的流程图可以看到，服务端实际上是把产生的一些数据存放在了session文件中，该文件的名字就是”sess“加上session ID，这些文件的存放位置就是phpinfo()查到的session.savepath值。</p>
+<p><img src="https://raw.githubusercontent.com/haxianhe/pic/master/image/20191108195320.png" alt></p>
+<p>由上图我们可以很清楚的看到，服务端和客户端保存着同样的session ID信息，这就是两者保持联系的钥匙。</p>
+<h2 id="反面影响"><a href="#反面影响" class="headerlink" title="反面影响"></a>反面影响</h2><p>有好处必然也有坏处，session带来的最主要问题就是对性能的影响，可以想象一下，对于一个千万用户级的web站点，如果每个用户都保存session文件，那每次用户访问光寻找相应的session文件就要耗掉不少系统资源的。所以这时就要对session的存储做一些自定义的设定了，如分目录或哈希等等。除了保存到session文件，也可以抛弃PHP自带的session功能，自己实现session，将session信息存放到数据库当中，这样做最好对数据库进行一下缓存的设置了，不然对上千万的数据进行太频繁的检索，也是蛮耗资源的。</p>
+<p>实际工作中都是通过缓存来进行session校验的。</p>
+<h2 id="定时清除"><a href="#定时清除" class="headerlink" title="定时清除"></a>定时清除</h2><p>客户端和服务端的这种联系必然是需要有时间的规定的，所以需要定期清除session。这个问题就需要在两方面考虑了，一个是清除服务端session文件，一个是清除客户端的cookie信息，因为两者都各保存着一半的信息。</p>
+<p>PHP GC进程可以扫描session存放目录清除session文件，但这个进程是特别耗资源的，所以PHP默认是1%的几率在一个session启动时去清理一次过期的session，所以并不是说一个用户session过期了，他对应的session文件就马上被清除，99%的几率是没被清除的。这就需要我们程序员自己动手了。可以在session信息中存放一个过期时间，值为用户最后一次访问的时间。当用户一访问，就用当前时间减去上次访问时间看是否超时，如果超时了就删除相应session文件，并设置cookie的Expires属性为负值，使其客户端的cookie信息也过期，这样浏览器就自动把它删掉了。</p>
+<h2 id="PHP关于Session的常用函数"><a href="#PHP关于Session的常用函数" class="headerlink" title="PHP关于Session的常用函数"></a>PHP关于Session的常用函数</h2><ul>
+<li><strong>session_start()</strong>： 启动session，这个没什么说的了。根据session ID打开session文件，如果没有session ID就创建一个ID和对应的session文件</li>
+<li><strong>$SESSION[]</strong>：存放用户信息的全局数组，session文件中除了存放$SESSION中的数据实际也会存放其他的信息，如id等</li>
+<li><strong>sessionunset()</strong>： 清空$SESSION数组，它是把数组里的值清空了，而$SESSION这个变量还是存在的，和unset($SESSION)是完全不同的概念</li>
+<li><strong>sessioncommit()</strong>：提交session数据并结束session，把$SESSION数据写到文件里并结束session。实际上当一个页面执行结束后，php会自动执行与这个函数相同的操作。所以这个函数也很少能用上</li>
+<li><strong>session_destroy()</strong>：注销session，这个就是关闭session，并删除掉相应的session文件了。切断了客户端和服务端的联系。</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#php" >
+    <span class="tag-code">php</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/11/09/CS-Language-PHP/CGI、FastCGI和PHP-FPM关系解析/">
+        <span class="nav-arrow">← </span>
+        
+          CGI、FastCGI和PHP-FPM关系解析
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/11/09/CS-Language-PHP/PHP常见概念/">
+        
+          PHP常见概念
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo="haxianhe/comment"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#工作流程"><span class="toc-nav-text">工作流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#客户端的工作"><span class="toc-nav-text">客户端的工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#服务端的工作"><span class="toc-nav-text">服务端的工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#反面影响"><span class="toc-nav-text">反面影响</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#定时清除"><span class="toc-nav-text">定时清除</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#PHP关于Session的常用函数"><span class="toc-nav-text">PHP关于Session的常用函数</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://haxianhe.com/2019/11/09/CS-Language-PHP/Session原理解析/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Copyright &copy; 2018-2021 <a href="https://github.com/haxianhe" target="_blank">haxianhe</a>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

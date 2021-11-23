@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="读书、健身、旅行">
+  <meta name="keyword" content="haxianhe">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      破壁MySQL - 事务 | haxianhe&#39;s blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    <script src="/js/local-search.js"></script>
+
+<link rel="alternate" href="/atom.xml" title="haxianhe's blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>haxianhe's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">分类</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">分类</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>破壁MySQL - 事务</h2>
+  <p class="post-date">2021-09-25</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<ul>
+<li>事务的四个特性是什么？</li>
+<li>Mysql的四种隔离级别以及带来的问题</li>
+<li>MVCC熟悉吗，它的底层原理？</li>
+<li>InnoDB 是如何解决幻读？原理？</li>
+<li>介绍一下InnoDB的日志？</li>
+<li>InnoDB的事务是如何实现的</li>
+<li>事务的实现原理</li>
+<li>InnoDB 是如何保证事务的原子性的/持久性？</li>
+</ul>
+</blockquote>
+<p>事务是指满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。</p>
+<h1 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h1><p>事务最基本的莫过于 ACID 四个特性了，这四个特性分别是：</p>
+<ul>
+<li>Atomicity：原子性</li>
+<li>Consistency：一致性</li>
+<li>Isolation：隔离性</li>
+<li>Durability：持久性</li>
+</ul>
+<p><strong>原子性</strong></p>
+<p>事务被视为不可分割的最小单元，事务的所有操作要么全部成功，要么全部失败回滚。</p>
+<p><strong>一致性</strong></p>
+<p>数据库在事务执行前后都保持一致性状态，在一致性状态下，所有事务对一个数据的读取结果都是相同的。</p>
+<p><strong>隔离性</strong></p>
+<p>一个事务所做的修改在最终提交以前，对其他事务是不可见的。</p>
+<p><strong>持久性</strong></p>
+<p>一旦事务提交，则其所做的修改将会永远保存到数据库中。即使系统发生崩溃，事务执行的结果也不能丢。</p>
+<h2 id="ACID-之间的关系"><a href="#ACID-之间的关系" class="headerlink" title="ACID 之间的关系"></a>ACID 之间的关系</h2><p><strong>执行结果正确 = 一致性 = 原子性 + 隔离性</strong></p>
+<p><strong>应对数据库崩溃 = 持久性</strong></p>
+<p>事务的 ACID 特性概念很简单，但不好理解，主要是因为这几个特性不是一种平级关系：</p>
+<ul>
+<li>只有满足一致性，事务的结果才是正确的。</li>
+<li>在无并发的情况下，事务串行执行，隔离性一定能够满足。此时只要能满足原子性，就一定能满足一致性。在并发的情况下，多个事务并行执行，事务不仅要满足原子性，还需要满足隔离性，才能满足一致性。</li>
+<li>事务满足持久化是为了能应对数据库崩溃的情况。</li>
+</ul>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122141348.png" alt></p>
+<h2 id="InnoDB-如何实现-ACID-的特性"><a href="#InnoDB-如何实现-ACID-的特性" class="headerlink" title="InnoDB 如何实现 ACID 的特性"></a>InnoDB 如何实现 ACID 的特性</h2><p>事务的隔离性由 Next-Key Lock 实现，redo log 用来保证事务的原子性和持久性，undo log 用来保证事务的一致性。</p>
+<h1 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h1><p><strong>未提交读（READ UNCOMMITTED）</strong></p>
+<p>事务中的修改，即使没有提交，对其他事务也是可见的。</p>
+<p><strong>提交读（READ COMMITTED）</strong></p>
+<p>一个事务只能读取已经提交的事务所做的修改。换句话说，一个事务所做的修改在提交之前对其他事务是不可见的。</p>
+<p><strong>可重复读（REPEATABLE READ）</strong></p>
+<p>保证在同一个事务中多次读取同样数据的结果是一样的。</p>
+<p><strong>可串行化（SERIALIZABLE）</strong></p>
+<p>强制事务串行执行。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">隔离级别</th>
+<th style="text-align:center">脏读</th>
+<th style="text-align:center">不可重复读</th>
+<th style="text-align:center">幻影读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">未提交读</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">提交读</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">可重复读</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">可串行化</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ol>
+<li>事务的隔离级别定义的的是当前读。</li>
+<li>InnoDB在可重复读级别下的当前读通过Next-Key Lock锁机制解决了幻读问题。</li>
+<li>InnoDB在可重复读级别下的快照读存在“幻读”问题，解决方案是（1）改为可串行化隔离级别（2）改为当前读（读操作加锁）</li>
+</ol>
+</blockquote>
+<h1 id="事务并发处理带来的问题"><a href="#事务并发处理带来的问题" class="headerlink" title="事务并发处理带来的问题"></a>事务并发处理带来的问题</h1><h2 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h2><p>脏读指的是不同事务下，当前事务可以读取到另外事务未提交的数据。</p>
+<p>例如：</p>
+<p>T1 修改一个数据，T2 随后读取这个数据。如果 T1 撤销了这次修改，那么 T2 读取的数据是脏数据。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122141708.png" alt></p>
+<h2 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h2><p>不可重复读指的是同一事务内多次读取同一数据集合，读取到的数据是不一样的情况。</p>
+<p>例如：</p>
+<p>T2 读取一个数据，T1 对该数据做了修改。如果 T2 再次读取这个数据，此时读取的结果和第一次读取的结果不同。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122141903.png" alt></p>
+<h2 id="Phantom-Proble（幻影读）"><a href="#Phantom-Proble（幻影读）" class="headerlink" title="Phantom Proble（幻影读）"></a>Phantom Proble（幻影读）</h2><p>Phantom Proble 是指在同一事务下，连续执行两次同样的 sql 语句可能返回不同的结果，第二次的 sql 语句可能会返回之前不存在的行。</p>
+<p>幻影读是一种特殊的不可重复读问题。</p>
+<h2 id="丢失更新"><a href="#丢失更新" class="headerlink" title="丢失更新"></a>丢失更新</h2><p>一个事务的更新操作会被另一个事务的更新操作所覆盖。</p>
+<p>例如：</p>
+<p>T1 和 T2 两个事务都对一个数据进行修改，T1 先修改，T2 随后修改，T2 的修改覆盖了 T1 的修改。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122142001.png" alt></p>
+<p>这类型问题可以通过给 SELECT 操作加上排他锁来解决，不过这可能会引入性能问题，具体使用要视业务场景而定。</p>
+<h1 id="“读”"><a href="#“读”" class="headerlink" title="“读”"></a>“读”</h1><p>在可重复读级别中，通过MVCC机制，虽然让数据变得可重复读，但我们读到的数据可能是历史数据，是不及时的数据，不是数据库当前的数据！这在一些对于数据的时效特别敏感的业务中，就很可能出问题。</p>
+<p>对于这种读取历史数据的方式，我们叫它快照读 (snapshot read)，而读取数据库当前版本数据的方式，叫当前读 (current read)。很显然，在MVCC中：</p>
+<h2 id="快照读"><a href="#快照读" class="headerlink" title="快照读"></a>快照读</h2><p>MVCC 的 SELECT 操作是快照中的数据，不需要进行加锁操作。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> ….;</span><br></pre></td></tr></table></figure>
+<h2 id="当前读"><a href="#当前读" class="headerlink" title="当前读"></a>当前读</h2><p>MVCC 其它会对数据库进行修改的操作（INSERT、UPDATE、DELETE）需要进行加锁操作，从而读取最新的数据。可以看到 MVCC 并不是完全不用加锁，而只是避免了 SELECT 的加锁操作。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span>;</span><br><span class="line"><span class="keyword">UPDATE</span>;</span><br><span class="line"><span class="keyword">DELETE</span>;</span><br></pre></td></tr></table></figure>
+<p>在进行 SELECT 操作时，可以强制指定进行加锁操作。以下第一个语句需要加 S 锁，第二个需要加 X 锁。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> ? <span class="keyword">lock</span> <span class="keyword">in</span> <span class="keyword">share</span> <span class="keyword">mode</span>;</span><br><span class="line">- <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> ? <span class="keyword">for</span> <span class="keyword">update</span>;</span><br></pre></td></tr></table></figure>
+<p>事务的隔离级别实际上都是定义的当前读的级别，MySQL为了减少锁处理（包括等待其它锁）的时间，提升并发能力，引入了快照读的概念，使得select不用加锁。而update、insert这些“当前读”的隔离性，就需要通过加锁来实现了。</p>
+<h1 id="MVCC"><a href="#MVCC" class="headerlink" title="MVCC"></a>MVCC</h1><p>多版本并发控制（Multi-Version Concurrency Control, MVCC）是 MySQL 的 InnoDB 存储引擎实现隔离级别的一种具体方式，用于实现提交读和可重复读这两种隔离级别。而未提交读隔离级别总是读取最新的数据行，无需使用 MVCC。可串行化隔离级别需要对所有读取的行都加锁，单纯使用 MVCC 无法实现。</p>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><p><strong>版本号</strong></p>
+<ul>
+<li>系统版本号：是一个递增的数字，每开始一个新的事务，系统版本号就会自动递增。</li>
+<li>事务版本号：事务开始时的系统版本号。</li>
+</ul>
+<p><strong>隐藏的列</strong></p>
+<p>MVCC 在每行记录后面都保存着两个隐藏的列，用来存储两个版本号：</p>
+<ul>
+<li>创建版本号：指示创建一个数据行的快照时的系统版本号；</li>
+<li>删除版本号：如果该快照的删除版本号大于当前事务版本号表示该快照有效，否则表示该快照已经被删除了。</li>
+</ul>
+<p><strong>Undo 日志</strong></p>
+<p>MVCC 使用到的快照存储在 Undo 日志中，该日志通过回滚指针把一个数据行（Record）的所有快照连接起来。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122142253.png" alt></p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>以下实现过程针对可重复读隔离级别。</p>
+<p>当开始一个事务时，该事务的版本号肯定大于当前所有数据行快照的创建版本号，理解这一点很关键。数据行快照的创建版本号是创建数据行快照时的系统版本号，系统版本号随着创建事务而递增，因此新创建一个事务时，这个事务的系统版本号比之前的系统版本号都大，也就是比所有数据行快照的创建版本号都大。</p>
+<p><strong>SELECT</strong></p>
+<p>多个事务必须读取到同一个数据行的快照，并且这个快照是距离现在最近的一个有效快照。但是也有例外，如果有一个事务正在修改该数据行，那么它可以读取事务本身所做的修改，而不用和其它事务的读取结果一致。</p>
+<p>把没有对一个数据行做修改的事务称为 T，T 所要读取的数据行快照的创建版本号必须小于等于 T 的版本号，因为如果大于 T 的版本号，那么表示该数据行快照是其它事务的最新修改，因此不能去读取它。除此之外，T 所要读取的数据行快照的删除版本号必须是未定义或者大于 T 的版本号，因为如果小于等于 T 的版本号，那么表示该数据行快照是已经被删除的，不应该去读取它。</p>
+<p><strong>INSERT</strong></p>
+<p>将当前系统版本号作为数据行快照的创建版本号。</p>
+<p><strong>DELETE</strong></p>
+<p>将当前系统版本号作为数据行快照的删除版本号。</p>
+<p><strong>UPDATE</strong></p>
+<p>将当前系统版本号作为更新前的数据行快照的删除版本号，并将当前系统版本号作为更新后的数据行快照的创建版本号。可以理解为先执行 DELETE 后执行 INSERT。</p>
+<h1 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h1><p>锁是数据库系统区别于文件系统的一个关键特性。锁机制用于管理对共享资源的并发访问。</p>
+<h2 id="锁类型"><a href="#锁类型" class="headerlink" title="锁类型"></a>锁类型</h2><p><strong>共享锁（S Lock）</strong></p>
+<p>允许事务读一行数据</p>
+<p><strong>排他锁（X Lock）</strong></p>
+<p>允许事务删除或者更新一行数据</p>
+<p><strong>意向共享锁（IS Lock）</strong></p>
+<p>事务想要获得一张表中某几行的共享锁</p>
+<p><strong>意向排他锁</strong></p>
+<p>事务想要获得一张表中某几行的排他锁</p>
+<h2 id="锁算法"><a href="#锁算法" class="headerlink" title="锁算法"></a>锁算法</h2><p><strong>Record Lock</strong></p>
+<p>锁定一个记录上的索引，而不是记录本身。</p>
+<p>如果表没有设置索引，InnoDB 会自动在主键上创建隐藏的聚簇索引，因此 Record Locks 依然可以使用。</p>
+<p><strong>Gap Lock</strong></p>
+<p>锁定索引之间的间隙，但是不包含索引本身。例如当一个事务执行以下语句，其它事务就不能在 t.c 中插入 15。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> c <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> c <span class="keyword">BETWEEN</span> <span class="number">10</span> <span class="keyword">and</span> <span class="number">20</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>Next-Key Lock</strong></p>
+<p>它是 Record Locks 和 Gap Locks 的结合，不仅锁定一个记录上的索引，也锁定索引之间的间隙。例如一个索引包含以下值：10, 11, 13, and 20，那么就需要锁定以下区间：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(-∞, 10]</span><br><span class="line">(10, 11]</span><br><span class="line">(11, 13]</span><br><span class="line">(13, 20]</span><br><span class="line">(20, +∞)</span><br></pre></td></tr></table></figure>
+<h1 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h1><h2 id="redo-log-重做日志"><a href="#redo-log-重做日志" class="headerlink" title="redo log(重做日志)"></a>redo log(重做日志)</h2><p><strong>作用</strong></p>
+<p>确保事务的原子性和持久性。</p>
+<p>防止在发生故障的时间点，尚有脏页未写入磁盘，在重启mysql服务的时候，根据redo log进行重做，从而达到事务的持久性这一特性。</p>
+<p><strong>内容</strong></p>
+<p>物理格式的日志，记录的是物理数据页面的修改的信息，其redo log是顺序写入redo log file的物理文件中去的。</p>
+<p><strong>什么时候产生</strong></p>
+<p>事务开始之后就产生redo log，redo log的落盘并不是随着事务的提交才写入的，而是在事务的执行过程中，便开始写入redo log文件中。</p>
+<p><strong>什么时候释放</strong></p>
+<p>当对应事务的脏页写入到磁盘之后，redo log的使命也就完成了，重做日志占用的空间就可以重用（被覆盖）。</p>
+<p><strong>对应的物理文件</strong></p>
+<p>默认情况下，对应的物理文件位于数据库的data目录下的ib_logfile1&amp;ib_logfile2</p>
+<ul>
+<li>innodb_log_group_home_dir 指定日志文件组所在的路径，默认./ ，表示在数据库的数据目录下。　　</li>
+<li>innodb_log_files_in_group 指定重做日志文件组中文件的数量，默认2　　</li>
+</ul>
+<p>关于文件的大小和数量，由一下两个参数配置</p>
+<ul>
+<li>innodb_log_file_size 重做日志文件的大小。　　</li>
+<li>innodb_mirrored_log_groups 指定了日志镜像文件组的数量，默认1其他：　　</li>
+</ul>
+<p>很重要一点，redo log是什么时候写盘的？</p>
+<p>前面说了是在事物开始之后逐步写盘的。</p>
+<p>之所以说重做日志是在事务开始之后逐步写入重做日志文件，而不一定是事务提交才写入重做日志缓存，原因就是，重做日志有一个缓存区Innodb_log_buffer，Innodb_log_buffer的默认大小为8M(这里设置的16M)，Innodb存储引擎先将重做日志写入innodb_log_buffer中。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122144208.png" alt></p>
+<p><strong>然后会通过以下三种方式将innodb日志缓冲区的日志刷新到磁盘：</strong>　　</p>
+<ol>
+<li>Master Thread 每秒一次执行刷新Innodb_log_buffer到重做日志文件。</li>
+<li>每个事务提交时会将重做日志刷新到重做日志文件。</li>
+<li>当重做日志缓存可用空间 少于一半时，重做日志缓存被刷新到重做日志文件。</li>
+</ol>
+<p>由此可以看出，重做日志通过不止一种方式写入到磁盘，尤其是对于第一种方式，Innodb_log_buffer到重做日志文件是Master Thread线程的定时任务。因此重做日志的写盘，并不一定是随着事务的提交才写入重做日志文件的，而是随着事务的开始，逐步开始的。　　</p>
+<blockquote>
+<p>另外引用《MySQL技术内幕 Innodb 存储引擎》（page37）上的原话：”即使某个事务还没有提交，Innodb存储引擎仍然每秒会将重做日志缓存刷新到重做日志文件。”这一点是必须要知道的，因为这可以很好地解释再大的事务的提交（commit）的时间也是很短暂的。</p>
+</blockquote>
+<h2 id="undo-log（回滚日志）"><a href="#undo-log（回滚日志）" class="headerlink" title="undo log（回滚日志）"></a>undo log（回滚日志）</h2><p><strong>作用</strong></p>
+<p><strong>保存了事务发生之前的数据的一个版本</strong>（比如一条 INSERT 语句，对应一条 DELETE 的 undo log ，对于每个 UPDATE 语句，对应一条相反的 UPDATE 的 undo log），<strong>可以用于回滚，同时可以提供多版本并发控制下的读（MVCC），也即非锁定读</strong></p>
+<p><strong>内容</strong></p>
+<p>逻辑格式的日志，在执行undo的时候，仅仅是将数据从逻辑上恢复至事务之前的状态，而不是从物理页面上操作实现的。</p>
+<p><strong>什么时候产生</strong></p>
+<p>事务开始之前，将当前的版本生成undo log，undo 也会产生 redo 来保证undo log的持久性。</p>
+<p><strong>什么时候释放</strong></p>
+<p>当事务提交之后，undo log并不能立马被删除，而是放入待清理的链表，由purge线程判断是否由其他事务在使用undo段中表的上一个事务之前的版本信息，决定是否可以清理undo log的日志空间。</p>
+<p><strong>对应的物理文件</strong></p>
+<p>MySQL5.6之前，undo表空间位于共享表空间的回滚段中，共享表空间的默认的名称是ibdata，位于数据文件目录中。</p>
+<p>MySQL5.6之后，undo表空间可以配置成独立的文件，但是提前需要在配置文件中配置，完成数据库初始化后生效且不可改变undo log文件的个数，如果初始化数据库之前没有进行相关配置，那么就无法配置成独立的表空间了。</p>
+<p>关于MySQL5.7之后的独立undo 表空间配置参数如下：</p>
+<ul>
+<li>innodb_undo_directory = /data/undospace/ –undo独立表空间的存放目录</li>
+<li>innodb_undo_logs = 128 –回滚段为128KB</li>
+<li>innodb_undo_tablespaces = 4 –指定有4个undo log文件</li>
+</ul>
+<p>如果undo使用的共享表空间，这个共享表空间中又不仅仅是存储了undo的信息，共享表空间的默认为与MySQL的数据目录下面，其属性由参数innodb_data_file_path配置。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122151810.png" alt></p>
+<p><strong>其他</strong></p>
+<p>undo log是在事务开始之前保存的被修改数据的一个版本，产生undo日志的时候，同样会伴随类似于保护事务持久化机制的redo log的产生。</p>
+<p>默认情况下undo文件是保持在共享表空间的，也即ibdatafile文件中，当数据库中发生一些大的事务性操作的时候，要生成大量的undo信息，全部保存在共享表空间中的。</p>
+<p>因此共享表空间可能会变的很大，默认情况下，也就是undo 日志使用共享表空间的时候，被“撑大”的共享表空间是不会也不能自动收缩的。</p>
+<p>因此，mysql5.7之后的“独立undo 表空间”的配置就显得很有必要了。</p>
+<h2 id="binlog"><a href="#binlog" class="headerlink" title="binlog"></a>binlog</h2><p><strong>作用</strong></p>
+<ol>
+<li><strong>复制</strong>：在主从同步中，从库利用主库上的 binlog 进行重放，实现主从同步。</li>
+<li><strong>恢复</strong>：用于数据库的基于时间点的还原。</li>
+</ol>
+<p><strong>内容</strong></p>
+<p>逻辑格式的日志，可以简单认为就是执行过的事务中的sql语句。</p>
+<p>但又不完全是sql语句这么简单，而是包括了执行的sql语句（增删改）信息。</p>
+<p>在使用mysqlbinlog解析binlog之后一些都会真相大白。</p>
+<p>因此可以基于binlog做到类似于oracle的闪回功能，其实都是依赖于binlog中的日志记录。</p>
+<p><strong>什么时候产生</strong></p>
+<p>事务提交的时候，一次性将事务中的sql语句（一个事物可能对应多个sql语句）按照一定的格式记录到binlog中。</p>
+<p>这里与redo log很明显的差异就是redo log并不一定是在事务提交的时候刷新到磁盘，redo log是在事务开始之后就开始逐步写入磁盘。</p>
+<p>因此对于事务的提交，即便是较大的事务，提交（commit）都是很快的，但是在开启了bin_log的情况下，对于较大事务的提交，可能会变得比较慢一些。</p>
+<p>这是因为binlog是在事务提交的时候一次性写入的造成的，这些可以通过测试验证。</p>
+<p><strong>什么时候释放</strong></p>
+<p>binlog的默认是保持时间由参数expire_logs_days配置，也就是说对于非活动的日志文件，在生成时间超过expire_logs_days配置的天数之后，会被自动删除。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122153238.png" alt><br>　　<br><strong>对应的物理文件</strong></p>
+<p>配置文件的路径为log_bin_basename，binlog日志文件按照指定大小，当日志文件达到指定的最大的大小之后，进行滚动更新，生成新的日志文件。</p>
+<p>对于每个binlog日志文件，通过一个统一的index文件来组织。</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122153301.png" alt></p>
+<p><strong>其他</strong></p>
+<p>二进制日志的作用之一是还原数据库的，这与redo log很类似，很多人混淆过，但是两者有本质的不同</p>
+<ol>
+<li>作用不同：redo log是保证事务的持久性的，是事务层面的，binlog作为还原的功能，是数据库层面的（当然也可以精确到事务层面的），虽然都有还原的意思，但是其保护数据的层次是不一样的。<br>2.内容不同：redo log是物理日志，是数据页面的修改之后的物理记录，binlog是逻辑日志，可以简单认为记录的就是sql语句</li>
+<li>另外，两者日志产生的时间，可以释放的时间，在可释放的情况下清理机制，都是完全不同的。<br>4.恢复数据时候的效率，基于物理日志的redo log恢复数据的效率要高于语句逻辑日志的binlog</li>
+</ol>
+<p>关于事务提交时，redo log和binlog的写入顺序，为了保证主从复制时候的主从一致（当然也包括使用binlog进行基于时间点还原的情况），是要严格一致的。</p>
+<p>MySQL通过两阶段提交过程来完成事务的一致性的，也即redo log和binlog的一致性的，理论上是先写redo log，再写binlog，两个日志都提交成功（刷入磁盘），事务才算真正的完成。</p>
+<h2 id="redo-log-amp-undo-log总结"><a href="#redo-log-amp-undo-log总结" class="headerlink" title="redo log &amp; undo log总结"></a>redo log &amp; undo log总结</h2><p>下面是redo log + undo log的简化过程，便于理解两种日志的过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">假设有A、B两个数据，值分别为1,2.</span><br><span class="line">1. 事务开始</span><br><span class="line">2. 记录A=1的 undo log 到 redo log</span><br><span class="line">3. 记录A=1到 undo log</span><br><span class="line">4. 修改A=3</span><br><span class="line">5. 记录A=3到 redo log</span><br><span class="line">6. 记录B=2的 undo log到 redo log</span><br><span class="line">7. 记录B=2到 undo log</span><br><span class="line">8. 修改B=4</span><br><span class="line">9. 记录B=4到redo log</span><br><span class="line">10. 将redo log写入磁盘</span><br><span class="line">11. 事务提交</span><br></pre></td></tr></table></figure>
+<h2 id="redo-log-和-bin-log-的区别"><a href="#redo-log-和-bin-log-的区别" class="headerlink" title="redo log 和 bin log 的区别"></a>redo log 和 bin log 的区别</h2><ul>
+<li><strong>日志级别不同</strong>：重做日志是在 InnoDB 存储引擎层产生的，而二进制日志是在 MySQL 数据库的上层的产生的。</li>
+<li><strong>日志内容不同</strong>：二进制日志是一种逻辑日志，记录的是执行的SQL，而重做日志是物理格式日志，其记录的是对每个页的修改。</li>
+<li><strong>写入磁盘时间不同</strong>：二进制日志只在事务提交完成后一次写入，而重做日志在事务执行中不断被写入。</li>
+</ul>
+<p><br><br><br></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#mysql" >
+    <span class="tag-code">mysql</span>
+  </a>
+
+  <a href="/tags#《破壁MySQL》" >
+    <span class="tag-code">《破壁MySQL》</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/09/25/CS-Middleware-Mysql/break-mysql-02/">
+        <span class="nav-arrow">← </span>
+        
+          破壁MySQL - 索引
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/09/25/CS-Middleware-Mysql/break-mysql-04/">
+        
+          破壁MySQL - 性能优化
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo="haxianhe/comment"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#ACID"><span class="toc-nav-text">ACID</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ACID-之间的关系"><span class="toc-nav-text">ACID 之间的关系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#InnoDB-如何实现-ACID-的特性"><span class="toc-nav-text">InnoDB 如何实现 ACID 的特性</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#事务隔离级别"><span class="toc-nav-text">事务隔离级别</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#事务并发处理带来的问题"><span class="toc-nav-text">事务并发处理带来的问题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#脏读"><span class="toc-nav-text">脏读</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#不可重复读"><span class="toc-nav-text">不可重复读</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Phantom-Proble（幻影读）"><span class="toc-nav-text">Phantom Proble（幻影读）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#丢失更新"><span class="toc-nav-text">丢失更新</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#“读”"><span class="toc-nav-text">“读”</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#快照读"><span class="toc-nav-text">快照读</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#当前读"><span class="toc-nav-text">当前读</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#MVCC"><span class="toc-nav-text">MVCC</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#基础概念"><span class="toc-nav-text">基础概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#实现过程"><span class="toc-nav-text">实现过程</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#锁"><span class="toc-nav-text">锁</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#锁类型"><span class="toc-nav-text">锁类型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#锁算法"><span class="toc-nav-text">锁算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Log"><span class="toc-nav-text">Log</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redo-log-重做日志"><span class="toc-nav-text">redo log(重做日志)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undo-log（回滚日志）"><span class="toc-nav-text">undo log（回滚日志）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#binlog"><span class="toc-nav-text">binlog</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redo-log-amp-undo-log总结"><span class="toc-nav-text">redo log &amp; undo log总结</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redo-log-和-bin-log-的区别"><span class="toc-nav-text">redo log 和 bin log 的区别</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-03/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Copyright &copy; 2018-2021 <a href="https://github.com/haxianhe" target="_blank">haxianhe</a>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

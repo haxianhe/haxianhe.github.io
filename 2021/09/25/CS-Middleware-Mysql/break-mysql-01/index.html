@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="读书、健身、旅行">
+  <meta name="keyword" content="haxianhe">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      破壁MySQL - 概述 | haxianhe&#39;s blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    <script src="/js/local-search.js"></script>
+
+<link rel="alternate" href="/atom.xml" title="haxianhe's blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>haxianhe's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">分类</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">分类</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>破壁MySQL - 概述</h2>
+  <p class="post-date">2021-09-25</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p>
+</blockquote>
+<p>在正式开始总结MySQL之前，先给大家介绍一下“破壁”是什么意思，很久之前我老大曾说过一句 <strong>“互联网本来没有什么行业壁垒，但是通过制造一些专业名词，人为的制造了很多行业壁垒出来”</strong>，我深以为然。  </p>
+<p><strong>计算机的本质是0和1</strong>，之后通过层层封装、抽象构建出了我们今天看到的互联网世界。    </p>
+<p>我不否认计算机中难度很高的知识，但是就我目前接触到的知识来说还没有到那种程度，我想这种可以称之为行业壁垒的核心知识占总知识量的0.01%都不到，绝大多数人一生都不会遇到这些问题。</p>
+<p>那么剩下的就是这一个一个人为制造的、可以通过花时间掌握的“行业壁垒”。</p>
+<p><strong>破壁的意思就是打破这些人为制造的“行业壁垒”</strong>，让我们技术人员人人如龙。</p>
+<hr>
+<p><strong>破壁系列的第一个专题我选择了互联网的数据存储基石 - MySQL。</strong></p>
+<p>这个专题将会总结事务、索引、SQL性能优化、分库分表、主从复制等MySQL核心内容。详情参见下面的思维导图：</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109170855.png" alt></p>
+<h2 id="MySQL-是什么"><a href="#MySQL-是什么" class="headerlink" title="MySQL 是什么"></a>MySQL 是什么</h2><p>MySQL 是一个免费、开源的关系型数据库管理软件，在互联网行业被广泛使用。</p>
+<h2 id="MySQL-架构"><a href="#MySQL-架构" class="headerlink" title="MySQL 架构"></a>MySQL 架构</h2><p>MySQL中插件式存储引擎架构一直是其非常有特色的亮点，其灵活的处理方式，高度可定制化及完全开放的实现一直被很多高级用户所肯定，下图是官方文档中的一张架构图：</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109212031.png" alt></p>
+<ul>
+<li><p>连接层：<strong>这一层主要是提供授权认证、连接处理等功能。</strong> </p>
+<ul>
+<li>在该层上引入了线程池的概念，为通过安全认证的客户端请求提供线程。</li>
+<li>在该层上也可以实现基于SSL的安全链接。</li>
+<li>该层会为通过授权认证的客户端请求分配相应的权限。</li>
+</ul>
+</li>
+<li><p>服务层：这一层实现了很多核心功能，像<strong>查询解析、分析、优化、缓存、以及内置函数</strong>的实现等，所有跨存储引擎的功能也都在这一层实现，像<strong>触发器、存储过程、视图</strong>等。</p>
+</li>
+<li><p>引擎层：存储引擎负责的是MySQL中数据的存储和提取，服务器通过API与存储引擎进行通信。MySQL中插件式存储引擎架构的特点，使得我们可以根据自己的实际需要进行存储引擎的选取。</p>
+</li>
+<li><p>存储层：将数据存储在文件系统上。</p>
+</li>
+</ul>
+<p><strong>常见面试题：</strong></p>
+<blockquote>
+<p>MySQL 的查询流程具体是？or 一条 SQL 语句在 MySQL 中如何执行的？<br>介绍一下 MySQL 的架构</p>
+</blockquote>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109220048.png" alt></p>
+<ol>
+<li>客户发起请求。</li>
+<li>在连接层进行权限校验、线程分配。</li>
+<li>查询缓存（存在缓存则直接返回，不存在则执行后续操作）</li>
+<li>分析器（对SQL进行词法分析和语法分析操作）</li>
+<li>优化器（主要对执行的sql优化选择最优的执行方案方法）</li>
+<li>执行器（执行时会先看用户是否有执行权限，有才去使用这个引擎提供的接口）</li>
+<li>去引擎层获取数据返回（如果开启查询缓存则会缓存查询结果）</li>
+</ol>
+<h2 id="MySQL-存储引擎"><a href="#MySQL-存储引擎" class="headerlink" title="MySQL 存储引擎"></a>MySQL 存储引擎</h2><p>MySQL中采用的是插件式存储引擎架构，可以根据需要选择不同的存储引擎。</p>
+<p>现在互联网普遍使用的都是 InnoDB 存储引擎，常见的面试题是 InnoDB 存储引擎和 MyISAM 存储的对比，比如像下面这样问：</p>
+<blockquote>
+<p>Innodb 和 MyISAM 的区别是什么?</p>
+</blockquote>
+<p>可以从如下的角度进行回答：</p>
+<p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109220751.png" alt></p>
+<ul>
+<li>事务：InnoDB 支持事务，MyISAM 不支持事务</li>
+<li>锁：InnoDB 支持行级锁，MyISAM 只支持表级锁</li>
+<li>外键：InnoDB 支持外键</li>
+<li>InnoDB 支持在线热备份</li>
+<li>MyISAM 支持空间索引</li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>MySQL 是现在互联网大小厂主流使用的关系型数据库管理软件，平时工作中也是围绕着它进行开发，所以几乎是面试必考题。</p>
+<p>这篇文章是《破壁》系列，第一个专题的第一篇文章，下面是本系列的其他文章，欢迎阅读～</p>
+<ul>
+<li><a href="https://haxianhe.com/2021/01/09/CS-Technical-mysql/break-mysql-overview/">《破壁MySQL》 - MySQL概述</a></li>
+<li><a href="https://haxianhe.com/2021/01/30/CS-Technical-mysql/break-mysql-index/">《破壁MySQL》 - MySQL索引</a></li>
+</ul>
+<p>文章中首先介绍了一下我接下来要写的内容（第一个专题 MySQL），其次是从技术原理和面试题两个角度介绍了 MySQL 架构和 MySQL 存储引擎。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">官方文档</a></li>
+<li><a href="https://juejin.cn/post/6850037271233331208" target="_blank" rel="noopener">MySQL 三万字精华总结</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p>
+</blockquote>
+<p><br><br><br></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#mysql" >
+    <span class="tag-code">mysql</span>
+  </a>
+
+  <a href="/tags#《破壁MySQL》" >
+    <span class="tag-code">《破壁MySQL》</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/09/24/CS-Language-Java/break-java-11/">
+        <span class="nav-arrow">← </span>
+        
+          破壁Java - Maven
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/09/25/CS-Middleware-Mysql/break-mysql-02/">
+        
+          破壁MySQL - 索引
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo="haxianhe/comment"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MySQL-是什么"><span class="toc-nav-text">MySQL 是什么</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MySQL-架构"><span class="toc-nav-text">MySQL 架构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MySQL-存储引擎"><span class="toc-nav-text">MySQL 存储引擎</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#小结"><span class="toc-nav-text">小结</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#参考资料"><span class="toc-nav-text">参考资料</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-01/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Copyright &copy; 2018-2021 <a href="https://github.com/haxianhe" target="_blank">haxianhe</a>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>
