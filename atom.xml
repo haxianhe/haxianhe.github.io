@@ -3,11 +3,11 @@
   <title>haxianhe&#39;s blog</title>
   
   <subtitle>最高级的自律，就是享受孤独。</subtitle>
-  <link href="https://haxianhe.com/atom.xml" rel="self"/>
+  <link href="https://blog.haxianhe.com/atom.xml" rel="self"/>
   
-  <link href="https://haxianhe.com/"/>
+  <link href="https://blog.haxianhe.com/"/>
   <updated>2021-11-23T12:50:38.756Z</updated>
-  <id>https://haxianhe.com/</id>
+  <id>https://blog.haxianhe.com/</id>
   
   <author>
     <name>haxianhe</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>人是可以改变的-读《被讨厌的勇气》</title>
-    <link href="https://haxianhe.com/2021/10/26/Book-Notes-Psycholog/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94/"/>
-    <id>https://haxianhe.com/2021/10/26/Book-Notes-Psycholog/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94/</id>
+    <link href="https://blog.haxianhe.com/2021/10/26/Book-Notes-Psycholog/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94/"/>
+    <id>https://blog.haxianhe.com/2021/10/26/Book-Notes-Psycholog/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94/</id>
     <published>2021-10-25T16:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.756Z</updated>
     
@@ -34,17 +34,17 @@
     
     
     
-    <category term="Book-Notes" scheme="https://haxianhe.com/categories/Book-Notes/"/>
+    <category term="Book-Notes" scheme="https://blog.haxianhe.com/categories/Book-Notes/"/>
     
     
-    <category term="心理学" scheme="https://haxianhe.com/tags/心理学/"/>
+    <category term="心理学" scheme="https://blog.haxianhe.com/tags/心理学/"/>
     
   </entry>
   
   <entry>
     <title>破壁MySQL - 其他问题</title>
-    <link href="https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-07/"/>
-    <id>https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-07/</id>
+    <link href="https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-07/"/>
+    <id>https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-07/</id>
     <published>2021-09-24T23:00:07.000Z</published>
     <updated>2021-11-23T12:50:38.768Z</updated>
     
@@ -61,19 +61,19 @@
     
     
     
-    <category term="CS-Middleware" scheme="https://haxianhe.com/categories/CS-Middleware/"/>
+    <category term="CS-Middleware" scheme="https://blog.haxianhe.com/categories/CS-Middleware/"/>
     
     
-    <category term="mysql" scheme="https://haxianhe.com/tags/mysql/"/>
+    <category term="mysql" scheme="https://blog.haxianhe.com/tags/mysql/"/>
     
-    <category term="《破壁MySQL》" scheme="https://haxianhe.com/tags/《破壁MySQL》/"/>
+    <category term="《破壁MySQL》" scheme="https://blog.haxianhe.com/tags/《破壁MySQL》/"/>
     
   </entry>
   
   <entry>
     <title>破壁MySQL - 主从复制</title>
-    <link href="https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-06/"/>
-    <id>https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-06/</id>
+    <link href="https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-06/"/>
+    <id>https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-06/</id>
     <published>2021-09-24T22:00:06.000Z</published>
     <updated>2021-11-23T12:50:38.768Z</updated>
     
@@ -89,19 +89,19 @@
     
     
     
-    <category term="CS-Middleware" scheme="https://haxianhe.com/categories/CS-Middleware/"/>
+    <category term="CS-Middleware" scheme="https://blog.haxianhe.com/categories/CS-Middleware/"/>
     
     
-    <category term="mysql" scheme="https://haxianhe.com/tags/mysql/"/>
+    <category term="mysql" scheme="https://blog.haxianhe.com/tags/mysql/"/>
     
-    <category term="《破壁MySQL》" scheme="https://haxianhe.com/tags/《破壁MySQL》/"/>
+    <category term="《破壁MySQL》" scheme="https://blog.haxianhe.com/tags/《破壁MySQL》/"/>
     
   </entry>
   
   <entry>
     <title>破壁MySQL - 分库分表</title>
-    <link href="https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-05/"/>
-    <id>https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-05/</id>
+    <link href="https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-05/"/>
+    <id>https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-05/</id>
     <published>2021-09-24T21:00:05.000Z</published>
     <updated>2021-11-23T12:50:38.768Z</updated>
     
@@ -118,45 +118,45 @@
     
     
     
-    <category term="CS-Middleware" scheme="https://haxianhe.com/categories/CS-Middleware/"/>
+    <category term="CS-Middleware" scheme="https://blog.haxianhe.com/categories/CS-Middleware/"/>
     
     
-    <category term="mysql" scheme="https://haxianhe.com/tags/mysql/"/>
+    <category term="mysql" scheme="https://blog.haxianhe.com/tags/mysql/"/>
     
-    <category term="《破壁MySQL》" scheme="https://haxianhe.com/tags/《破壁MySQL》/"/>
+    <category term="《破壁MySQL》" scheme="https://blog.haxianhe.com/tags/《破壁MySQL》/"/>
     
   </entry>
   
   <entry>
     <title>破壁MySQL - 性能优化</title>
-    <link href="https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-04/"/>
-    <id>https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-04/</id>
+    <link href="https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-04/"/>
+    <id>https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-04/</id>
     <published>2021-09-24T20:00:04.000Z</published>
     <updated>2021-11-23T12:50:38.768Z</updated>
     
-    <content type="html"><![CDATA[<p>在上一篇文章 <a href="https://haxianhe.com/2021/01/30/CS-Technical-mysql/break-mysql-index/">「《破壁MySQL》 - MySQL索引」</a> 中我们简单介绍了MySQL 索引的相关知识，那么在这一篇文章中我们主要介绍的是 <strong>MySQL 性能优化的常用方案</strong>，文章中在每介绍一部分知识点后都会给出<strong>知识点相对应的常见面试题以及答案</strong>，达到理论和实践相结合的效果。</p><blockquote><p><strong>面试题1: 分页查询到后期耗时很大怎么办？</strong></p></blockquote><p>Mysql的优化，大体可以分为三部分：索引的优化，sql语句的优化，表的优化</p><h1 id="优化慢查询的步骤"><a href="#优化慢查询的步骤" class="headerlink" title="优化慢查询的步骤"></a>优化慢查询的步骤</h1><p>0.先运行看看是否真的很慢，注意设置SQL_NO_CACHE</p><p>1.where条件单表查，锁定最小返回记录表。这句话的意思是把查询语句的where都应用到表中返回的记录数最小的表开始查起，单表每个字段分别查询，看哪个字段的区分度最高</p><p>2.explain查看执行计划，是否与1预期一致（从锁定记录较少的表开始查询）</p><p>3.order by limit 形式的sql语句让排序的表优先查</p><p>4.了解业务方使用场景</p><p>5.加索引时参照建索引的几大原则</p><p>6.观察结果，不符合预期继续从0分析</p><h1 id="使用-explain-分析-select-查询语句"><a href="#使用-explain-分析-select-查询语句" class="headerlink" title="使用 explain 分析 select 查询语句"></a>使用 explain 分析 select 查询语句</h1><blockquote><p>explain 用来分析 SELECT 查询语句，开发人员可以通过分析 Explain 结果来优化查询语句。</p></blockquote><h2 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h2><p>常用的有 SIMPLE 简单查询，UNION 联合查询，SUBQUERY 子查询等。</p><h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><p>要查询的表</p><h2 id="possible-keys"><a href="#possible-keys" class="headerlink" title="possible_keys"></a>possible_keys</h2><blockquote><p>The possible indexes to choose</p></blockquote><p>可选择的索引</p><h2 id="key"><a href="#key" class="headerlink" title="key"></a>key</h2><blockquote><p>The index actually chosen</p></blockquote><p>实际使用的索引</p><h2 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h2><blockquote><p>Estimate of rows to be examined</p></blockquote><p>扫描的行数</p><h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><p>索引查询类型，经常用到的索引查询类型：</p><p><strong>const：使用主键或者唯一索引进行查询的时候只有一行匹配<br>ref：使用非唯一索引<br>range：使用主键、单个字段的辅助索引、多个字段的辅助索引的最后一个字段进行范围查询<br>index：和all的区别是扫描的是索引树<br>all：扫描全表：</strong></p><p><strong>system</strong></p><p><strong>触发条件：表只有一行，这是一个 const type 的特殊情况</strong></p><p><strong>const</strong></p><p><strong>触发条件：在使用主键或者唯一索引进行查询的时候只有一行匹配。</strong></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name <span class="keyword">WHERE</span> primary_key=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> primary_key_part1=<span class="number">1</span> <span class="keyword">AND</span> primary_key_part2=<span class="number">2</span>;</span><br></pre></td></tr></table></figure><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122153816.png" alt></p><p><strong>eq_ref</strong></p><p><strong>触发条件：在进行联接查询的，使用主键或者唯一索引并且只匹配到一行记录的时候</strong></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column=other_table.column;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column_part1=other_table.column</span><br><span class="line">  <span class="keyword">AND</span> ref_table.key_column_part2=<span class="number">1</span>;</span><br></pre></td></tr></table></figure><p><strong>ref</strong></p><p>触发条件：使用非唯一索引</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table <span class="keyword">WHERE</span> key_column=expr;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column=other_table.column;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column_part1=other_table.column</span><br><span class="line">  <span class="keyword">AND</span> ref_table.key_column_part2=<span class="number">1</span>;</span><br></pre></td></tr></table></figure><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122153852.png" alt></p><p><strong>range</strong></p><p><strong>触发条件：只有在使用主键、单个字段的辅助索引、多个字段的辅助索引的最后一个字段进行范围查询才是 range</strong></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> key_column = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> key_column <span class="keyword">BETWEEN</span> <span class="number">10</span> <span class="keyword">and</span> <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> key_column <span class="keyword">IN</span> (<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> key_part1 = <span class="number">10</span> <span class="keyword">AND</span> key_part2 <span class="keyword">IN</span> (<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>);</span><br></pre></td></tr></table></figure><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122153917.png" alt></p><p><strong>index</strong></p><blockquote><p>The index join type is the same as ALL, except that the index tree is scanned. This occurs two ways:</p></blockquote><p>触发条件：</p><p>只扫描索引树</p><p>1）查询的字段是索引的一部分，覆盖索引。<br>2）使用主键进行排序</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122153941.png" alt></p><p><strong>all</strong></p><p>触发条件：全表扫描，不走索引</p><h1 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h1><p>关于索引原理在另一篇文章中有单独的介绍，这里就省略了。</p><h2 id="索引建立的原则"><a href="#索引建立的原则" class="headerlink" title="索引建立的原则"></a>索引建立的原则</h2><p>1.最左前缀匹配原则，非常重要的原则，mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a = 1 and b = 2 and c &gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。</p><p>2.尽量选择区分度高的列作为索引，区分度的公式是count(distinct col)/count(*)，表示字段不重复的比例，比例越大我们扫描的记录数越少，唯一键的区分度是1，而一些状态、性别字段可能在大数据面前区分度就是0，那可能有人会问，这个比例有什么经验值吗？使用场景不同，这个值也很难确定，一般需要join的字段我们都要求是0.1以上，即平均1条扫描10条记录。 </p><p>3.索引列不能参与计算，保持列“干净”，比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)。</p><p>4.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。</p><p>5.尽量的扩展索引，不要新建索引。比如表中已经有a的索引，现在要加(a,b)的索引，那么只需要修改原来的索引即可。</p><h2 id="独立的列"><a href="#独立的列" class="headerlink" title="独立的列"></a>独立的列</h2><p><strong>索引不能是表达式的一部分</strong></p><p>在进行查询时，索引列不能是表达式的一部分，也不能是函数的参数，否则无法使用索引。</p><p>例如下面的查询不能使用 actor_id 列的索引：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> actor_id <span class="keyword">FROM</span> sakila.actor <span class="keyword">WHERE</span> actor_id + <span class="number">1</span> = <span class="number">5</span>;</span><br></pre></td></tr></table></figure><h2 id="多列索引"><a href="#多列索引" class="headerlink" title="多列索引"></a>多列索引</h2><p><strong>多个字段最好建立联合索引</strong></p><p>在需要使用多个列作为条件进行查询时，使用多列索引比使用多个单列索引性能更好。例如下面的语句中，最好把 actor_id 和 film_id 设置为多列索引。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> film_id, actor_ <span class="keyword">id</span> <span class="keyword">FROM</span> sakila.film_actor</span><br><span class="line"><span class="keyword">WHERE</span> actor_id = <span class="number">1</span> <span class="keyword">AND</span> film_id = <span class="number">1</span>;</span><br></pre></td></tr></table></figure><h2 id="索引列的顺序"><a href="#索引列的顺序" class="headerlink" title="索引列的顺序"></a>索引列的顺序</h2><p>让选择性最强的索引列放在前面。</p><p>索引的选择性是指：不重复的索引值和记录总数的比值。最大值为 1，此时每个记录都有唯一的索引与其对应。选择性越高，每个记录的区分度越高，查询效率也越高。</p><p>例如下面显示的结果中 customer_id 的选择性比 staff_id 更高，因此最好把 customer_id 列放在多列索引的前面。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> staff_id)/<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> staff_id_selectivity,</span><br><span class="line"><span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> customer_id)/<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> customer_id_selectivity,</span><br><span class="line"><span class="keyword">COUNT</span>(*)</span><br><span class="line"><span class="keyword">FROM</span> payment;</span><br></pre></td></tr></table></figure><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   staff_id_selectivity: 0.0001</span><br><span class="line">customer_id_selectivity: 0.0373</span><br><span class="line">               COUNT(*): 16049</span><br></pre></td></tr></table></figure><h2 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h2><p>索引包含所有需要查询的字段的值。</p><p>具有以下优点：</p><ul><li>索引通常远小于数据行的大小，只读取索引能大大减少数据访问量。</li><li>一些存储引擎（例如 MyISAM）在内存中只缓存索引，而数据依赖于操作系统来缓存。因此，只访问索引可以不使用系统调用（通常比较费时）。</li><li>对于 InnoDB 引擎，若辅助索引能够覆盖查询，则无需访问主索引。</li></ul><h2 id="不走索引的情况"><a href="#不走索引的情况" class="headerlink" title="不走索引的情况"></a>不走索引的情况</h2><ul><li>如果条件中有or，即使其中有条件带索引也不会使用(这也是为什么尽量少用or的原因)</li><li>对于联合索引，不是使用的第一部分(第一个)，则不会使用索引</li><li>like查询是以%开头</li><li>如果列类型是字符串，那一定要在条件中将数据使用引号引用起来,否则不使用索引（值类型不同）</li></ul><h1 id="优化数据访问"><a href="#优化数据访问" class="headerlink" title="优化数据访问"></a>优化数据访问</h1><h2 id="减少请求的数据量"><a href="#减少请求的数据量" class="headerlink" title="减少请求的数据量"></a>减少请求的数据量</h2><ul><li>只返回必要的列：最好不要使用 SELECT * 语句。</li><li>只返回必要的行：使用 LIMIT 语句来限制返回的数据。</li><li>缓存重复查询的数据：使用缓存可以避免在数据库中进行查询，特别在要查询的数据经常被重复查询时，缓存带来的查询性能提升将会是非常明显的。</li></ul><h2 id="减少服务器端扫描的行数"><a href="#减少服务器端扫描的行数" class="headerlink" title="减少服务器端扫描的行数"></a>减少服务器端扫描的行数</h2><p>最有效的方式是使用索引来覆盖查询。</p><h1 id="重构查询方式"><a href="#重构查询方式" class="headerlink" title="重构查询方式"></a>重构查询方式</h1><h2 id="切分大查询"><a href="#切分大查询" class="headerlink" title="切分大查询"></a>切分大查询</h2><p>一个大查询如果一次性执行的话，可能一次锁住很多数据、占满整个事务日志、耗尽系统资源、阻塞很多小的但重要的查询。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> messages <span class="keyword">WHERE</span> <span class="keyword">create</span> &lt; <span class="keyword">DATE_SUB</span>(<span class="keyword">NOW</span>(), <span class="built_in">INTERVAL</span> <span class="number">3</span> <span class="keyword">MONTH</span>);</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rows_affected = 0</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    rows_affected = do_query(</span><br><span class="line">    <span class="string">"DELETE FROM messages WHERE create  &lt; DATE_SUB(NOW(), INTERVAL 3 MONTH) LIMIT 10000"</span>)</span><br><span class="line">&#125; <span class="keyword">while</span> rows_affected &gt; <span class="number">0</span></span><br></pre></td></tr></table></figure><h2 id="分解大连接查询"><a href="#分解大连接查询" class="headerlink" title="分解大连接查询"></a>分解大连接查询</h2><p>将一个大连接查询分解成对每一个表进行一次单表查询，然后在应用程序中进行关联，这样做的好处有：</p><ul><li>让缓存更高效。对于连接查询，如果其中一个表发生变化，那么整个查询缓存就无法使用。而分解后的多个查询，即使其中一个表发生变化，对其它表的查询缓存依然可以使用。</li><li>分解成多个单表查询，这些单表查询的缓存结果更可能被其它查询使用到，从而减少冗余记录的查询。</li><li>减少锁竞争；</li><li>在应用层进行连接，可以更容易对数据库进行拆分，从而更容易做到高性能和可伸缩。</li><li>查询本身效率也可能会有所提升。例如下面的例子中，使用 IN() 代替连接查询，可以让 MySQL 按照 ID 顺序进行查询，这可能比随机的连接要更高效。</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag</span><br><span class="line"><span class="keyword">JOIN</span> tag_post <span class="keyword">ON</span> tag_post.tag_id=tag.id</span><br><span class="line"><span class="keyword">JOIN</span> post <span class="keyword">ON</span> tag_post.post_id=post.id</span><br><span class="line"><span class="keyword">WHERE</span> tag.tag=<span class="string">'mysql'</span>;</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag <span class="keyword">WHERE</span> tag=<span class="string">'mysql'</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag_post <span class="keyword">WHERE</span> tag_id=<span class="number">1234</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> post <span class="keyword">WHERE</span> post.id <span class="keyword">IN</span> (<span class="number">123</span>,<span class="number">456</span>,<span class="number">567</span>,<span class="number">9098</span>,<span class="number">8904</span>);</span><br></pre></td></tr></table></figure><p><br><br><br></p>]]></content>
+    <content type="html"><![CDATA[<p>在上一篇文章 <a href="https://haxianhe.com/2021/01/30/CS-Technical-mysql/break-mysql-index/" target="_blank" rel="noopener">「《破壁MySQL》 - MySQL索引」</a> 中我们简单介绍了MySQL 索引的相关知识，那么在这一篇文章中我们主要介绍的是 <strong>MySQL 性能优化的常用方案</strong>，文章中在每介绍一部分知识点后都会给出<strong>知识点相对应的常见面试题以及答案</strong>，达到理论和实践相结合的效果。</p><blockquote><p><strong>面试题1: 分页查询到后期耗时很大怎么办？</strong></p></blockquote><p>Mysql的优化，大体可以分为三部分：索引的优化，sql语句的优化，表的优化</p><h1 id="优化慢查询的步骤"><a href="#优化慢查询的步骤" class="headerlink" title="优化慢查询的步骤"></a>优化慢查询的步骤</h1><p>0.先运行看看是否真的很慢，注意设置SQL_NO_CACHE</p><p>1.where条件单表查，锁定最小返回记录表。这句话的意思是把查询语句的where都应用到表中返回的记录数最小的表开始查起，单表每个字段分别查询，看哪个字段的区分度最高</p><p>2.explain查看执行计划，是否与1预期一致（从锁定记录较少的表开始查询）</p><p>3.order by limit 形式的sql语句让排序的表优先查</p><p>4.了解业务方使用场景</p><p>5.加索引时参照建索引的几大原则</p><p>6.观察结果，不符合预期继续从0分析</p><h1 id="使用-explain-分析-select-查询语句"><a href="#使用-explain-分析-select-查询语句" class="headerlink" title="使用 explain 分析 select 查询语句"></a>使用 explain 分析 select 查询语句</h1><blockquote><p>explain 用来分析 SELECT 查询语句，开发人员可以通过分析 Explain 结果来优化查询语句。</p></blockquote><h2 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h2><p>常用的有 SIMPLE 简单查询，UNION 联合查询，SUBQUERY 子查询等。</p><h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><p>要查询的表</p><h2 id="possible-keys"><a href="#possible-keys" class="headerlink" title="possible_keys"></a>possible_keys</h2><blockquote><p>The possible indexes to choose</p></blockquote><p>可选择的索引</p><h2 id="key"><a href="#key" class="headerlink" title="key"></a>key</h2><blockquote><p>The index actually chosen</p></blockquote><p>实际使用的索引</p><h2 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h2><blockquote><p>Estimate of rows to be examined</p></blockquote><p>扫描的行数</p><h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><p>索引查询类型，经常用到的索引查询类型：</p><p><strong>const：使用主键或者唯一索引进行查询的时候只有一行匹配<br>ref：使用非唯一索引<br>range：使用主键、单个字段的辅助索引、多个字段的辅助索引的最后一个字段进行范围查询<br>index：和all的区别是扫描的是索引树<br>all：扫描全表：</strong></p><p><strong>system</strong></p><p><strong>触发条件：表只有一行，这是一个 const type 的特殊情况</strong></p><p><strong>const</strong></p><p><strong>触发条件：在使用主键或者唯一索引进行查询的时候只有一行匹配。</strong></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name <span class="keyword">WHERE</span> primary_key=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> primary_key_part1=<span class="number">1</span> <span class="keyword">AND</span> primary_key_part2=<span class="number">2</span>;</span><br></pre></td></tr></table></figure><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122153816.png" alt></p><p><strong>eq_ref</strong></p><p><strong>触发条件：在进行联接查询的，使用主键或者唯一索引并且只匹配到一行记录的时候</strong></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column=other_table.column;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column_part1=other_table.column</span><br><span class="line">  <span class="keyword">AND</span> ref_table.key_column_part2=<span class="number">1</span>;</span><br></pre></td></tr></table></figure><p><strong>ref</strong></p><p>触发条件：使用非唯一索引</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table <span class="keyword">WHERE</span> key_column=expr;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column=other_table.column;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column_part1=other_table.column</span><br><span class="line">  <span class="keyword">AND</span> ref_table.key_column_part2=<span class="number">1</span>;</span><br></pre></td></tr></table></figure><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122153852.png" alt></p><p><strong>range</strong></p><p><strong>触发条件：只有在使用主键、单个字段的辅助索引、多个字段的辅助索引的最后一个字段进行范围查询才是 range</strong></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> key_column = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> key_column <span class="keyword">BETWEEN</span> <span class="number">10</span> <span class="keyword">and</span> <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> key_column <span class="keyword">IN</span> (<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> key_part1 = <span class="number">10</span> <span class="keyword">AND</span> key_part2 <span class="keyword">IN</span> (<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>);</span><br></pre></td></tr></table></figure><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122153917.png" alt></p><p><strong>index</strong></p><blockquote><p>The index join type is the same as ALL, except that the index tree is scanned. This occurs two ways:</p></blockquote><p>触发条件：</p><p>只扫描索引树</p><p>1）查询的字段是索引的一部分，覆盖索引。<br>2）使用主键进行排序</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122153941.png" alt></p><p><strong>all</strong></p><p>触发条件：全表扫描，不走索引</p><h1 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h1><p>关于索引原理在另一篇文章中有单独的介绍，这里就省略了。</p><h2 id="索引建立的原则"><a href="#索引建立的原则" class="headerlink" title="索引建立的原则"></a>索引建立的原则</h2><p>1.最左前缀匹配原则，非常重要的原则，mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a = 1 and b = 2 and c &gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。</p><p>2.尽量选择区分度高的列作为索引，区分度的公式是count(distinct col)/count(*)，表示字段不重复的比例，比例越大我们扫描的记录数越少，唯一键的区分度是1，而一些状态、性别字段可能在大数据面前区分度就是0，那可能有人会问，这个比例有什么经验值吗？使用场景不同，这个值也很难确定，一般需要join的字段我们都要求是0.1以上，即平均1条扫描10条记录。 </p><p>3.索引列不能参与计算，保持列“干净”，比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)。</p><p>4.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。</p><p>5.尽量的扩展索引，不要新建索引。比如表中已经有a的索引，现在要加(a,b)的索引，那么只需要修改原来的索引即可。</p><h2 id="独立的列"><a href="#独立的列" class="headerlink" title="独立的列"></a>独立的列</h2><p><strong>索引不能是表达式的一部分</strong></p><p>在进行查询时，索引列不能是表达式的一部分，也不能是函数的参数，否则无法使用索引。</p><p>例如下面的查询不能使用 actor_id 列的索引：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> actor_id <span class="keyword">FROM</span> sakila.actor <span class="keyword">WHERE</span> actor_id + <span class="number">1</span> = <span class="number">5</span>;</span><br></pre></td></tr></table></figure><h2 id="多列索引"><a href="#多列索引" class="headerlink" title="多列索引"></a>多列索引</h2><p><strong>多个字段最好建立联合索引</strong></p><p>在需要使用多个列作为条件进行查询时，使用多列索引比使用多个单列索引性能更好。例如下面的语句中，最好把 actor_id 和 film_id 设置为多列索引。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> film_id, actor_ <span class="keyword">id</span> <span class="keyword">FROM</span> sakila.film_actor</span><br><span class="line"><span class="keyword">WHERE</span> actor_id = <span class="number">1</span> <span class="keyword">AND</span> film_id = <span class="number">1</span>;</span><br></pre></td></tr></table></figure><h2 id="索引列的顺序"><a href="#索引列的顺序" class="headerlink" title="索引列的顺序"></a>索引列的顺序</h2><p>让选择性最强的索引列放在前面。</p><p>索引的选择性是指：不重复的索引值和记录总数的比值。最大值为 1，此时每个记录都有唯一的索引与其对应。选择性越高，每个记录的区分度越高，查询效率也越高。</p><p>例如下面显示的结果中 customer_id 的选择性比 staff_id 更高，因此最好把 customer_id 列放在多列索引的前面。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> staff_id)/<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> staff_id_selectivity,</span><br><span class="line"><span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> customer_id)/<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> customer_id_selectivity,</span><br><span class="line"><span class="keyword">COUNT</span>(*)</span><br><span class="line"><span class="keyword">FROM</span> payment;</span><br></pre></td></tr></table></figure><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   staff_id_selectivity: 0.0001</span><br><span class="line">customer_id_selectivity: 0.0373</span><br><span class="line">               COUNT(*): 16049</span><br></pre></td></tr></table></figure><h2 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h2><p>索引包含所有需要查询的字段的值。</p><p>具有以下优点：</p><ul><li>索引通常远小于数据行的大小，只读取索引能大大减少数据访问量。</li><li>一些存储引擎（例如 MyISAM）在内存中只缓存索引，而数据依赖于操作系统来缓存。因此，只访问索引可以不使用系统调用（通常比较费时）。</li><li>对于 InnoDB 引擎，若辅助索引能够覆盖查询，则无需访问主索引。</li></ul><h2 id="不走索引的情况"><a href="#不走索引的情况" class="headerlink" title="不走索引的情况"></a>不走索引的情况</h2><ul><li>如果条件中有or，即使其中有条件带索引也不会使用(这也是为什么尽量少用or的原因)</li><li>对于联合索引，不是使用的第一部分(第一个)，则不会使用索引</li><li>like查询是以%开头</li><li>如果列类型是字符串，那一定要在条件中将数据使用引号引用起来,否则不使用索引（值类型不同）</li></ul><h1 id="优化数据访问"><a href="#优化数据访问" class="headerlink" title="优化数据访问"></a>优化数据访问</h1><h2 id="减少请求的数据量"><a href="#减少请求的数据量" class="headerlink" title="减少请求的数据量"></a>减少请求的数据量</h2><ul><li>只返回必要的列：最好不要使用 SELECT * 语句。</li><li>只返回必要的行：使用 LIMIT 语句来限制返回的数据。</li><li>缓存重复查询的数据：使用缓存可以避免在数据库中进行查询，特别在要查询的数据经常被重复查询时，缓存带来的查询性能提升将会是非常明显的。</li></ul><h2 id="减少服务器端扫描的行数"><a href="#减少服务器端扫描的行数" class="headerlink" title="减少服务器端扫描的行数"></a>减少服务器端扫描的行数</h2><p>最有效的方式是使用索引来覆盖查询。</p><h1 id="重构查询方式"><a href="#重构查询方式" class="headerlink" title="重构查询方式"></a>重构查询方式</h1><h2 id="切分大查询"><a href="#切分大查询" class="headerlink" title="切分大查询"></a>切分大查询</h2><p>一个大查询如果一次性执行的话，可能一次锁住很多数据、占满整个事务日志、耗尽系统资源、阻塞很多小的但重要的查询。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> messages <span class="keyword">WHERE</span> <span class="keyword">create</span> &lt; <span class="keyword">DATE_SUB</span>(<span class="keyword">NOW</span>(), <span class="built_in">INTERVAL</span> <span class="number">3</span> <span class="keyword">MONTH</span>);</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rows_affected = 0</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    rows_affected = do_query(</span><br><span class="line">    <span class="string">"DELETE FROM messages WHERE create  &lt; DATE_SUB(NOW(), INTERVAL 3 MONTH) LIMIT 10000"</span>)</span><br><span class="line">&#125; <span class="keyword">while</span> rows_affected &gt; <span class="number">0</span></span><br></pre></td></tr></table></figure><h2 id="分解大连接查询"><a href="#分解大连接查询" class="headerlink" title="分解大连接查询"></a>分解大连接查询</h2><p>将一个大连接查询分解成对每一个表进行一次单表查询，然后在应用程序中进行关联，这样做的好处有：</p><ul><li>让缓存更高效。对于连接查询，如果其中一个表发生变化，那么整个查询缓存就无法使用。而分解后的多个查询，即使其中一个表发生变化，对其它表的查询缓存依然可以使用。</li><li>分解成多个单表查询，这些单表查询的缓存结果更可能被其它查询使用到，从而减少冗余记录的查询。</li><li>减少锁竞争；</li><li>在应用层进行连接，可以更容易对数据库进行拆分，从而更容易做到高性能和可伸缩。</li><li>查询本身效率也可能会有所提升。例如下面的例子中，使用 IN() 代替连接查询，可以让 MySQL 按照 ID 顺序进行查询，这可能比随机的连接要更高效。</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag</span><br><span class="line"><span class="keyword">JOIN</span> tag_post <span class="keyword">ON</span> tag_post.tag_id=tag.id</span><br><span class="line"><span class="keyword">JOIN</span> post <span class="keyword">ON</span> tag_post.post_id=post.id</span><br><span class="line"><span class="keyword">WHERE</span> tag.tag=<span class="string">'mysql'</span>;</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag <span class="keyword">WHERE</span> tag=<span class="string">'mysql'</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag_post <span class="keyword">WHERE</span> tag_id=<span class="number">1234</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> post <span class="keyword">WHERE</span> post.id <span class="keyword">IN</span> (<span class="number">123</span>,<span class="number">456</span>,<span class="number">567</span>,<span class="number">9098</span>,<span class="number">8904</span>);</span><br></pre></td></tr></table></figure><p><br><br><br></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;在上一篇文章 &lt;a href=&quot;https://haxianhe.com/2021/01/30/CS-Technical-mysql/break-mysql-index/&quot;&gt;「《破壁MySQL》 - MySQL索引」&lt;/a&gt; 中我们简单介绍了MySQL 索引的相关知识，那么</summary>
+    <summary type="html">&lt;p&gt;在上一篇文章 &lt;a href=&quot;https://haxianhe.com/2021/01/30/CS-Technical-mysql/break-mysql-index/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;「《破壁MySQL》 - MySQL索</summary>
       
     
     
     
-    <category term="CS-Middleware" scheme="https://haxianhe.com/categories/CS-Middleware/"/>
+    <category term="CS-Middleware" scheme="https://blog.haxianhe.com/categories/CS-Middleware/"/>
     
     
-    <category term="mysql" scheme="https://haxianhe.com/tags/mysql/"/>
+    <category term="mysql" scheme="https://blog.haxianhe.com/tags/mysql/"/>
     
-    <category term="《破壁MySQL》" scheme="https://haxianhe.com/tags/《破壁MySQL》/"/>
+    <category term="《破壁MySQL》" scheme="https://blog.haxianhe.com/tags/《破壁MySQL》/"/>
     
   </entry>
   
   <entry>
     <title>破壁MySQL - 事务</title>
-    <link href="https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-03/"/>
-    <id>https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-03/</id>
+    <link href="https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-03/"/>
+    <id>https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-03/</id>
     <published>2021-09-24T19:00:03.000Z</published>
     <updated>2021-11-23T12:50:38.767Z</updated>
     
@@ -176,23 +176,23 @@
     
     
     
-    <category term="CS-Middleware" scheme="https://haxianhe.com/categories/CS-Middleware/"/>
+    <category term="CS-Middleware" scheme="https://blog.haxianhe.com/categories/CS-Middleware/"/>
     
     
-    <category term="mysql" scheme="https://haxianhe.com/tags/mysql/"/>
+    <category term="mysql" scheme="https://blog.haxianhe.com/tags/mysql/"/>
     
-    <category term="《破壁MySQL》" scheme="https://haxianhe.com/tags/《破壁MySQL》/"/>
+    <category term="《破壁MySQL》" scheme="https://blog.haxianhe.com/tags/《破壁MySQL》/"/>
     
   </entry>
   
   <entry>
     <title>破壁MySQL - 索引</title>
-    <link href="https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-02/"/>
-    <id>https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-02/</id>
+    <link href="https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-02/"/>
+    <id>https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-02/</id>
     <published>2021-09-24T18:00:02.000Z</published>
     <updated>2021-11-23T12:50:38.767Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p></blockquote><p>在上一篇文章 <a href="https://haxianhe.com/2021/01/09/CS-Technical-mysql/break-mysql-overview/">「《破壁MySQL》 - MySQL概述」</a> 中我们简单介绍了MySQL 架构和 MySQL 存储引擎的相关知识，那么在这一篇文章中我们主要介绍的是 <strong>InnoDB存储引擎的索引实现原理</strong>，文章中在每介绍一部分知识点后都会给出<strong>知识点相对应的常见面试题以及答案</strong>，达到理论和实践相结合的效果。</p><blockquote><p><strong>面试题1：说说你对 MySQL 索引的理解？/InnoDB引擎中的索引策略，了解过吗？</strong></p></blockquote><h2 id="索引是什么"><a href="#索引是什么" class="headerlink" title="索引是什么"></a>索引是什么</h2><p>索引（Index）是帮助MySQL高效获取数据的数据结构，所以说<strong>索引的本质是：数据结构</strong>。</p><p><strong>索引的目的在于提高查询效率</strong>，可以类比字典、 火车站的车次表、图书的目录等</p><h2 id="B-Tree-原理"><a href="#B-Tree-原理" class="headerlink" title="B+ Tree 原理"></a>B+ Tree 原理</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>B Tree 指的是 Balance Tree，也就是平衡树，平衡树是一颗查找树，并且所有叶子节点位于同一层。</p><p><strong>B+ Tree 是 B 树的一种变形，它是基于 B Tree 和叶子节点顺序访问指针进行实现，通常用于数据库和操作系统的文件系统中。</strong> </p><p>B+ 树有两种类型的节点：<strong>内部节点</strong>（也称索引节点）和<strong>叶子节点。</strong></p><p>内部节点就是非叶子节点，内部节点不存储数据，只存储索引，数据都存在叶子节点。</p><p>内部节点中的 key 都按照从小到大的顺序排列，对于内部节点中的一个 key，左子树中的所有 key 都小于它，右子树中的 key 都大于等于它，叶子节点的记录也是按照从小到大排列的。</p><p>每个叶子节点都存有相邻叶子节点的指针。</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122135258.png" alt></p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p><strong>查找</strong></p><p>查找以典型的方式进行，类似于二叉查找树。起始于根节点，自顶向下遍历树，选择其分离值在要查找值的任意一边的子指针。在节点内部典型的使用是二分查找来确定这个位置。</p><p><strong>插入</strong></p><ul><li>Perform a search to determine what bucket the new record should go into.</li><li>If the bucket is not full(a most b - 1 entries after the insertion，b 是节点中的元素个数，一般是页的整数倍),add tht record.</li><li><p>Otherwise,before inserting the new record</p><ul><li>split the bucket.<ul><li>original node has 「(L+1)/2」items</li><li>new node has 「(L+1)/2」items</li></ul></li><li>Move  「(L+1)/2」-th key to the parent,and insert the new node to the parent.</li><li>Repeat until a parent is found that need not split.</li></ul></li><li><p>If the root splits,treat it as if it has an empty parent ans split as outline above.</p></li></ul><p>B-trees grow as the root and not at the leaves.</p><p><strong>删除</strong></p><p>和插入类似，只不过是自下而上的合并操作。</p><h3 id="常见树介绍"><a href="#常见树介绍" class="headerlink" title="常见树介绍"></a>常见树介绍</h3><p><strong>AVL 树</strong></p><p>平衡二叉树，一般是用平衡因子差值决定并通过旋转来实现，左右子树树高差不超过1，那么和红黑树比较它是严格的平衡二叉树，平衡条件非常严格（树高差只有1），只要插入或删除不满足上面的条件就要通过旋转来保持平衡。由于旋转是非常耗费时间的。所以 AVL 树适用于插入/删除次数比较少，但查找多的场景。</p><p><strong>红黑树</strong></p><p>通过对从根节点到叶子节点路径上各个节点的颜色进行约束，确保没有一条路径会比其他路径长2倍，因而是近似平衡的。所以相对于严格要求平衡的AVL树来说，它的旋转保持平衡次数较少。适合，查找少，插入/删除次数多的场景。（现在部分场景使用跳表来替换红黑树，可搜索“为啥 redis 使用跳表(skiplist)而不是使用 red-black？”）</p><p><strong>B/B+ 树</strong></p><p>多路查找树，出度高，磁盘IO低，一般用于数据库系统中。</p><blockquote><p><strong>面试题2：B+ 树和 B 树的区别是什么？</strong></p></blockquote><h3 id="B-树与-B-树的比较"><a href="#B-树与-B-树的比较" class="headerlink" title="B + 树与 B 树的比较"></a>B + 树与 B 树的比较</h3><ul><li>B+ 树的内部节点并没有指向关键字具体信息的指针</li><li>B+ 树的叶子节点具有指向左右叶子节点的指针</li></ul><p>B+ 树的磁盘 IO 更低</p><p>B+ 树的内部节点并没有指向关键字具体信息的指针。因此其内部节点相对 B 树更小。</p><p>如果把所有同一内部结点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多。一次性读入内存中的需要查找的关键字也就越多。相对来说IO读写次数也就降低了。</p><p>B+ 树的范围查询、遍历效率高</p><p>B+ 树的叶子节点具有指向左右叶子节点的指针。因此其范围查询效率更高、遍历效率更高。</p><p>B+ 树的查询效率更加稳定</p><p>由于非叶子结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。所以任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当。</p><h3 id="B-树与红黑树的比较"><a href="#B-树与红黑树的比较" class="headerlink" title="B + 树与红黑树的比较"></a>B + 树与红黑树的比较</h3><p>红黑树等平衡树也可以用来实现索引，但是文件系统及数据库系统普遍采用 B+ Tree 作为索引结构，主要有以下两个原因：</p><p>（一）磁盘 IO 次数</p><p>B+ 树一个节点可以存储多个元素，相对于红黑树的树高更低，磁盘 IO 次数更少。</p><p>（二）磁盘预读特性</p><p>为了减少磁盘 I/O 操作，磁盘往往不是严格按需读取，而是每次都会预读。预读过程中，磁盘进行顺序读取，顺序读取不需要进行磁盘寻道。每次会读取页的整数倍。</p><p>操作系统一般将内存和磁盘分割成固定大小的块，每一块称为一页，内存与磁盘以页为单位交换数据。数据库系统将索引的一个节点的大小设置为页的大小，使得一次 I/O 就能完全载入一个节点。</p><h2 id="MySQL-索引"><a href="#MySQL-索引" class="headerlink" title="MySQL 索引"></a>MySQL 索引</h2><p>索引是在存储引擎层实现的，而不是在服务器层实现的，所以不同存储引擎具有不同的索引类型和实现。</p><h3 id="B-Tree-索引"><a href="#B-Tree-索引" class="headerlink" title="B+ Tree 索引"></a>B+ Tree 索引</h3><p>是大多数 MySQL 存储引擎的默认索引类型。</p><ul><li><p>因为不再需要进行全表扫描，只需要对树进行搜索即可，所以查找速度快很多。</p></li><li><p>因为 B+ Tree 的有序性，所以除了用于查找，还可以用于排序和分组。</p></li><li><p>可以指定多个列作为索引列，多个索引列共同组成键。</p></li><li><p>适用于全键值、键值范围和键前缀查找，其中键前缀查找只适用于最左前缀查找。如果不是按照索引列的顺序进行查找，则无法使用索引。</p></li></ul><p>InnoDB 的 B+Tree 索引分为主索引和辅助索引。主索引的叶子节点 data 域记录着完整的数据记录，这种索引方式被称为聚簇索引。因为无法把数据行存放在两个不同的地方，所以一个表只能有一个聚簇索引。</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122135400.png" alt></p><p>辅助索引的叶子节点的 data 域记录着主键的值，因此在使用辅助索引进行查找时，需要先查找到主键值，然后再到主索引中进行查找，这个过程也被称作回表。</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122135426.png" alt></p><blockquote><p><strong>面试题3：分页SQL后期查询比较慢是什么原因？怎么处理？</strong></p></blockquote><p>比如：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">type</span> = <span class="number">1</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">10</span></span><br></pre></td></tr></table></figure><p>这个没有问题，但是当进入分页后期就有问题了，比如下面这条sql：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">type</span> = <span class="number">1</span> <span class="keyword">limit</span> <span class="number">100000</span>,<span class="number">10</span></span><br></pre></td></tr></table></figure><p>首先你需要了解B+树的实现原理，当做数据量比较大的分页的时候：</p><ol><li>（根据索引）找到起始位置（叶子结点）</li><li><strong>沿着叶子结点向后遍历，过滤掉前面不在本次返回范围内的数据</strong></li><li>找到目标数据后返回</li></ol><p>从上述过程中可以看到，后期的主要耗时都在沿着叶子结点遍历上边，那么有没有什么方案可以省去这部分耗时呢？</p><p>有的，可以每次遍历结束后记录一下本页id最大值，然后在下一轮查询的时候，在where条件中加上这个id限制，这样可以保证每次查询速度都和第一页保持一致了。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">type</span> = <span class="number">1</span> <span class="keyword">and</span> <span class="keyword">id</span> &gt; max_id <span class="keyword">limit</span> <span class="number">100000</span>,<span class="number">10</span></span><br></pre></td></tr></table></figure><blockquote><p><strong>面试题4：什么是覆盖索引？</strong></p></blockquote><p>覆盖索引是要查询的数据列只从索引中就能够取得，不必回表查询主索引树。</p><p>要回答好这个问题，需要你了解上面介绍的B+树的实现原理，理解了原理回答起来就简单了。</p><h3 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h3><p>哈希索引能以 O(1) 时间进行查找，但是失去了有序性：</p><ul><li>无法用于排序与分组；</li><li>只支持精确查找，无法用于部分查找和范围查找。</li></ul><p>InnoDB 存储引擎有一个特殊的功能叫“自适应哈希索引”，当某个索引值被使用的非常频繁时，会在 B+Tree 索引之上再创建一个哈希索引，这样就让 B+Tree 索引具有哈希索引的一些优点，比如快速的哈希查找。</p><h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><p>MyISAM 存储引擎支持全文索引，用于查找文本中的关键词，而不是直接比较是否相等。</p><p>查找条件使用 MATCH AGAINST，而不是普通的 WHERE。</p><p>全文索引使用倒排索引实现，它记录着关键词到其所在文档的映射。</p><p>InnoDB 存储引擎在 MySQL 5.6.4 版本中也开始支持全文索引。</p><h3 id="空间数据索引"><a href="#空间数据索引" class="headerlink" title="空间数据索引"></a>空间数据索引</h3><p>MyISAM 存储引擎支持空间数据索引（R-Tree），可以用于地理数据存储。空间数据索引会从所有维度来索引数据，可以有效地使用任意维度来进行组合查询。</p><p>必须使用 GIS 相关的函数来维护数据。</p><h3 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h3><ul><li><p>大大减少了服务器需要扫描的数据行数。</p></li><li><p>帮助服务器避免进行排序和分组，以及避免创建临时表（B+Tree 索引是有序的，可以用于 ORDER BY 和 GROUP BY 操作。临时表主要是在排序和分组过程中创建，不需要排序和分组，也就不需要创建临时表）。</p></li><li><p>将随机 I/O 变为顺序 I/O（B+Tree 索引是有序的，会将相邻的数据都存储在一起）。</p></li></ul><h3 id="索引的使用条件"><a href="#索引的使用条件" class="headerlink" title="索引的使用条件"></a>索引的使用条件</h3><ul><li><p>对于非常小的表、大部分情况下简单的全表扫描比建立索引更高效；</p></li><li><p>对于中到大型的表，索引就非常有效；</p></li><li><p>但是对于特大型的表，建立和维护索引的代价将会随之增长。这种情况下，需要用到一种技术可以直接区分出需要查询的一组数据，而不是一条记录一条记录地匹配，例如可以使用分区技术。</p></li></ul><blockquote><p><strong>为什么对于非常小的表，大部分情况下简单的全表扫描比建立索引更高效？</strong></p></blockquote><p>如果一个表比较小，那么显然直接遍历表比走索引要快（因为需要回表）。</p><p>注：首先，要注意这个答案隐含的条件是查询的数据不是索引的构成部分，否也不需要回表操作。其次，查询条件也不是主键，否则可以直接从聚簇索引中拿到数据。</p><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这篇文章是《破壁》系列的第二篇文章，主要介绍了一下索引相关内容。</p><ul><li><a href="https://haxianhe.com/2021/01/09/CS-Technical-mysql/break-mysql-overview/">《破壁MySQL》 - MySQL概述</a></li><li><a href="https://haxianhe.com/2021/01/30/CS-Technical-mysql/break-mysql-index/">《破壁MySQL》 - MySQL索引</a></li></ul><p>文中首先从<strong>数据结构</strong>、<strong>操作</strong>、<strong>常见树的比较等</strong>角度介绍了 <strong>B+ 树相关的原理知识</strong>。</p><p>其次着重介绍了一下 <strong>InnoDB 的 B+ 索引的实现原理**</strong>。</p><hr><p>老规矩，文中出现的面试题如下：</p><ul><li>面试题1：说说你对 MySQL 索引的理解？/InnoDB引擎中的索引策略，了解过吗？</li><li>面试题2：B+ 树和 B 树的区别是什么？</li><li>面试题3：分页SQL后期查询比较慢是什么原因？怎么处理？</li><li>面试题4：什么是覆盖索引？</li></ul><p>上面所有面试题都是在文中出现过的，如果如果答不上来可以回到文中再看一下答案以及相应的知识点。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">官方文档</a></li><li><a href="https://juejin.cn/post/6850037271233331208" target="_blank" rel="noopener">MySQL 三万字精华总结</a></li><li><a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/MySQL.md#b-tree-%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">CS-Notes-MySQL</a></li></ul><hr><blockquote><p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p></blockquote><p><br><br><br></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p></blockquote><p>在上一篇文章 <a href="https://haxianhe.com/2021/01/09/CS-Technical-mysql/break-mysql-overview/" target="_blank" rel="noopener">「《破壁MySQL》 - MySQL概述」</a> 中我们简单介绍了MySQL 架构和 MySQL 存储引擎的相关知识，那么在这一篇文章中我们主要介绍的是 <strong>InnoDB存储引擎的索引实现原理</strong>，文章中在每介绍一部分知识点后都会给出<strong>知识点相对应的常见面试题以及答案</strong>，达到理论和实践相结合的效果。</p><blockquote><p><strong>面试题1：说说你对 MySQL 索引的理解？/InnoDB引擎中的索引策略，了解过吗？</strong></p></blockquote><h2 id="索引是什么"><a href="#索引是什么" class="headerlink" title="索引是什么"></a>索引是什么</h2><p>索引（Index）是帮助MySQL高效获取数据的数据结构，所以说<strong>索引的本质是：数据结构</strong>。</p><p><strong>索引的目的在于提高查询效率</strong>，可以类比字典、 火车站的车次表、图书的目录等</p><h2 id="B-Tree-原理"><a href="#B-Tree-原理" class="headerlink" title="B+ Tree 原理"></a>B+ Tree 原理</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>B Tree 指的是 Balance Tree，也就是平衡树，平衡树是一颗查找树，并且所有叶子节点位于同一层。</p><p><strong>B+ Tree 是 B 树的一种变形，它是基于 B Tree 和叶子节点顺序访问指针进行实现，通常用于数据库和操作系统的文件系统中。</strong> </p><p>B+ 树有两种类型的节点：<strong>内部节点</strong>（也称索引节点）和<strong>叶子节点。</strong></p><p>内部节点就是非叶子节点，内部节点不存储数据，只存储索引，数据都存在叶子节点。</p><p>内部节点中的 key 都按照从小到大的顺序排列，对于内部节点中的一个 key，左子树中的所有 key 都小于它，右子树中的 key 都大于等于它，叶子节点的记录也是按照从小到大排列的。</p><p>每个叶子节点都存有相邻叶子节点的指针。</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122135258.png" alt></p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p><strong>查找</strong></p><p>查找以典型的方式进行，类似于二叉查找树。起始于根节点，自顶向下遍历树，选择其分离值在要查找值的任意一边的子指针。在节点内部典型的使用是二分查找来确定这个位置。</p><p><strong>插入</strong></p><ul><li>Perform a search to determine what bucket the new record should go into.</li><li>If the bucket is not full(a most b - 1 entries after the insertion，b 是节点中的元素个数，一般是页的整数倍),add tht record.</li><li><p>Otherwise,before inserting the new record</p><ul><li>split the bucket.<ul><li>original node has 「(L+1)/2」items</li><li>new node has 「(L+1)/2」items</li></ul></li><li>Move  「(L+1)/2」-th key to the parent,and insert the new node to the parent.</li><li>Repeat until a parent is found that need not split.</li></ul></li><li><p>If the root splits,treat it as if it has an empty parent ans split as outline above.</p></li></ul><p>B-trees grow as the root and not at the leaves.</p><p><strong>删除</strong></p><p>和插入类似，只不过是自下而上的合并操作。</p><h3 id="常见树介绍"><a href="#常见树介绍" class="headerlink" title="常见树介绍"></a>常见树介绍</h3><p><strong>AVL 树</strong></p><p>平衡二叉树，一般是用平衡因子差值决定并通过旋转来实现，左右子树树高差不超过1，那么和红黑树比较它是严格的平衡二叉树，平衡条件非常严格（树高差只有1），只要插入或删除不满足上面的条件就要通过旋转来保持平衡。由于旋转是非常耗费时间的。所以 AVL 树适用于插入/删除次数比较少，但查找多的场景。</p><p><strong>红黑树</strong></p><p>通过对从根节点到叶子节点路径上各个节点的颜色进行约束，确保没有一条路径会比其他路径长2倍，因而是近似平衡的。所以相对于严格要求平衡的AVL树来说，它的旋转保持平衡次数较少。适合，查找少，插入/删除次数多的场景。（现在部分场景使用跳表来替换红黑树，可搜索“为啥 redis 使用跳表(skiplist)而不是使用 red-black？”）</p><p><strong>B/B+ 树</strong></p><p>多路查找树，出度高，磁盘IO低，一般用于数据库系统中。</p><blockquote><p><strong>面试题2：B+ 树和 B 树的区别是什么？</strong></p></blockquote><h3 id="B-树与-B-树的比较"><a href="#B-树与-B-树的比较" class="headerlink" title="B + 树与 B 树的比较"></a>B + 树与 B 树的比较</h3><ul><li>B+ 树的内部节点并没有指向关键字具体信息的指针</li><li>B+ 树的叶子节点具有指向左右叶子节点的指针</li></ul><p>B+ 树的磁盘 IO 更低</p><p>B+ 树的内部节点并没有指向关键字具体信息的指针。因此其内部节点相对 B 树更小。</p><p>如果把所有同一内部结点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多。一次性读入内存中的需要查找的关键字也就越多。相对来说IO读写次数也就降低了。</p><p>B+ 树的范围查询、遍历效率高</p><p>B+ 树的叶子节点具有指向左右叶子节点的指针。因此其范围查询效率更高、遍历效率更高。</p><p>B+ 树的查询效率更加稳定</p><p>由于非叶子结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。所以任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当。</p><h3 id="B-树与红黑树的比较"><a href="#B-树与红黑树的比较" class="headerlink" title="B + 树与红黑树的比较"></a>B + 树与红黑树的比较</h3><p>红黑树等平衡树也可以用来实现索引，但是文件系统及数据库系统普遍采用 B+ Tree 作为索引结构，主要有以下两个原因：</p><p>（一）磁盘 IO 次数</p><p>B+ 树一个节点可以存储多个元素，相对于红黑树的树高更低，磁盘 IO 次数更少。</p><p>（二）磁盘预读特性</p><p>为了减少磁盘 I/O 操作，磁盘往往不是严格按需读取，而是每次都会预读。预读过程中，磁盘进行顺序读取，顺序读取不需要进行磁盘寻道。每次会读取页的整数倍。</p><p>操作系统一般将内存和磁盘分割成固定大小的块，每一块称为一页，内存与磁盘以页为单位交换数据。数据库系统将索引的一个节点的大小设置为页的大小，使得一次 I/O 就能完全载入一个节点。</p><h2 id="MySQL-索引"><a href="#MySQL-索引" class="headerlink" title="MySQL 索引"></a>MySQL 索引</h2><p>索引是在存储引擎层实现的，而不是在服务器层实现的，所以不同存储引擎具有不同的索引类型和实现。</p><h3 id="B-Tree-索引"><a href="#B-Tree-索引" class="headerlink" title="B+ Tree 索引"></a>B+ Tree 索引</h3><p>是大多数 MySQL 存储引擎的默认索引类型。</p><ul><li><p>因为不再需要进行全表扫描，只需要对树进行搜索即可，所以查找速度快很多。</p></li><li><p>因为 B+ Tree 的有序性，所以除了用于查找，还可以用于排序和分组。</p></li><li><p>可以指定多个列作为索引列，多个索引列共同组成键。</p></li><li><p>适用于全键值、键值范围和键前缀查找，其中键前缀查找只适用于最左前缀查找。如果不是按照索引列的顺序进行查找，则无法使用索引。</p></li></ul><p>InnoDB 的 B+Tree 索引分为主索引和辅助索引。主索引的叶子节点 data 域记录着完整的数据记录，这种索引方式被称为聚簇索引。因为无法把数据行存放在两个不同的地方，所以一个表只能有一个聚簇索引。</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122135400.png" alt></p><p>辅助索引的叶子节点的 data 域记录着主键的值，因此在使用辅助索引进行查找时，需要先查找到主键值，然后再到主索引中进行查找，这个过程也被称作回表。</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20201122135426.png" alt></p><blockquote><p><strong>面试题3：分页SQL后期查询比较慢是什么原因？怎么处理？</strong></p></blockquote><p>比如：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">type</span> = <span class="number">1</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">10</span></span><br></pre></td></tr></table></figure><p>这个没有问题，但是当进入分页后期就有问题了，比如下面这条sql：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">type</span> = <span class="number">1</span> <span class="keyword">limit</span> <span class="number">100000</span>,<span class="number">10</span></span><br></pre></td></tr></table></figure><p>首先你需要了解B+树的实现原理，当做数据量比较大的分页的时候：</p><ol><li>（根据索引）找到起始位置（叶子结点）</li><li><strong>沿着叶子结点向后遍历，过滤掉前面不在本次返回范围内的数据</strong></li><li>找到目标数据后返回</li></ol><p>从上述过程中可以看到，后期的主要耗时都在沿着叶子结点遍历上边，那么有没有什么方案可以省去这部分耗时呢？</p><p>有的，可以每次遍历结束后记录一下本页id最大值，然后在下一轮查询的时候，在where条件中加上这个id限制，这样可以保证每次查询速度都和第一页保持一致了。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">type</span> = <span class="number">1</span> <span class="keyword">and</span> <span class="keyword">id</span> &gt; max_id <span class="keyword">limit</span> <span class="number">100000</span>,<span class="number">10</span></span><br></pre></td></tr></table></figure><blockquote><p><strong>面试题4：什么是覆盖索引？</strong></p></blockquote><p>覆盖索引是要查询的数据列只从索引中就能够取得，不必回表查询主索引树。</p><p>要回答好这个问题，需要你了解上面介绍的B+树的实现原理，理解了原理回答起来就简单了。</p><h3 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h3><p>哈希索引能以 O(1) 时间进行查找，但是失去了有序性：</p><ul><li>无法用于排序与分组；</li><li>只支持精确查找，无法用于部分查找和范围查找。</li></ul><p>InnoDB 存储引擎有一个特殊的功能叫“自适应哈希索引”，当某个索引值被使用的非常频繁时，会在 B+Tree 索引之上再创建一个哈希索引，这样就让 B+Tree 索引具有哈希索引的一些优点，比如快速的哈希查找。</p><h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><p>MyISAM 存储引擎支持全文索引，用于查找文本中的关键词，而不是直接比较是否相等。</p><p>查找条件使用 MATCH AGAINST，而不是普通的 WHERE。</p><p>全文索引使用倒排索引实现，它记录着关键词到其所在文档的映射。</p><p>InnoDB 存储引擎在 MySQL 5.6.4 版本中也开始支持全文索引。</p><h3 id="空间数据索引"><a href="#空间数据索引" class="headerlink" title="空间数据索引"></a>空间数据索引</h3><p>MyISAM 存储引擎支持空间数据索引（R-Tree），可以用于地理数据存储。空间数据索引会从所有维度来索引数据，可以有效地使用任意维度来进行组合查询。</p><p>必须使用 GIS 相关的函数来维护数据。</p><h3 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h3><ul><li><p>大大减少了服务器需要扫描的数据行数。</p></li><li><p>帮助服务器避免进行排序和分组，以及避免创建临时表（B+Tree 索引是有序的，可以用于 ORDER BY 和 GROUP BY 操作。临时表主要是在排序和分组过程中创建，不需要排序和分组，也就不需要创建临时表）。</p></li><li><p>将随机 I/O 变为顺序 I/O（B+Tree 索引是有序的，会将相邻的数据都存储在一起）。</p></li></ul><h3 id="索引的使用条件"><a href="#索引的使用条件" class="headerlink" title="索引的使用条件"></a>索引的使用条件</h3><ul><li><p>对于非常小的表、大部分情况下简单的全表扫描比建立索引更高效；</p></li><li><p>对于中到大型的表，索引就非常有效；</p></li><li><p>但是对于特大型的表，建立和维护索引的代价将会随之增长。这种情况下，需要用到一种技术可以直接区分出需要查询的一组数据，而不是一条记录一条记录地匹配，例如可以使用分区技术。</p></li></ul><blockquote><p><strong>为什么对于非常小的表，大部分情况下简单的全表扫描比建立索引更高效？</strong></p></blockquote><p>如果一个表比较小，那么显然直接遍历表比走索引要快（因为需要回表）。</p><p>注：首先，要注意这个答案隐含的条件是查询的数据不是索引的构成部分，否也不需要回表操作。其次，查询条件也不是主键，否则可以直接从聚簇索引中拿到数据。</p><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这篇文章是《破壁》系列的第二篇文章，主要介绍了一下索引相关内容。</p><ul><li><a href="https://haxianhe.com/2021/01/09/CS-Technical-mysql/break-mysql-overview/" target="_blank" rel="noopener">《破壁MySQL》 - MySQL概述</a></li><li><a href="https://haxianhe.com/2021/01/30/CS-Technical-mysql/break-mysql-index/" target="_blank" rel="noopener">《破壁MySQL》 - MySQL索引</a></li></ul><p>文中首先从<strong>数据结构</strong>、<strong>操作</strong>、<strong>常见树的比较等</strong>角度介绍了 <strong>B+ 树相关的原理知识</strong>。</p><p>其次着重介绍了一下 <strong>InnoDB 的 B+ 索引的实现原理**</strong>。</p><hr><p>老规矩，文中出现的面试题如下：</p><ul><li>面试题1：说说你对 MySQL 索引的理解？/InnoDB引擎中的索引策略，了解过吗？</li><li>面试题2：B+ 树和 B 树的区别是什么？</li><li>面试题3：分页SQL后期查询比较慢是什么原因？怎么处理？</li><li>面试题4：什么是覆盖索引？</li></ul><p>上面所有面试题都是在文中出现过的，如果如果答不上来可以回到文中再看一下答案以及相应的知识点。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">官方文档</a></li><li><a href="https://juejin.cn/post/6850037271233331208" target="_blank" rel="noopener">MySQL 三万字精华总结</a></li><li><a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/MySQL.md#b-tree-%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">CS-Notes-MySQL</a></li></ul><hr><blockquote><p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p></blockquote><p><br><br><br></p>]]></content>
     
     
       
@@ -205,23 +205,23 @@
     
     
     
-    <category term="CS-Middleware" scheme="https://haxianhe.com/categories/CS-Middleware/"/>
+    <category term="CS-Middleware" scheme="https://blog.haxianhe.com/categories/CS-Middleware/"/>
     
     
-    <category term="mysql" scheme="https://haxianhe.com/tags/mysql/"/>
+    <category term="mysql" scheme="https://blog.haxianhe.com/tags/mysql/"/>
     
-    <category term="《破壁MySQL》" scheme="https://haxianhe.com/tags/《破壁MySQL》/"/>
+    <category term="《破壁MySQL》" scheme="https://blog.haxianhe.com/tags/《破壁MySQL》/"/>
     
   </entry>
   
   <entry>
     <title>破壁MySQL - 概述</title>
-    <link href="https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-01/"/>
-    <id>https://haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-01/</id>
+    <link href="https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-01/"/>
+    <id>https://blog.haxianhe.com/2021/09/25/CS-Middleware-Mysql/break-mysql-01/</id>
     <published>2021-09-24T17:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.767Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p></blockquote><p>在正式开始总结MySQL之前，先给大家介绍一下“破壁”是什么意思，很久之前我老大曾说过一句 <strong>“互联网本来没有什么行业壁垒，但是通过制造一些专业名词，人为的制造了很多行业壁垒出来”</strong>，我深以为然。  </p><p><strong>计算机的本质是0和1</strong>，之后通过层层封装、抽象构建出了我们今天看到的互联网世界。    </p><p>我不否认计算机中难度很高的知识，但是就我目前接触到的知识来说还没有到那种程度，我想这种可以称之为行业壁垒的核心知识占总知识量的0.01%都不到，绝大多数人一生都不会遇到这些问题。</p><p>那么剩下的就是这一个一个人为制造的、可以通过花时间掌握的“行业壁垒”。</p><p><strong>破壁的意思就是打破这些人为制造的“行业壁垒”</strong>，让我们技术人员人人如龙。</p><hr><p><strong>破壁系列的第一个专题我选择了互联网的数据存储基石 - MySQL。</strong></p><p>这个专题将会总结事务、索引、SQL性能优化、分库分表、主从复制等MySQL核心内容。详情参见下面的思维导图：</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109170855.png" alt></p><h2 id="MySQL-是什么"><a href="#MySQL-是什么" class="headerlink" title="MySQL 是什么"></a>MySQL 是什么</h2><p>MySQL 是一个免费、开源的关系型数据库管理软件，在互联网行业被广泛使用。</p><h2 id="MySQL-架构"><a href="#MySQL-架构" class="headerlink" title="MySQL 架构"></a>MySQL 架构</h2><p>MySQL中插件式存储引擎架构一直是其非常有特色的亮点，其灵活的处理方式，高度可定制化及完全开放的实现一直被很多高级用户所肯定，下图是官方文档中的一张架构图：</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109212031.png" alt></p><ul><li><p>连接层：<strong>这一层主要是提供授权认证、连接处理等功能。</strong> </p><ul><li>在该层上引入了线程池的概念，为通过安全认证的客户端请求提供线程。</li><li>在该层上也可以实现基于SSL的安全链接。</li><li>该层会为通过授权认证的客户端请求分配相应的权限。</li></ul></li><li><p>服务层：这一层实现了很多核心功能，像<strong>查询解析、分析、优化、缓存、以及内置函数</strong>的实现等，所有跨存储引擎的功能也都在这一层实现，像<strong>触发器、存储过程、视图</strong>等。</p></li><li><p>引擎层：存储引擎负责的是MySQL中数据的存储和提取，服务器通过API与存储引擎进行通信。MySQL中插件式存储引擎架构的特点，使得我们可以根据自己的实际需要进行存储引擎的选取。</p></li><li><p>存储层：将数据存储在文件系统上。</p></li></ul><p><strong>常见面试题：</strong></p><blockquote><p>MySQL 的查询流程具体是？or 一条 SQL 语句在 MySQL 中如何执行的？<br>介绍一下 MySQL 的架构</p></blockquote><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109220048.png" alt></p><ol><li>客户发起请求。</li><li>在连接层进行权限校验、线程分配。</li><li>查询缓存（存在缓存则直接返回，不存在则执行后续操作）</li><li>分析器（对SQL进行词法分析和语法分析操作）</li><li>优化器（主要对执行的sql优化选择最优的执行方案方法）</li><li>执行器（执行时会先看用户是否有执行权限，有才去使用这个引擎提供的接口）</li><li>去引擎层获取数据返回（如果开启查询缓存则会缓存查询结果）</li></ol><h2 id="MySQL-存储引擎"><a href="#MySQL-存储引擎" class="headerlink" title="MySQL 存储引擎"></a>MySQL 存储引擎</h2><p>MySQL中采用的是插件式存储引擎架构，可以根据需要选择不同的存储引擎。</p><p>现在互联网普遍使用的都是 InnoDB 存储引擎，常见的面试题是 InnoDB 存储引擎和 MyISAM 存储的对比，比如像下面这样问：</p><blockquote><p>Innodb 和 MyISAM 的区别是什么?</p></blockquote><p>可以从如下的角度进行回答：</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109220751.png" alt></p><ul><li>事务：InnoDB 支持事务，MyISAM 不支持事务</li><li>锁：InnoDB 支持行级锁，MyISAM 只支持表级锁</li><li>外键：InnoDB 支持外键</li><li>InnoDB 支持在线热备份</li><li>MyISAM 支持空间索引</li></ul><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>MySQL 是现在互联网大小厂主流使用的关系型数据库管理软件，平时工作中也是围绕着它进行开发，所以几乎是面试必考题。</p><p>这篇文章是《破壁》系列，第一个专题的第一篇文章，下面是本系列的其他文章，欢迎阅读～</p><ul><li><a href="https://haxianhe.com/2021/01/09/CS-Technical-mysql/break-mysql-overview/">《破壁MySQL》 - MySQL概述</a></li><li><a href="https://haxianhe.com/2021/01/30/CS-Technical-mysql/break-mysql-index/">《破壁MySQL》 - MySQL索引</a></li></ul><p>文章中首先介绍了一下我接下来要写的内容（第一个专题 MySQL），其次是从技术原理和面试题两个角度介绍了 MySQL 架构和 MySQL 存储引擎。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">官方文档</a></li><li><a href="https://juejin.cn/post/6850037271233331208" target="_blank" rel="noopener">MySQL 三万字精华总结</a></li></ul><hr><blockquote><p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p></blockquote><p><br><br><br></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p></blockquote><p>在正式开始总结MySQL之前，先给大家介绍一下“破壁”是什么意思，很久之前我老大曾说过一句 <strong>“互联网本来没有什么行业壁垒，但是通过制造一些专业名词，人为的制造了很多行业壁垒出来”</strong>，我深以为然。  </p><p><strong>计算机的本质是0和1</strong>，之后通过层层封装、抽象构建出了我们今天看到的互联网世界。    </p><p>我不否认计算机中难度很高的知识，但是就我目前接触到的知识来说还没有到那种程度，我想这种可以称之为行业壁垒的核心知识占总知识量的0.01%都不到，绝大多数人一生都不会遇到这些问题。</p><p>那么剩下的就是这一个一个人为制造的、可以通过花时间掌握的“行业壁垒”。</p><p><strong>破壁的意思就是打破这些人为制造的“行业壁垒”</strong>，让我们技术人员人人如龙。</p><hr><p><strong>破壁系列的第一个专题我选择了互联网的数据存储基石 - MySQL。</strong></p><p>这个专题将会总结事务、索引、SQL性能优化、分库分表、主从复制等MySQL核心内容。详情参见下面的思维导图：</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109170855.png" alt></p><h2 id="MySQL-是什么"><a href="#MySQL-是什么" class="headerlink" title="MySQL 是什么"></a>MySQL 是什么</h2><p>MySQL 是一个免费、开源的关系型数据库管理软件，在互联网行业被广泛使用。</p><h2 id="MySQL-架构"><a href="#MySQL-架构" class="headerlink" title="MySQL 架构"></a>MySQL 架构</h2><p>MySQL中插件式存储引擎架构一直是其非常有特色的亮点，其灵活的处理方式，高度可定制化及完全开放的实现一直被很多高级用户所肯定，下图是官方文档中的一张架构图：</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109212031.png" alt></p><ul><li><p>连接层：<strong>这一层主要是提供授权认证、连接处理等功能。</strong> </p><ul><li>在该层上引入了线程池的概念，为通过安全认证的客户端请求提供线程。</li><li>在该层上也可以实现基于SSL的安全链接。</li><li>该层会为通过授权认证的客户端请求分配相应的权限。</li></ul></li><li><p>服务层：这一层实现了很多核心功能，像<strong>查询解析、分析、优化、缓存、以及内置函数</strong>的实现等，所有跨存储引擎的功能也都在这一层实现，像<strong>触发器、存储过程、视图</strong>等。</p></li><li><p>引擎层：存储引擎负责的是MySQL中数据的存储和提取，服务器通过API与存储引擎进行通信。MySQL中插件式存储引擎架构的特点，使得我们可以根据自己的实际需要进行存储引擎的选取。</p></li><li><p>存储层：将数据存储在文件系统上。</p></li></ul><p><strong>常见面试题：</strong></p><blockquote><p>MySQL 的查询流程具体是？or 一条 SQL 语句在 MySQL 中如何执行的？<br>介绍一下 MySQL 的架构</p></blockquote><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109220048.png" alt></p><ol><li>客户发起请求。</li><li>在连接层进行权限校验、线程分配。</li><li>查询缓存（存在缓存则直接返回，不存在则执行后续操作）</li><li>分析器（对SQL进行词法分析和语法分析操作）</li><li>优化器（主要对执行的sql优化选择最优的执行方案方法）</li><li>执行器（执行时会先看用户是否有执行权限，有才去使用这个引擎提供的接口）</li><li>去引擎层获取数据返回（如果开启查询缓存则会缓存查询结果）</li></ol><h2 id="MySQL-存储引擎"><a href="#MySQL-存储引擎" class="headerlink" title="MySQL 存储引擎"></a>MySQL 存储引擎</h2><p>MySQL中采用的是插件式存储引擎架构，可以根据需要选择不同的存储引擎。</p><p>现在互联网普遍使用的都是 InnoDB 存储引擎，常见的面试题是 InnoDB 存储引擎和 MyISAM 存储的对比，比如像下面这样问：</p><blockquote><p>Innodb 和 MyISAM 的区别是什么?</p></blockquote><p>可以从如下的角度进行回答：</p><p><img src="https://gitee.com/haxianhe/image/raw/master/image/20210109220751.png" alt></p><ul><li>事务：InnoDB 支持事务，MyISAM 不支持事务</li><li>锁：InnoDB 支持行级锁，MyISAM 只支持表级锁</li><li>外键：InnoDB 支持外键</li><li>InnoDB 支持在线热备份</li><li>MyISAM 支持空间索引</li></ul><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>MySQL 是现在互联网大小厂主流使用的关系型数据库管理软件，平时工作中也是围绕着它进行开发，所以几乎是面试必考题。</p><p>这篇文章是《破壁》系列，第一个专题的第一篇文章，下面是本系列的其他文章，欢迎阅读～</p><ul><li><a href="https://haxianhe.com/2021/01/09/CS-Technical-mysql/break-mysql-overview/" target="_blank" rel="noopener">《破壁MySQL》 - MySQL概述</a></li><li><a href="https://haxianhe.com/2021/01/30/CS-Technical-mysql/break-mysql-index/" target="_blank" rel="noopener">《破壁MySQL》 - MySQL索引</a></li></ul><p>文章中首先介绍了一下我接下来要写的内容（第一个专题 MySQL），其次是从技术原理和面试题两个角度介绍了 MySQL 架构和 MySQL 存储引擎。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">官方文档</a></li><li><a href="https://juejin.cn/post/6850037271233331208" target="_blank" rel="noopener">MySQL 三万字精华总结</a></li></ul><hr><blockquote><p>文章每周六持续更新，可以微信搜一搜「 荒古传说 」抢先阅读。</p></blockquote><p><br><br><br></p>]]></content>
     
     
       
@@ -234,19 +234,19 @@
     
     
     
-    <category term="CS-Middleware" scheme="https://haxianhe.com/categories/CS-Middleware/"/>
+    <category term="CS-Middleware" scheme="https://blog.haxianhe.com/categories/CS-Middleware/"/>
     
     
-    <category term="mysql" scheme="https://haxianhe.com/tags/mysql/"/>
+    <category term="mysql" scheme="https://blog.haxianhe.com/tags/mysql/"/>
     
-    <category term="《破壁MySQL》" scheme="https://haxianhe.com/tags/《破壁MySQL》/"/>
+    <category term="《破壁MySQL》" scheme="https://blog.haxianhe.com/tags/《破壁MySQL》/"/>
     
   </entry>
   
   <entry>
     <title>破壁Java - Maven</title>
-    <link href="https://haxianhe.com/2021/09/24/CS-Language-Java/break-java-11/"/>
-    <id>https://haxianhe.com/2021/09/24/CS-Language-Java/break-java-11/</id>
+    <link href="https://blog.haxianhe.com/2021/09/24/CS-Language-Java/break-java-11/"/>
+    <id>https://blog.haxianhe.com/2021/09/24/CS-Language-Java/break-java-11/</id>
     <published>2021-09-23T16:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.764Z</updated>
     
@@ -261,19 +261,19 @@
     
     
     
-    <category term="CS-Language" scheme="https://haxianhe.com/categories/CS-Language/"/>
+    <category term="CS-Language" scheme="https://blog.haxianhe.com/categories/CS-Language/"/>
     
     
-    <category term="java" scheme="https://haxianhe.com/tags/java/"/>
+    <category term="java" scheme="https://blog.haxianhe.com/tags/java/"/>
     
-    <category term="《破壁 Java》" scheme="https://haxianhe.com/tags/《破壁-Java》/"/>
+    <category term="《破壁 Java》" scheme="https://blog.haxianhe.com/tags/《破壁-Java》/"/>
     
   </entry>
   
   <entry>
     <title>一个死锁的case</title>
-    <link href="https://haxianhe.com/2021/09/16/CS-Middleware-Mysql/%E4%B8%80%E4%B8%AA%E6%AD%BB%E9%94%81%E7%9A%84case/"/>
-    <id>https://haxianhe.com/2021/09/16/CS-Middleware-Mysql/%E4%B8%80%E4%B8%AA%E6%AD%BB%E9%94%81%E7%9A%84case/</id>
+    <link href="https://blog.haxianhe.com/2021/09/16/CS-Middleware-Mysql/%E4%B8%80%E4%B8%AA%E6%AD%BB%E9%94%81%E7%9A%84case/"/>
+    <id>https://blog.haxianhe.com/2021/09/16/CS-Middleware-Mysql/%E4%B8%80%E4%B8%AA%E6%AD%BB%E9%94%81%E7%9A%84case/</id>
     <published>2021-09-16T04:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.769Z</updated>
     
@@ -287,17 +287,17 @@
     
     
     
-    <category term="CS-Middleware" scheme="https://haxianhe.com/categories/CS-Middleware/"/>
+    <category term="CS-Middleware" scheme="https://blog.haxianhe.com/categories/CS-Middleware/"/>
     
     
-    <category term="mysql" scheme="https://haxianhe.com/tags/mysql/"/>
+    <category term="mysql" scheme="https://blog.haxianhe.com/tags/mysql/"/>
     
   </entry>
   
   <entry>
     <title>破壁Java - 函数式编程</title>
-    <link href="https://haxianhe.com/2021/09/16/CS-Language-Java/break-java-10/"/>
-    <id>https://haxianhe.com/2021/09/16/CS-Language-Java/break-java-10/</id>
+    <link href="https://blog.haxianhe.com/2021/09/16/CS-Language-Java/break-java-10/"/>
+    <id>https://blog.haxianhe.com/2021/09/16/CS-Language-Java/break-java-10/</id>
     <published>2021-09-15T16:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.763Z</updated>
     
@@ -312,19 +312,19 @@
     
     
     
-    <category term="CS-Language" scheme="https://haxianhe.com/categories/CS-Language/"/>
+    <category term="CS-Language" scheme="https://blog.haxianhe.com/categories/CS-Language/"/>
     
     
-    <category term="java" scheme="https://haxianhe.com/tags/java/"/>
+    <category term="java" scheme="https://blog.haxianhe.com/tags/java/"/>
     
-    <category term="《破壁 Java》" scheme="https://haxianhe.com/tags/《破壁-Java》/"/>
+    <category term="《破壁 Java》" scheme="https://blog.haxianhe.com/tags/《破壁-Java》/"/>
     
   </entry>
   
   <entry>
     <title>破壁Java - 单元测试</title>
-    <link href="https://haxianhe.com/2021/09/15/CS-Language-Java/break-java-09/"/>
-    <id>https://haxianhe.com/2021/09/15/CS-Language-Java/break-java-09/</id>
+    <link href="https://blog.haxianhe.com/2021/09/15/CS-Language-Java/break-java-09/"/>
+    <id>https://blog.haxianhe.com/2021/09/15/CS-Language-Java/break-java-09/</id>
     <published>2021-09-14T16:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.763Z</updated>
     
@@ -338,19 +338,19 @@
     
     
     
-    <category term="CS-Language" scheme="https://haxianhe.com/categories/CS-Language/"/>
+    <category term="CS-Language" scheme="https://blog.haxianhe.com/categories/CS-Language/"/>
     
     
-    <category term="java" scheme="https://haxianhe.com/tags/java/"/>
+    <category term="java" scheme="https://blog.haxianhe.com/tags/java/"/>
     
-    <category term="《破壁 Java》" scheme="https://haxianhe.com/tags/《破壁-Java》/"/>
+    <category term="《破壁 Java》" scheme="https://blog.haxianhe.com/tags/《破壁-Java》/"/>
     
   </entry>
   
   <entry>
     <title>破壁Java - IO</title>
-    <link href="https://haxianhe.com/2021/09/14/CS-Language-Java/break-java-08/"/>
-    <id>https://haxianhe.com/2021/09/14/CS-Language-Java/break-java-08/</id>
+    <link href="https://blog.haxianhe.com/2021/09/14/CS-Language-Java/break-java-08/"/>
+    <id>https://blog.haxianhe.com/2021/09/14/CS-Language-Java/break-java-08/</id>
     <published>2021-09-13T16:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.762Z</updated>
     
@@ -367,19 +367,19 @@
     
     
     
-    <category term="CS-Language" scheme="https://haxianhe.com/categories/CS-Language/"/>
+    <category term="CS-Language" scheme="https://blog.haxianhe.com/categories/CS-Language/"/>
     
     
-    <category term="java" scheme="https://haxianhe.com/tags/java/"/>
+    <category term="java" scheme="https://blog.haxianhe.com/tags/java/"/>
     
-    <category term="《破壁 Java》" scheme="https://haxianhe.com/tags/《破壁-Java》/"/>
+    <category term="《破壁 Java》" scheme="https://blog.haxianhe.com/tags/《破壁-Java》/"/>
     
   </entry>
   
   <entry>
     <title>破壁Java - 集合</title>
-    <link href="https://haxianhe.com/2021/09/12/CS-Language-Java/break-java-07/"/>
-    <id>https://haxianhe.com/2021/09/12/CS-Language-Java/break-java-07/</id>
+    <link href="https://blog.haxianhe.com/2021/09/12/CS-Language-Java/break-java-07/"/>
+    <id>https://blog.haxianhe.com/2021/09/12/CS-Language-Java/break-java-07/</id>
     <published>2021-09-11T16:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.762Z</updated>
     
@@ -395,19 +395,19 @@
     
     
     
-    <category term="CS-Language" scheme="https://haxianhe.com/categories/CS-Language/"/>
+    <category term="CS-Language" scheme="https://blog.haxianhe.com/categories/CS-Language/"/>
     
     
-    <category term="java" scheme="https://haxianhe.com/tags/java/"/>
+    <category term="java" scheme="https://blog.haxianhe.com/tags/java/"/>
     
-    <category term="《破壁 Java》" scheme="https://haxianhe.com/tags/《破壁-Java》/"/>
+    <category term="《破壁 Java》" scheme="https://blog.haxianhe.com/tags/《破壁-Java》/"/>
     
   </entry>
   
   <entry>
     <title>破壁Java - 泛型</title>
-    <link href="https://haxianhe.com/2021/09/11/CS-Language-Java/break-java-06/"/>
-    <id>https://haxianhe.com/2021/09/11/CS-Language-Java/break-java-06/</id>
+    <link href="https://blog.haxianhe.com/2021/09/11/CS-Language-Java/break-java-06/"/>
+    <id>https://blog.haxianhe.com/2021/09/11/CS-Language-Java/break-java-06/</id>
     <published>2021-09-10T16:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.762Z</updated>
     
@@ -422,19 +422,19 @@
     
     
     
-    <category term="CS-Language" scheme="https://haxianhe.com/categories/CS-Language/"/>
+    <category term="CS-Language" scheme="https://blog.haxianhe.com/categories/CS-Language/"/>
     
     
-    <category term="java" scheme="https://haxianhe.com/tags/java/"/>
+    <category term="java" scheme="https://blog.haxianhe.com/tags/java/"/>
     
-    <category term="《破壁 Java》" scheme="https://haxianhe.com/tags/《破壁-Java》/"/>
+    <category term="《破壁 Java》" scheme="https://blog.haxianhe.com/tags/《破壁-Java》/"/>
     
   </entry>
   
   <entry>
     <title>以史为鉴 - 读《原则》</title>
-    <link href="https://haxianhe.com/2021/09/08/Book-Notes-Self/%E5%8E%9F%E5%88%99/"/>
-    <id>https://haxianhe.com/2021/09/08/Book-Notes-Self/%E5%8E%9F%E5%88%99/</id>
+    <link href="https://blog.haxianhe.com/2021/09/08/Book-Notes-Self/%E5%8E%9F%E5%88%99/"/>
+    <id>https://blog.haxianhe.com/2021/09/08/Book-Notes-Self/%E5%8E%9F%E5%88%99/</id>
     <published>2021-09-08T04:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.756Z</updated>
     
@@ -450,17 +450,17 @@
     
     
     
-    <category term="Book-Notes" scheme="https://haxianhe.com/categories/Book-Notes/"/>
+    <category term="Book-Notes" scheme="https://blog.haxianhe.com/categories/Book-Notes/"/>
     
     
-    <category term="自我管理" scheme="https://haxianhe.com/tags/自我管理/"/>
+    <category term="自我管理" scheme="https://blog.haxianhe.com/tags/自我管理/"/>
     
   </entry>
   
   <entry>
     <title>人性本善-读《非暴力沟通》</title>
-    <link href="https://haxianhe.com/2021/09/08/Book-Notes-Psycholog/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/"/>
-    <id>https://haxianhe.com/2021/09/08/Book-Notes-Psycholog/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/</id>
+    <link href="https://blog.haxianhe.com/2021/09/08/Book-Notes-Psycholog/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/"/>
+    <id>https://blog.haxianhe.com/2021/09/08/Book-Notes-Psycholog/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/</id>
     <published>2021-09-07T16:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.756Z</updated>
     
@@ -475,17 +475,17 @@
     
     
     
-    <category term="Book-Notes" scheme="https://haxianhe.com/categories/Book-Notes/"/>
+    <category term="Book-Notes" scheme="https://blog.haxianhe.com/categories/Book-Notes/"/>
     
     
-    <category term="心理学" scheme="https://haxianhe.com/tags/心理学/"/>
+    <category term="心理学" scheme="https://blog.haxianhe.com/tags/心理学/"/>
     
   </entry>
   
   <entry>
     <title>破壁Java - 注解</title>
-    <link href="https://haxianhe.com/2021/09/06/CS-Language-Java/break-java-05/"/>
-    <id>https://haxianhe.com/2021/09/06/CS-Language-Java/break-java-05/</id>
+    <link href="https://blog.haxianhe.com/2021/09/06/CS-Language-Java/break-java-05/"/>
+    <id>https://blog.haxianhe.com/2021/09/06/CS-Language-Java/break-java-05/</id>
     <published>2021-09-05T16:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.761Z</updated>
     
@@ -500,19 +500,19 @@
     
     
     
-    <category term="CS-Language" scheme="https://haxianhe.com/categories/CS-Language/"/>
+    <category term="CS-Language" scheme="https://blog.haxianhe.com/categories/CS-Language/"/>
     
     
-    <category term="java" scheme="https://haxianhe.com/tags/java/"/>
+    <category term="java" scheme="https://blog.haxianhe.com/tags/java/"/>
     
-    <category term="《破壁 Java》" scheme="https://haxianhe.com/tags/《破壁-Java》/"/>
+    <category term="《破壁 Java》" scheme="https://blog.haxianhe.com/tags/《破壁-Java》/"/>
     
   </entry>
   
   <entry>
     <title>如何做一个有质量的技术分享【转】</title>
-    <link href="https://haxianhe.com/2021/09/03/Summary/summary-06/"/>
-    <id>https://haxianhe.com/2021/09/03/Summary/summary-06/</id>
+    <link href="https://blog.haxianhe.com/2021/09/03/Summary/summary-06/"/>
+    <id>https://blog.haxianhe.com/2021/09/03/Summary/summary-06/</id>
     <published>2021-09-03T04:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.775Z</updated>
     
@@ -527,17 +527,17 @@
     
     
     
-    <category term="Summary" scheme="https://haxianhe.com/categories/Summary/"/>
+    <category term="Summary" scheme="https://blog.haxianhe.com/categories/Summary/"/>
     
     
-    <category term="技术思考" scheme="https://haxianhe.com/tags/技术思考/"/>
+    <category term="技术思考" scheme="https://blog.haxianhe.com/tags/技术思考/"/>
     
   </entry>
   
   <entry>
     <title>破壁Java - 反射</title>
-    <link href="https://haxianhe.com/2021/09/03/CS-Language-Java/break-java-04/"/>
-    <id>https://haxianhe.com/2021/09/03/CS-Language-Java/break-java-04/</id>
+    <link href="https://blog.haxianhe.com/2021/09/03/CS-Language-Java/break-java-04/"/>
+    <id>https://blog.haxianhe.com/2021/09/03/CS-Language-Java/break-java-04/</id>
     <published>2021-09-02T16:00:00.000Z</published>
     <updated>2021-11-23T12:50:38.761Z</updated>
     
@@ -552,12 +552,12 @@
     
     
     
-    <category term="CS-Language" scheme="https://haxianhe.com/categories/CS-Language/"/>
+    <category term="CS-Language" scheme="https://blog.haxianhe.com/categories/CS-Language/"/>
     
     
-    <category term="java" scheme="https://haxianhe.com/tags/java/"/>
+    <category term="java" scheme="https://blog.haxianhe.com/tags/java/"/>
     
-    <category term="《破壁 Java》" scheme="https://haxianhe.com/tags/《破壁-Java》/"/>
+    <category term="《破壁 Java》" scheme="https://blog.haxianhe.com/tags/《破壁-Java》/"/>
     
   </entry>
   
