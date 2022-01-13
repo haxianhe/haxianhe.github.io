@@ -127,6 +127,7 @@
       </categories>
       <tags>
         <tag>mysql</tag>
+        <tag>线上 case</tag>
       </tags>
   </entry>
   <entry>
@@ -379,6 +380,7 @@
       </categories>
       <tags>
         <tag>mysql</tag>
+        <tag>技术方案</tag>
       </tags>
   </entry>
   <entry>
@@ -390,6 +392,7 @@
       </categories>
       <tags>
         <tag>mysql</tag>
+        <tag>技术方案</tag>
       </tags>
   </entry>
   <entry>
@@ -499,7 +502,7 @@
         <category>CS-SFTC</category>
       </categories>
       <tags>
-        <tag>技术亮点</tag>
+        <tag>技术方案</tag>
       </tags>
   </entry>
   <entry>
@@ -709,6 +712,7 @@
         <category>CS-Middleware</category>
       </categories>
       <tags>
+        <tag>线上 case</tag>
         <tag>nginx</tag>
       </tags>
   </entry>
@@ -775,7 +779,7 @@
         <category>CS-SFTC</category>
       </categories>
       <tags>
-        <tag>线上问题</tag>
+        <tag>编码习惯</tag>
       </tags>
   </entry>
   <entry>
@@ -864,6 +868,7 @@
       </categories>
       <tags>
         <tag>php</tag>
+        <tag>编码习惯</tag>
       </tags>
   </entry>
   <entry>
@@ -875,6 +880,7 @@
       </categories>
       <tags>
         <tag>php</tag>
+        <tag>编码习惯</tag>
       </tags>
   </entry>
   <entry>
@@ -930,6 +936,7 @@
       </categories>
       <tags>
         <tag>mysql</tag>
+        <tag>技术方案</tag>
       </tags>
   </entry>
   <entry>
@@ -984,7 +991,7 @@
         <category>CS-SFTC</category>
       </categories>
       <tags>
-        <tag>线上问题</tag>
+        <tag>线上 case</tag>
       </tags>
   </entry>
 </search>
